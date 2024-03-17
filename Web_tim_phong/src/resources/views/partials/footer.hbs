@@ -1,0 +1,34 @@
+<button id="scrollToTopBtn">&#8593;</button>
+<button id="helpBtn">?</button>
+
+<div id="helpBox">
+  <h1>Hỗ trợ</h1>
+  <p>Đây là nội dung hỗ trợ</p>
+</div>
+
+<script>
+  const btnScrollToTop = document.getElementById('scrollToTopBtn')
+  const docEl = document.documentElement
+
+  document.addEventListener('scroll', () => {
+    const scrollTotal = docEl.scrollHeight - docEl.clientHeight
+
+    if ((docEl.scrollTop / scrollTotal) >= 0.4) {
+      btnScrollToTop.hidden = false
+    } else {
+      btnScrollToTop.hidden = true
+    }
+  });
+
+  const helpBtn = document.getElementById("helpBtn")
+  const helpBox = document.getElementById("helpBox")
+
+  helpBtn.addEventListener("mouseover", () => {
+    helpBox.style.display = "block";
+  })
+
+  helpBtn.addEventListener("mouseout", () => {
+    helpBox.style.display = "none";
+  })
+
+</script>
