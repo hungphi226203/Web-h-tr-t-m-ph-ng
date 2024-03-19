@@ -48,3 +48,146 @@
 ul li {
     color: black;
 }
+
+//LOGIN FORM
+.login-form{
+    border-radius: 10px;
+    margin:50px auto;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+  }
+  .login-form h1{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  .form-div{
+    display:flex;
+    flex-direction: column;
+  }
+  .form-div label{
+    font-size: 18px;
+    margin-bottom:5px ;
+  }
+  .form-div input[type="text"], .form-div input[type="password"],.form-div input[type="email"]{
+    padding: 10px;
+    margin-bottom: 0px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+  }
+  .form-div input[type="submit"]{
+    padding: 10px;
+    border:none ;
+    border-radius: 5px;
+    color:#fff;
+    font-size: 18px;
+    background-color: #533bf3;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+    margin:10px 0 10px;
+  }
+  .forget-signup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .forget-signup .forget{
+    color:#0152ff;
+    width: auto;
+    margin:auto;
+    padding:6px;
+  }
+  
+  .forget-signup .signup{
+    text-align: center;
+    margin: 10px auto;
+    padding: 10px;
+    border:none ;
+    border-radius: 5px;
+    color:#fff;
+    font-size: 18px;
+    background-color: #00c013;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+    margin:10px 0 10px;
+  }
+
+
+  //SIGN UP
+  .signup-div{
+    display: flex;
+    gap:20px;
+    justify-content: center;
+    
+  }
+  .signup-form1{
+    border-radius: 10px;
+    margin-top:50px ;
+    width: 400px;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    display:flex;
+    flex-direction: column;
+  }
+  .signup-form1 h1{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+  } 
+  .signup-form1 .haveacc{
+    display: flex;
+    justify-content: center;
+    gap:5px;
+  }
+  .haveacc .login{
+    color:#0152ff;
+  }
+  .haveacc .login {
+    text-decoration: underline;
+  }
+  
+  .signup-form2{
+    border-radius: 10px;
+    margin-top:50px ;
+    width: 400px;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    display:flex;
+    flex-direction: column;
+  }
+  .signup-form2 h1{
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 38px;
+  }
+  .signup-form2 h2{
+    text-align: center;
+    font-size: 24px;
+  }
+  .signup-form2 .gioitinh-div{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 10px;
+  }
+  .form-div input[type="button"]{
+    padding: 10px;
+    border:none ;
+    border-radius: 5px;
+    color:#fff;
+    font-size: 18px;
+    background-color: #533bf3;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+    margin:10px 0 10px;
+  }
+  .signup-div p{
+    margin-top: 10px;
+  }

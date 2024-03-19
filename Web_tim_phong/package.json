@@ -20,12 +20,12 @@
   "homepage": "https://github.com/hungphi226203/Web-h-tr-t-m-ph-ng#readme",
   "dependencies": {
     "express": "^4.18.3",
-    "express-handlebars": "^7.1.2"
+    "express-handlebars": "^7.1.2",
+    "node-sass": "^9.0.0"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "node-sass": "^9.0.0",
     "nodemon": "^3.1.0"
   }
 }
