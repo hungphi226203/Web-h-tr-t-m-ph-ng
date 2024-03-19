@@ -1,50 +1,56 @@
 #scrollToTopBtn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 20px;
-    position: fixed;
-    right: 20px;
-    z-index: 100;
-    border: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
     cursor: pointer;
-    outline: none;
-    background-color: red;
-    color: white;
-    bottom: 80px;
+    border-radius: 50%;
+    border: none;
+    z-index: 9999;
+    background-color: #f83859;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: .7rem;
+    line-height: 1;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
 }
 
 #helpBtn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 20px;
-    position: fixed;
-    right: 20px;
-    z-index: 100;
-    border: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
     cursor: pointer;
-    outline: none;
-    background-color: green;
-    color: white;
+    border-radius: 50%;
+    z-index: 9999;
+    background-color: #03a84e;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: .7rem;
+    line-height: 1;
+    position: fixed;
     bottom: 20px;
+    right: 20px; 
 }
 
 #helpBox {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 10%;
-    background-color: rgb(3, 168, 78);
-    border: 1px solid black;
-    padding: 10px;
-    font-size: 14px;
-    right: 20px;
-    bottom: 70px;
-    z-index: 100;
+    height: auto;
+    border: none;
+    background-color: #fff;
+    min-width: 500px;
+    box-shadow: rgb(59 65 68 / 30%) 0 0 20px 0;
+    border-radius: 15px;
+    background-color: #03a84e;
+    font-size: .9rem;
     display: none;
-}
-
-ul li {
-    color: black;
+    z-index: 2;
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
 }
