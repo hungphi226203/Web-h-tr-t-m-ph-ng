@@ -1,0 +1,32 @@
+<h1>Biểu mẫu thông tin phòng</h1>
+
+<form action="/dang-tin" method="post">
+
+  <div>
+    <h2>Thêm ảnh minh họa</h2>
+  </div>
+  <input type = "file" name = "fileupload" accept = "image/*" />
+
+  <h2>Địa chỉ</h2>
+  <textarea name="addres" rows="5" placeholder="Nội dung mô tả"></textarea>
+
+  <div>
+      <label for="price">Giá  </label>
+      <input type="number" name="price" placeholder="Giá bán/thuê">  VND
+  </div>
+
+  <div>
+      <label for="area">Diện tích  </label>
+      <input type="number" name="area" placeholder="Diện tích sử dụng">  m²
+  </div>
+
+  <h2>Mô tả</h2>
+  <textarea name="description" rows="5" placeholder="Nội dung mô tả"></textarea>
+
+  <h2>Liên hệ</h2>
+  <input type="text" name="name" placeholder="Tên">
+  <input type="email" name="email" placeholder="Email">
+  <input type="tel" name="phone" placeholder="Số điện thoại">
+
+  <button type="submit" value="post">Đăng</button>
+</form>

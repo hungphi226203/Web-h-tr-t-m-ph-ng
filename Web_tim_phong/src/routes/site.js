@@ -1,15 +1,20 @@
 const express = require('express')
 const router = express.Router()
 
-const siteController = require('/CODE/Nhom27_TTCS/Web-h-tr-t-m-ph-ng/Web_tim_phong/src/app/controllers/SiteController')
+const siteController = require('../app/controllers/SiteController')
 
-router.use('/login',siteController.login)
-router.use('/signup',siteController.signup)
-router.use('/cho-thue-phong-tro',siteController.cho_thue)
-router.use('/tim-nguoi-o-ghep',siteController.tim_nguoi)
-router.use('/bang-gia-dich-vu',siteController.bang_gia)
+// router.get('/login',siteController.loginpage)
+// router.get('/signup',siteController.signuppage)
+// router.post('/login',siteController.login)
+// router.post('/signup',siteController.signup)
+
+
+router.get('/bang-gia-dich-vu',siteController.bang_gia)
 router.use('/quan-ly-tin',siteController.quan_ly)
-router.use('/dang-tin',siteController.dang)
-router.use('/',siteController.home)
+router.post('/dang-tin',siteController.dang_tin)
+router.get('/dang-tin',siteController.dang_tin_get)
+router.get('/',siteController.home)
+
+
 
 module.exports = router

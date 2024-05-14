@@ -1,0 +1,21 @@
+ <div class="login-form">
+    <h1>DANG NHAP</h1>
+    <form class="form-div" method="post">
+      <label for="username">Tai Khoan</label>
+      <input name="username" type="text" placeholder="Nhap ten tai khoan">
+      <p id="username-alert"></p>
+      <label for="password">Mat Khau</label>
+      <input name="password" type="password" placeholder="Nhap mat khau">
+      <p id="password-alert"></p>
+  
+      {{#if err}}
+      <div style="padding-bottom:10px;text-align:center;color:red">{{err}}</div>
+      {{/if}}
+      <input type="submit" value="Dang Nhap">
+      <div class="forget-signup">
+        
+        <hr width="100%" color="gray" size="3px">
+        <a style="text-decoration:none" class="signup" href="/signup">Dang ki tai khoan moi</a>
+      </div>
+    </form>
+  </div>
