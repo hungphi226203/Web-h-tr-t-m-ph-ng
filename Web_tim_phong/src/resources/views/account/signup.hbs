@@ -1,15 +1,15 @@
 <form class="form-div" action="" method="post" id="form-div1" >
   <div class="signup-div">
     <div class="signup-form1">
-      <h1>DANG KI</h1>
-      <label for="username">Tai Khoan</label>
-      <input name="username" id="username" type="text" placeholder="Nhap ten tai khoan">
+      <h1>ĐĂNG KÍ</h1>
+      <label for="username">Tài khoản</label>
+      <input name="username" id="username" type="text" placeholder="Nhập tên tài khoản">
       <p id="username-alert"></p>
-      <label for="password">Mat Khau</label>
-      <input name="password" id='password' type="password" placeholder="Nhap mat khau">
+      <label for="password">Mật khẩu</label>
+      <input name="password" id='password' type="password" placeholder="Nhập mật khẩu">
       <p id="password-alert"></p>
-      <label >Nhap lai mat khau</label>
-      <input type="password" id='repassword' placeholder="Nhap lai mat khau">
+      <label >Nhập lại mật khẩu</label>
+      <input type="password" id='repassword' placeholder="Nhập lại mật khẩu">
       <p id="repassword-alert"></p>
       {{#if err}}
       <div style="padding-bottom:10px;">{{err}}</div>
@@ -17,17 +17,17 @@
       <input type="submit" value="Dang Ki" id="submit-btn">
       <hr width="100%" color="gray" size="3px"> 
       <div class="haveacc" style="margin-top: 10px;">
-        <p1>Da co tai khoan? </p1>
-        <a class="login" href="/login">Dang nhap</a>
+        <p1>Đã có tài khoản? </p1>
+        <a class="login" href="login">Đăng nhập</a>
       </div>
       
     </div>
   <div class="signup-form2">
-      <h1>THONG TIN CA NHAN</h1>
-        <label for="hovaten">Ho va ten</label>
-        <input name="hovaten" id="hovaten" type="text" placeholder="Nguyen Van A">
+      <h1>THÔNG TIN CÁ NHÂN</h1>
+        <label for="hovaten">Họ và tên</label>
+        <input name="hovaten" id="hovaten" type="text" placeholder="Nguyễn Văn A">
         <p id="hovaten-alert"></p>
-        <div class="gioitinh-div">
+        {{!-- <div class="gioitinh-div">
           <div><label>Gioi tinh: </label></div>
           <div >
           <input type="radio" id="nam" name="gioitinh" value="Nam"  />
@@ -35,11 +35,11 @@
           <input type="radio" id="nu" name="gioitinh" value="Nu" />
           <label for="nu">Nu</label></div>
         </div>
-        <p style="margin-top:-4px;" id="gioitinh-alert"></p>
-        <label for="sdt">So dien thoai</label>
+        <p style="margin-top:-4px;" id="gioitinh-alert"></p> --}}
+        <label for="sdt">Số điện thoại</label>
         <input name="sdt" id="sdt" type="text" placeholder="0123456789">
         <p id="sdt-alert"></p>
-        <label for="cccd">So can cuoc cong dan</label>
+        <label for="cccd">Căn cước công dân</label>
         <input name="cccd" id="cccd" type="text" placeholder="123456789012">
         <p id="cccd-alert"></p>
         <label for="email">Email</label>
@@ -50,7 +50,6 @@
   </form>
   
   <script>
-    /*
     document.addEventListener("DOMContentLoaded", (event) => {
       
       const form=document.querySelector('form');
@@ -63,24 +62,25 @@
           element.innerHTML = '';
           });
         if(check()){
-          //form.submit();
+          form.submit();
         }
       }
 
       function check(){
         var check=true;
-
+          
         //Tai khoan
-        const accounts = {{{accounts}}};
+        {{#if accounts}}
+          accounts = {{{json accounts}}}; // Use triple braces to output unescaped data
         const username=document.getElementById("username");
         var username_alert=document.getElementById("username-alert");
         if(username.value==''){
-          username_alert.innerHTML="Ten tai khoan khong duoc de trong";
+          username_alert.innerHTML="Tên tài khoản không được để trống";
           username_alert.style.color="red";
           check= false;
         }
         else if(accounts.some(obj => obj.username === username.value)==true){
-          username_alert.innerHTML="Ten tai khoan da ton tai";
+          username_alert.innerHTML="Tên tài khoản đã tồn tại";
           username_alert.style.color="red";
           check= false;
         }
@@ -106,11 +106,11 @@
         var hovaten_alert = document.getElementById("hovaten-alert");
         if(hovaten.value==''){
           hovaten_alert.style.color="red";
-          hovaten_alert.innerHTML = "Ho va ten khong duoc de trong";
+          hovaten_alert.innerHTML = "Họ và tên không được để trống";
           check=false;
         }else if(containsOnlyText(hovaten.value)==false){ 
           hovaten_alert.style.color="red";
-          hovaten_alert.innerHTML = "Ho va ten chi duoc chua chu cai";
+          hovaten_alert.innerHTML = "Họ và tên chỉ được chứa chữ cái";
           check=false;
         }
         
@@ -119,19 +119,19 @@
         var sdt_alert = document.getElementById("sdt-alert");
         if(sdt.value==''){
           sdt_alert.style.color="red";
-          sdt_alert.innerHTML = "So dien thoai khong duoc de trong";
+          sdt_alert.innerHTML = "Số điện thoại không được để trống";
           check=false;
         }
         else if(sdt.value.length>11 || sdt.value.length<7){ 
           sdt_alert.style.color="red";
-          sdt_alert.innerHTML = "So dien thoai khong hop le";
+          sdt_alert.innerHTML = "Số điện thoại không hợp lệ";
           check=false;
         }else if(containsOnlyNumbers(sdt.value)==false){ 
           sdt_alert.style.color="red";
-          sdt_alert.innerHTML = "So dien thoai chi duoc chua chu so";
+          sdt_alert.innerHTML = "Số điện thoại chỉ được chứa chữ số";
           check=false;
         }else if(accounts.some(obj => obj.sdt === sdt.value)==true){
-          sdt_alert.innerHTML="So dien thoai da duoc dung de dang ki";
+          sdt_alert.innerHTML="Số điện thoại đã được dùng để đăng kí";
           sdt_alert.style.color="red";
           check= false;
         }
@@ -141,19 +141,19 @@
         var cccd_alert = document.getElementById("cccd-alert");
         if(cccd.value==''){
           cccd_alert.style.color="red";
-          cccd_alert.innerHTML = "Can cuoc cong dan khong duoc de trong";
+          cccd_alert.innerHTML = "Căn cước công dân không được để trống";
           check=false;
         }
         else if(cccd.value.length!=12){ 
           cccd_alert.style.color="red";
-          cccd_alert.innerHTML = "Can cuoc cong dan khong hop le";
+          cccd_alert.innerHTML = "Căn cước công dân không hợp lệ";
           check=false;
         }else if(containsOnlyNumbers(cccd.value)==false){ 
           cccd_alert.style.color="red";
-          cccd_alert.innerHTML = "Can cuoc cong dan chi duoc chua chu so";
+          cccd_alert.innerHTML = "Căn cước công dân chỉ được chứa chữ số";
           check=false;
         }else if(accounts.some(obj => obj.cccd === cccd.value)==true){
-          cccd_alert.innerHTML="Can cuoc cong dan da duoc dung de dang ki";
+          cccd_alert.innerHTML="Căn cước công dân đã được dùng để đăng kí";
           cccd_alert.style.color="red";
           check= false;
         }
@@ -163,36 +163,25 @@
         var email_alert = document.getElementById("email-alert");
         if(email.value==''){
           email_alert.style.color="red";
-          email_alert.innerHTML = "Email khong duoc de trong";
+          email_alert.innerHTML = "Email không được để trống";
           check=false;
         }
         else if(isValidEmail(email.value)==false) { 
           email_alert.style.color="red";
-          email_alert.innerHTML = "Email khong hop le";
+          email_alert.innerHTML = "Email không hợp lệ";
           check=false;
         }
         else if(accounts.some(obj => obj.email === email.value)==true){
-          email_alert.innerHTML="Email da duoc dung de dang ki";
+          email_alert.innerHTML="Email đã được dùng để đăng kí";
           email_alert.style.color="red";
           check= false;
         }
-        //Gioi tinh
+        /*Gioi tinh
         if(gioitinh()==false){
           var gioitinh_alert=document.getElementById("gioitinh-alert");
           gioitinh_alert.innerHTML="Vui long chon gioi tinh";
           gioitinh_alert.style.color="red";
           check= false;
-        }
-
-        function containsOnlyText(str) {
-          return /^[a-zA-Z\s]+$/.test(str);
-        }
-        function containsOnlyNumbers(str) {
-        return /^\d+$/.test(str);
-        }
-        function isValidEmail(email) {
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          return emailRegex.test(email);
         }
         function gioitinh() {
           const radioButtons = document.getElementsByName("gioitinh");
@@ -203,9 +192,23 @@
           }
           return false;
         }
+        */
+        function containsOnlyText(str) {
+          return /^[a-zA-Z\s]+$/.test(str);
+        }
+        function containsOnlyNumbers(str) {
+        return /^\d+$/.test(str);
+        }
+        function isValidEmail(email) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return emailRegex.test(email);
+        }
+        
         return check;
+        {{/if}}
       }
-    });*/
+      
+    });
   </script>
 
   

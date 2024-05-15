@@ -1,83 +1,109 @@
+const connect = require("../../config/db/db.js");
 class SiteController {
+  home(req, res) {
+    res.render("home",{user: req.session.user,sodu:req.session.sodu});
+  }
 
-    home(req,res){
-        res.render('home')
-    }
+  //Dang nhap
+  loginpage(req, res) {
+    res.render("account/login", { layout: "account", err: req.session.err });
+    delete req.session.err;
+  }
 
-    //Dang nhap
-    loginpage(req, res) {
-        res.render('account/login',{layout:'account'});
-        // delete req.session.err;,err: req.session.err
-      }
-
-    signuppage(req, res) {
-        // connect.query("SELECT * FROM `accounts`",function(err,data){
-        //   if(err) res.render('signup',
-        //     {layout:'account',err:"Co loi khi ket noi"});
-        //   else{
-        //     res.render('signup',{layout:'account',accounts:JSON.stringify(data)});
-        //     console.log(data);
-        //   } 
-        // })
-        res.render('account/signup',{layout:'account'});
-    }
-    // login(req, res) {
-    //     connect.query("SELECT * FROM `accounts` ",function(err,data){
-    //       if(err)  {
-    //         res.render('login',
-    //         {layout:'account',err:"Co loi khi ket noi"});
-    //       }
-    //       else {
-    //         let isin=false;
-    //         for (var i = 0; i < data.length; i++) {
-    //           if(req.body.username==data[i].username && req.body.password==data[i].password) isin=true;
-    //         }
-    //         if(isin==true){
-    //           res.render('home');
-    //         }else if(isin==false){
-    //           res.render('login',
-    //         {layout:'account',err:"Sai tai khoan hoac mat khau"});
-    //         }
-    //       }
-    //     })
-    //   }
-    //   signup(req,res){
-    //     connect.execute("INSERT INTO `accounts` VALUE (?,?)",[req.body.username,req.body.password],function(err,data){
-    //       if(err) res.render('signup',
-    //         {layout:'account',err:"Co loi khi dang ki"});
-    //       else{
-    //         req.session.err = "Dang ki thanh cong!\nVui long dang nhap";
-    //         res.redirect('/account/login');
-    //       } 
-            
-    //     })
-    
-    //   }
-    forget(req,res){
-        res.render('account/forget',{layout:'account'})
-    }
-
-    
-    cho_thue(req,res){
-        res.render('cho_thue')
-    }
-
-    tim_nguoi(req,res){
-        res.render('tim_nguoi')
-    }
-
-    bang_gia(req,res){
-        res.render('bang_gia')
-    }
-
-    quan_ly(req,res){
-        res.render('quan_ly')
-    }
-
-    dang(req,res){
-        res.render('dang')
-    }
-
+  signuppage(req, res) {
+    connect.query("SELECT * FROM `accounts`", function (err, data) {
+        if (err){
+            console.log(err);
+            res.render("account/signup", {
+                layout: "account",
+                err: "Có lỗi khi kết nối",
+            });
+        } else {
+            res.render("account/signup", {
+                layout: "account",
+                accounts: data 
+            });
+        }
+    });
 }
 
-module.exports = new SiteController
+  
+login(req, res) {
+  connect.query("SELECT * FROM `accounts` ", function (err, data) {
+      if (err) {
+          res.render("account/login", { layout: "account", err: "Có lỗi khi kết nối" });
+      } else {
+          let check = false;
+          for (var i = 0; i < data.length; i++) {
+              if (
+                  req.body.username == data[i].user &&
+                  req.body.password == data[i].pass
+              ) {
+                  check = true;
+                  req.session.user = req.body.username;
+                  req.session.sodu=data[i].acc_bala;
+                  break;
+              }
+          }
+          if (check) {
+              res.redirect("/");
+          } else {
+              res.render("account/login", {
+                  layout: "account",
+                  err: "Sai tài khoản hoặc mật khẩu",
+              });
+          }
+      }
+  });
+}
+
+  signup(req, res) {
+    connect.query(
+        "INSERT INTO `accounts` (user, pass, fullname, id_card, phone, email) VALUES (?, ?, ?, ?, ?, ?)",
+        [req.body.username, req.body.password, req.body.hovaten, req.body.cccd, req.body.sdt, req.body.email],
+        function (err, data) {
+            if (err) {
+                res.render("account/signup", {
+                    layout: "account",
+                    err: "Có lỗi khi đăng kí",
+                });
+            } else {
+                req.session.err = "Đăng kí thành công!\nVui lòng đăng nhập";
+                return res.redirect("/login");
+            }
+        }
+    );
+}
+  logout(req, res){
+    console.log(req.session.err);
+    delete req.session.user;
+    delete req.session.sodu;
+    res.redirect("/");
+  }
+
+  xem(req, res) {
+    res.render("xem", { layout: "account" });
+  }
+
+  cho_thue(req, res) {
+    res.render("cho_thue");
+  }
+
+  tim_nguoi(req, res) {
+    res.render("tim_nguoi");
+  }
+
+  bang_gia(req, res) {
+    res.render("bang_gia");
+  }
+
+  quan_ly(req, res) {
+    res.render("quan_ly");
+  }
+
+  dang(req, res) {
+    res.render("dang");
+  }
+}
+
+module.exports = new SiteController();
