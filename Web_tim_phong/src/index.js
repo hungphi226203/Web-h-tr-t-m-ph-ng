@@ -18,7 +18,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(session({
   secret: 'your-secret-key',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }
 }));
 // //HTTP logger
 // app.use(morgan('combined'))
@@ -40,7 +43,6 @@ app.set('views', path.join(__dirname, 'resources\\views'))
 app.engine('.hbs', hbs.engine);
 
 route(app)
-
 
 
 

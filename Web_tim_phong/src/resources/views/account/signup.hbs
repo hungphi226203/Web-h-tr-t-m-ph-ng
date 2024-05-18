@@ -14,7 +14,7 @@
       {{#if err}}
       <div style="padding-bottom:10px;">{{err}}</div>
       {{/if}}  
-      <input type="submit" value="Dang Ki" id="submit-btn">
+      <input type="submit" value="Đăng kí" id="submit-btn">
       <hr width="100%" color="gray" size="3px"> 
       <div class="haveacc" style="margin-top: 10px;">
         <p1>Đã có tài khoản? </p1>
@@ -61,17 +61,102 @@
         elements.forEach(element => {
           element.innerHTML = '';
           });
-        if(check()){
+        if(check()==true){
           form.submit();
         }
       }
 
       function check(){
         var check=true;
+        {{#if noaccounts}}
+          const username=document.getElementById("username");
+          var username_alert=document.getElementById("username-alert");
+          if(username.value==''){
+            username_alert.innerHTML="Tên tài khoản không được để trống";
+            username_alert.style.color="red";
+            check= false;
+          }
+          //Mat khau
+        const password=document.getElementById("password");
+        const repassword=document.getElementById("repassword");
+        var ps_alert=document.getElementById("password-alert");
+        var reps_alert=document.getElementById("repassword-alert");
+        if(password.value.length<6){
+          ps_alert.innerHTML = "Mật khẩu phải có ít nhất 6 kí tự";
+          ps_alert.style.color="red";
+          check= false;
+        }
+        else if(password.value!=repassword.value){ 
+          reps_alert.innerHTML = "Mật khẩu không khớp";
+          reps_alert.style.color="red";
+          check= false;
+        }
+        const hovaten=document.getElementById("hovaten");
+        var hovaten_alert = document.getElementById("hovaten-alert");
+        if(hovaten.value==''){
+          hovaten_alert.style.color="red";
+          hovaten_alert.innerHTML = "Họ và tên không được để trống";
+          check=false;
+        }else if(containsOnlyText(hovaten.value)==false){ 
+          hovaten_alert.style.color="red";
+          hovaten_alert.innerHTML = "Họ và tên chỉ được chứa chữ cái";
+          check=false;
+        }
+        
+        //So dien thoai
+        const sdt=document.getElementById("sdt");
+        var sdt_alert = document.getElementById("sdt-alert");
+        if(sdt.value==''){
+          sdt_alert.style.color="red";
+          sdt_alert.innerHTML = "Số điện thoại không được để trống";
+          check=false;
+        }
+        else if(sdt.value.length>10 || sdt.value.length<7){ 
+          sdt_alert.style.color="red";
+          sdt_alert.innerHTML = "Số điện thoại không hợp lệ";
+          check=false;
+        }else if(containsOnlyNumbers(sdt.value)==false){ 
+          sdt_alert.style.color="red";
+          sdt_alert.innerHTML = "Số điện thoại chỉ được chứa chữ số";
+          check=false;
+        }
+        //CCCD
+        const cccd=document.getElementById("cccd");
+        var cccd_alert = document.getElementById("cccd-alert");
+        if(cccd.value==''){
+          cccd_alert.style.color="red";
+          cccd_alert.innerHTML = "Căn cước công dân không được để trống";
+          check=false;
+        }
+        else if(cccd.value.length!=12){ 
+          cccd_alert.style.color="red";
+          cccd_alert.innerHTML = "Căn cước công dân không hợp lệ";
+          check=false;
+        }else if(containsOnlyNumbers(cccd.value)==false){ 
+          cccd_alert.style.color="red";
+          cccd_alert.innerHTML = "Căn cước công dân chỉ được chứa chữ số";
+          check=false;
+        }
           
+        //Email
+        const email=document.getElementById("email");
+        var email_alert = document.getElementById("email-alert");
+        if(email.value==''){
+          email_alert.style.color="red";
+          email_alert.innerHTML = "Email không được để trống";
+          check=false;
+        }
+        else if(isValidEmail(email.value)==false) { 
+          email_alert.style.color="red";
+          email_alert.innerHTML = "Email không hợp lệ";
+          check=false;
+        } 
+        return check;
+        {{/if}}
         //Tai khoan
         {{#if accounts}}
-          accounts = {{{json accounts}}}; // Use triple braces to output unescaped data
+         let accounts = {{{json accounts}}};
+        
         const username=document.getElementById("username");
         var username_alert=document.getElementById("username-alert");
         if(username.value==''){
@@ -122,7 +207,7 @@
           sdt_alert.innerHTML = "Số điện thoại không được để trống";
           check=false;
         }
-        else if(sdt.value.length>11 || sdt.value.length<7){ 
+        else if(sdt.value.length>10 || sdt.value.length<7){ 
           sdt_alert.style.color="red";
           sdt_alert.innerHTML = "Số điện thoại không hợp lệ";
           check=false;
@@ -130,10 +215,6 @@
           sdt_alert.style.color="red";
           sdt_alert.innerHTML = "Số điện thoại chỉ được chứa chữ số";
           check=false;
-        }else if(accounts.some(obj => obj.sdt === sdt.value)==true){
-          sdt_alert.innerHTML="Số điện thoại đã được dùng để đăng kí";
-          sdt_alert.style.color="red";
-          check= false;
         }
 
         //CCCD
@@ -152,7 +233,7 @@
           cccd_alert.style.color="red";
           cccd_alert.innerHTML = "Căn cước công dân chỉ được chứa chữ số";
           check=false;
-        }else if(accounts.some(obj => obj.cccd === cccd.value)==true){
+        }else if(accounts.some(obj => obj.id_card === cccd.value)==true){
           cccd_alert.innerHTML="Căn cước công dân đã được dùng để đăng kí";
           cccd_alert.style.color="red";
           check= false;
@@ -203,11 +284,19 @@
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           return emailRegex.test(email);
         }
-        
         return check;
         {{/if}}
       }
-      
+      function containsOnlyText(str) {
+          return /^[a-zA-Z\s]+$/.test(str);
+        }
+        function containsOnlyNumbers(str) {
+        return /^\d+$/.test(str);
+        }
+        function isValidEmail(email) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return emailRegex.test(email);
+        }
     });
   </script>
 

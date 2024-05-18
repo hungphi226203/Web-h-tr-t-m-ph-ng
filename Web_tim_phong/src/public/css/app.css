@@ -300,3 +300,206 @@ ul li {
 .active,
 .demo:hover {
   opacity: 1; }
+
+.dang-tin {
+  width: 50%;
+  /* Adjust as needed */
+  margin: 0 auto;
+  /* This centers the div horizontally */
+  background-color: #f3f3f3;
+  padding: 20px; }
+
+.dang-tin textarea {
+  width: 100%; }
+
+.dang-tin .them-anh, .title, .dia-chi, .gia, .mo-ta, .lien-he {
+  margin-top: 15px; }
+
+.dang-tin input {
+  margin-top: 15px;
+  height: 50px; }
+
+.dia-chi .diachi-popup {
+  text-align: center; }
+
+.gia {
+  display: flex;
+  justify-content: space-between;
+  /* Distribute items evenly along the main axis */
+  align-items: center;
+  /* Center items vertically */ }
+
+.gia input {
+  flex: 1;
+  /* Take up remaining space */
+  margin-right: 10px;
+  /* Add some spacing between inputs */ }
+
+/* Style for the popup background */
+.popup {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 10;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */ }
+
+/* Style for the popup content */
+.popup-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  /* Could be more or less, depending on screen size */ }
+
+/* Style for the close button */
+.closeBtn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold; }
+
+.closeBtn:hover,
+.closeBtn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer; }
+
+.tai-khoan {
+  width: 60%;
+  /* Adjust as needed */
+  margin: 0 auto;
+  /* This centers the div horizontally */
+  background-color: #f3f3f3;
+  padding: 20px; }
+
+.tai-khoan .timtk {
+  justify-content: center;
+  align-items: center; }
+
+.tai-khoan .timtk input[type="text"] {
+  flex: 1;
+  max-width: 170px;
+  /* Adjust the maximum width as needed */
+  margin-right: 5px;
+  /* Add some spacing between input and button */ }
+
+.tai-khoan .ds-tk {
+  display: flex;
+  align-items: center;
+  justify-content: space-around; }
+
+.tai-khoan .ds-tk .table input {
+  margin-bottom: 10px;
+  margin-top: 6px; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif; }
+
+.modal {
+  text-align: center;
+  display: none;
+  position: fixed;
+  z-index: 9;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.modalContent {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%; }
+
+.close {
+  color: #ff4141;
+  float: right;
+  font-size: 40px;
+  font-weight: bold; }
+
+.close:hover, .close:focus {
+  color: #ff1010;
+  cursor: pointer; }
+
+.modalContent button {
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px; }
+
+.btnchuyen {
+  background-color: #ff4141;
+  margin-right: 20px; }
+
+.btnchuyen:hover {
+  background-color: #ff0707; }
+
+.btnhuy:hover {
+  background-color: #a7a7a7; }
+
+.modal1 {
+  text-align: center;
+  display: none;
+  position: fixed;
+  z-index: 9;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.modalContent1 {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%; }
+
+.close1 {
+  color: #ff4141;
+  float: right;
+  font-size: 40px;
+  font-weight: bold; }
+
+.close1:hover, .close1:focus {
+  color: #ff1010;
+  cursor: pointer; }
+
+.modalContent1 button {
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px; }
+
+.btnchuyen1 {
+  background-color: #ff4141;
+  margin-right: 20px; }
+
+.btnchuyen1:hover {
+  background-color: #ff0707; }
+
+.btnhuy1:hover {
+  background-color: #a7a7a7; }

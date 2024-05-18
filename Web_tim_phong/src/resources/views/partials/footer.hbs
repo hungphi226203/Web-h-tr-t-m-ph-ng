@@ -1,9 +1,37 @@
-<button id="scrollToTopBtn">&#8593;</button>
-<button id="helpBtn">?</button>
+<button id="scrollToTopBtn" style="display: block; font-size: 3rem;">&#8593;</button>
+
+<div id="helpBtn">
+  <div>
+    <span style="display: block; font-size: 2rem;margin-left:15px">?</span>
+    <span>Trợ giúp</span>
+  </div>
+</div>
 
 <div id="helpBox">
-  <h1>Hỗ trợ</h1>
-  <p>Đây là nội dung hỗ trợ</p>
+  <div>
+    <div style="font-size: 24px; text-align: center;">Xin chào</div>
+    <p style="margin: 10px 0; color: #fff; font-size: 0.9rem; font-weight: normal;">Đội chăm sóc khách hàng của chúng tôi muốn lắng nghe câu hỏi và ý kiến đóng góp từ bạn.</p>
+  </div>
+    <div>
+      <ul class="list-contact">
+        <li>
+          <div>
+            <div class="contact-title">Nhân viên hỗ trợ</div>
+            <div class="contact-name">Nguyễn Hùng Phi</div>
+            <div class="contact-phone">Điện thoại: 091495937
+            <div class="contact-zalo">Zalo: 0914395937</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="contact-title">Nhân viên hỗ trợ</div>
+            <div class="contact-name">Đặng Quốc Huy</div>
+            <div class="contact-phone">Điện thoại: 0862470050</div>
+            <div class="contact-zalo">Zalo: 0862470050</div>
+          </div>
+        </li>
+      </ul>
+  </div>
 </div>
 
 <script>
@@ -19,6 +47,13 @@
       btnScrollToTop.hidden = true
     }
   });
+
+  btnScrollToTop.addEventListener('click', () => {
+    docEl.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  })
 
   const helpBtn = document.getElementById("helpBtn")
   const helpBox = document.getElementById("helpBox")
