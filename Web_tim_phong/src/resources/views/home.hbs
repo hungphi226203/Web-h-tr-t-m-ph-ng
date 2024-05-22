@@ -1,8 +1,10 @@
 <div id="list-post">
-    {{#each data}}
-        <h1>{{addres}}</h1>
-        <h1>{{area}}m2</h1>
-        <h1>{{price}}</h1>
-        <p>{{des}}</p>
-    {{/each}}
+  {{#each data}}
+    <img src="{{image}}" alt="{{title}}">
+    <h1><a href="/post/{{title}}">{{title}}</a></h1>
+    <h3>{{addres}}</h3>
+    <h3>{{area}}m2</h3>
+    <h3>{{price}}</h3>
+    <p>{{{des}}}</p>
+  {{/each}}
 </div>

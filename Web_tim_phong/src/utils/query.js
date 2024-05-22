@@ -1,4 +1,4 @@
-const pool = require('../config/db/db')
+const pool = require('../config/db')
 module.exports = async (sql, params) => new Promise((resolve, reject)=>{ //function return a promise, resolve *results or reject *error after connecting and query database
         pool.getConnection(function(err, connection) {
             if (err){ 

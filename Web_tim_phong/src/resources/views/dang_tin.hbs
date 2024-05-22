@@ -1,32 +1,133 @@
-<h1>Biểu mẫu thông tin phòng</h1>
-
-<form action="/dang-tin" method="post">
-
-  <div>
+<form action="/dang-tin" method="post" class="dang-tin" id="mainForm" enctype="multipart/form-data">
+  <h1 style="text-align: center;">Biểu mẫu thông tin phòng</h1>
+  <div class="them-anh">
     <h2>Thêm ảnh minh họa</h2>
-  </div>
-  <input type = "file" name = "fileupload" accept = "image/*" />
-
-  <h2>Địa chỉ</h2>
-  <textarea name="addres" rows="5" placeholder="Nội dung mô tả"></textarea>
-
-  <div>
-      <label for="price">Giá  </label>
-      <input type="number" name="price" placeholder="Giá bán/thuê">  VND
+    <input
+      type="file"
+      id="fileupload"
+      name="fileupload"
+      accept="image/*"
+      multiple
+    />
   </div>
 
-  <div>
-      <label for="area">Diện tích  </label>
-      <input type="number" name="area" placeholder="Diện tích sử dụng">  m²
+  <div class="title">
+    <h2>Tiêu đề</h2>
+    <textarea
+      class="form-control"
+      name="title"
+      rows="3"
+      placeholder="Ví dụ: Cho thuê phòng trọ gần trường HVCNBCVT"
+      required
+    ></textarea>
   </div>
 
-  <h2>Mô tả</h2>
-  <textarea name="description" rows="5" placeholder="Nội dung mô tả"></textarea>
+  <div class="dia-chi">
+    <h2>Thông tin</h2>
+    <button id="btndiachi" type="button" class="btn btn-outline-dark" style="width:200px">Địa chỉ</button>
+    <div id="popupForm" class="popup">
+      <div class="popup-content form-control">
+        <span class="closeBtn">×</span>
+        <h2 class="diachi-popup">Địa chỉ</h2>
+        <input
+          class="form-control"
+          type="text"
+          id="sonha"
+          name="addres"
+          placeholder="Số nhà"
+          required
+        />        
+        <input class="form-control" type="text" id="tenduong" name="tenduong" required placeholder="Tên đường" />
+        <input class="form-control" type="text" id="quan" name="quan" required placeholder="Quận"/>
+        <input class="form-control" type="text" id="thanhpho" name="thanhpho" required placeholder="Thành phố"/>
+        <input class="form-control" type="text" id="tinh" name="tinh" required placeholder="Tỉnh"/>
+      </div>
+    </div>
+  </div>
 
-  <h2>Liên hệ</h2>
-  <input type="text" name="name" placeholder="Tên">
-  <input type="email" name="email" placeholder="Email">
-  <input type="tel" name="phone" placeholder="Số điện thoại">
+  <div class="gia">
+    <input class="form-control" name="area" placeholder="Diện tích sử dụng (m2)" style="width:40%" required />
+    <input class="form-control" name="price" placeholder="Giá thuê (VND)" style="margin-bottom:10px;width:40%" required />
+  </div>
 
-  <button type="submit" value="post">Đăng</button>
+  <div class="mo-ta">
+    <h2>Mô tả</h2>
+    <textarea
+      class="form-control"
+      name="description"
+      rows="5"
+      placeholder="Nội dung mô tả"
+      required
+    ></textarea>
+  </div>
+
+  <button class="btn btn-outline-danger" id="submitButton" type="submit">Đăng</button>
 </form>
+
+
+<script>
+
+    // Get the modal
+  var popupForm = document.getElementById("popupForm");
+
+  // Get the button that opens the modal
+  var openFormBtn = document.getElementById("btndiachi");
+
+  // Get the <span> element that closes the modal
+  var closeBtn = document.getElementsByClassName("closeBtn")[0];
+
+  // Get the form element
+  var addressForm = document.getElementById("mainForm");
+
+  // Get the submit button
+  var submitButton = document.getElementById("submitButton");
+
+  // When the user clicks the button, open the modal 
+  openFormBtn.onclick = function() {
+    popupForm.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  closeBtn.onclick = function() {
+    popupForm.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == popupForm) {
+      popupForm.style.display = "none";
+    }
+  }
+
+  // Handle form validation and custom validation messages
+  submitButton.onclick = function(event) {
+    // Prevent default button behavior
+    //event.preventDefault();
+
+    // Custom validation logic
+    var valid = true;
+    var elements = addressForm.elements;
+
+    for (var i = 0; i < elements.length; i++) {
+      if (elements[i].hasAttribute('required') && !elements[i].value) {
+        valid = false;
+        elements[i].classList.add('invalid');
+        elements[i].setCustomValidity("Vui lòng điền vào trường này");
+        elements[i].reportValidity();
+      } else {
+        elements[i].classList.remove('invalid');
+        elements[i].setCustomValidity(""); // Clear the custom validation message
+      }
+    }
+
+    if (valid) {
+      // If the form is valid, you can process the data here
+      alert("Form submitted successfully!");
+      addressForm.submit(); // Susbmit the form manually
+    } else {
+      alert("Bạn chưa điền đầy đủ thông tin!");
+    }
+  };
+
+
+</script>

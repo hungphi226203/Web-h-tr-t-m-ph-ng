@@ -1,0 +1,16 @@
+<div>
+  {{#each data}}
+    {{#each imagePath}}
+      <img src="{{this}}" alt="{{../title}}">
+    {{/each}}
+    <h1><a href="/manage/{{title}}">{{title}}</a></h1>
+    <h3>{{address}}</h3>
+    <h3>{{area}}m2</h3>
+    <h3>{{price}}</h3>
+    <p>{{{des}}}</p>
+    <h3>{{status}}</h3>
+    <button class="btn btn-outline-danger" id="getButton" type="submit">Xem</button>
+    <button class="btn btn-outline-danger" id="getButton" type="submit">Xóa</button>
+    <button class="btn btn-outline-danger" id="getButton" type="submit">Sữa</button>
+  {{/each}}
+</div>

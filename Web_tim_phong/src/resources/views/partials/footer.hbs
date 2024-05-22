@@ -1,69 +1,25 @@
-<button id="scrollToTopBtn" style="display: block; font-size: 3rem;">&#8593;</button>
-
-<div id="helpBtn">
-  <div>
-    <span style="display: block; font-size: 2rem;">?</span>
-    <span>Trợ giúp</span>
-  </div>
-</div>
-
-<div id="helpBox">
-  <div>
-    <div style="font-size: 24px; text-align: center;">Xin chào</div>
-    <p style="margin: 10px 0; color: #fff; font-size: 0.9rem; font-weight: normal;">Đội chăm sóc khách hàng của chúng tôi muốn lắng nghe câu hỏi và ý kiến đóng góp từ bạn.</p>
-  </div>
-    <div>
-      <ul class="list-contact">
-        <li>
-          <div>
-            <div class="contact-title">Nhân viên hỗ trợ</div>
-            <div class="contact-name">Nguyễn Hùng Phi</div>
-            <div class="contact-phone">Điện thoại: 091495937
-            <div class="contact-zalo">Zalo: 0914395937</div>
-          </div>
-        </li>
-        <li>
-          <div>
-            <div class="contact-title">Nhân viên hỗ trợ</div>
-            <div class="contact-name">Đặng Quốc Huy</div>
-            <div class="contact-phone">Điện thoại: 0862470050</div>
-            <div class="contact-zalo">Zalo: 0862470050</div>
-          </div>
-        </li>
-      </ul>
-  </div>
-</div>
+<button id="scrollToTopBtn">&#8593;</button>
 
 <script>
-  const btnScrollToTop = document.getElementById('scrollToTopBtn')
-  const docEl = document.documentElement
+  const btnScrollToTop = document.getElementById('scrollToTopBtn');
+  const docEl = document.documentElement;
 
-  document.addEventListener('scroll', () => {
-    const scrollTotal = docEl.scrollHeight - docEl.clientHeight
+  document.addEventListener('DOMContentLoaded', checkScrollPosition);
+  document.addEventListener('scroll', checkScrollPosition);
 
+  function checkScrollPosition() {
+    const scrollTotal = docEl.scrollHeight - window.innerHeight;
     if ((docEl.scrollTop / scrollTotal) >= 0.4) {
-      btnScrollToTop.hidden = false
+      btnScrollToTop.style.display = 'block';
     } else {
-      btnScrollToTop.hidden = true
+      btnScrollToTop.style.display = 'none';
     }
-  });
+  }
 
   btnScrollToTop.addEventListener('click', () => {
     docEl.scrollTo({
       top: 0,
       behavior: 'smooth'
-    })
-  })
-
-  const helpBtn = document.getElementById("helpBtn")
-  const helpBox = document.getElementById("helpBox")
-
-  helpBtn.addEventListener("mouseover", () => {
-    helpBox.style.display = "block";
-  })
-
-  helpBtn.addEventListener("mouseout", () => {
-    helpBox.style.display = "none";
-  })
-
+    });
+  });
 </script>
