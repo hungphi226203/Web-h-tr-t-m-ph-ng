@@ -5,9 +5,9 @@
       <div class="custom-select" style="margin: auto;">
         <select name="tinh" form="searchform" required>
           <option value="">Chọn tỉnh/ thành phố</option>
-          <option value="">TP.Hồ Chí Minh</option>
-          <option value="">TP.Hà Nội</option>
-          <option value="">Tỉnh Bình Định</option>
+          <option value="hochiminh">TP.Hồ Chí Minh</option>
+          <option value="hanoi">TP.Hà Nội</option>
+          <option value="binhdinh">Tỉnh Bình Định</option>
           
         </select>
       </div>
@@ -15,53 +15,53 @@
       <div class="custom-select" style="margin: auto;">
         <select name="quan" form="searchform" required>
           <option value="">Chọn quận</option>
-          <option value="">Quận 1</option>
-          <option value="">Quận 3</option>
-          <option value="">Quận 4</option>
-          <option value="">Quận 5</option>
-          <option value="">Quận 6</option>
-          <option value="">Quận 7</option>
-          <option value="">Quận 8</option>
-          <option value="">Quận 10</option>
-          <option value="">Quận 11</option>
-          <option value="">Quận 12</option>
-          <option value="">Quận Tân Bình</option>
-          <option value="">Quận Bình Tân</option>
-          <option value="">Quận Bình Thạnh</option>
-          <option value="">Quận Thủ Đức</option>
-          <option value="">Quận Gò Vấp</option>
-          <option value="">Quận Phú Nhuận</option>
+          <option value="quan1">Quận 1</option>
+          <option value="quan3">Quận 3</option>
+          <option value="quan4">Quận 4</option>
+          <option value="quan5">Quận 5</option>
+          <option value="quan6">Quận 6</option>
+          <option value="quan7">Quận 7</option>
+          <option value="quan8">Quận 8</option>
+          <option value="quan10">Quận 10</option>
+          <option value="quan11">Quận 11</option>
+          <option value="quan12">Quận 12</option>
+          <option value="quantanbinh">Quận Tân Bình</option>
+          <option value="quanbinhtan">Quận Bình Tân</option>
+          <option value="quanbinhthanh">Quận Bình Thạnh</option>
+          <option value="quanthuduc">Quận Thủ Đức</option>
+          <option value="quangovap">Quận Gò Vấp</option>
+          <option value="quanphunhuan">Quận Phú Nhuận</option>
         </select>
       </div>
 
       <div class="custom-select" style="margin: auto;">
         <select name="gia" form="searchform" required>
           <option value="">Chọn giá</option>
-          <option value="">Dưới 1,5 triệu</option>
-          <option value="">Từ 1,5 đến 2 triệu</option>
-          <option value="">Từ 2 đến 2,5 triệu</option>
-          <option value="">Từ 2,5 đến 3 triệu</option>
-          <option value="">Từ 3 đến 4 triệu</option>
-          <option value="">Từ 4 đến 5 triệu</option>
-          <option value="">Từ 5 triệu trở lên</option>
+          <option value="1,5">Dưới 1,5 triệu</option>
+          <option value="1,5den2">Từ 1,5 đến 2 triệu</option>
+          <option value="2den2,5">Từ 2 đến 2,5 triệu</option>
+          <option value="2,5den3">Từ 2,5 đến 3 triệu</option>
+          <option value="3den4">Từ 3 đến 4 triệu</option>
+          <option value="4den5">Từ 4 đến 5 triệu</option>
+          <option value="5">Từ 5 triệu trở lên</option>
         </select>
       </div>
 
       <div class="custom-select" style="margin: auto;">
         <select name="dientich" form="searchform" required>
           <option value="">Chọn diện tích</option>
-          <option value="">Dưới 20m2</option>
-          <option value="">Từ 20 đến 30m2</option>
-          <option value="">Từ 30 đến 50m2</option>
-          <option value="">Từ 50 đến 70m2</option>
-          <option value="">Từ 70 đến 90m2</option>
-          <option value="">Từ 90m2 trở lên</option>
+          <option value="20">Dưới 20m2</option>
+          <option value="20den30">Từ 20 đến 30m2</option>
+          <option value="30den50">Từ 30 đến 50m2</option>
+          <option value="50den70">Từ 50 đến 70m2</option>
+          <option value="70den90">Từ 70 đến 90m2</option>
+          <option value="90">Từ 90m2 trở lên</option>
         </select>
       </div>
     </div>
   </div>
   <div style="text-align: center;padding-bottom:20px">
-    <form action="/action_page.php" id="searchform">
+    <form action="/tim-phong" id="searchform">
       <button type="submit" class="btn btn-primary btn-lg">Tìm phòng ngay</button>
     </form>
 </div>
@@ -104,36 +104,36 @@
   <div class="loc-div">
     <div style="position: sticky;top: 50px;">
       <div class="loc-gia" style="background-color: rgb(255, 255, 255); border-radius:15px; ; border: 2px solid rgb(21, 179, 247); ">
-        <h3 style="padding: 15px 0 0 20px;">Loc theo gia</h3>
+        <h3 style="padding: 15px 0 0 20px;">Xem theo giá</h3>
         <div style="display: flex" class="ds-locgia">
           <ul style="list-style-type: '> ';margin-left:20px;margin-right:10px">
-            <li><a href="#">duoi 1 trieu</a></li>
-            <li><a href="#">tu 1 den 2 trieu</a></li>
-            <li><a href="#">duoi 1 trieu</a></li>
-            <li><a href="#">duoi 1 trieu</a></li>
+            <li><a href="">Dưới 1,5 triệu</a></li>
+            <li><a href="">Từ 1,5 đến 2 triệu</a></li>
+            <li><a href="">Từ 2 đến 2,5 triệu</a></li>
+            <li><a href="">Từ 2,5 đến 3 triệu</a></li>
           </ul>
           <ul style="list-style-type: '> ';margin-left:20px;margin-right:20px">
-            <li><a href="#">duoi 1 trieu</a></li>
-            <li><a href="#">duoi 1 trieu</a></li>
-            <li><a href="#">duoi 1 trieuasd</a></li>
-            <li><a href="#">tren 15 trieu</a></li>
+            <li><a href="">Từ 3 đến 4 triệu</a></li>
+            <li><a href="">Từ 4 đến 5 triệu</a></li>
+            
+            <li><a href="">Trên 5 triệu</a></li>
           </ul>
         </div>
       </div>
 
       <div class="loc-gia" style="background-color: rgb(255, 255, 255); border-radius:15px; margin-top:20px; border: 2px solid rgb(21, 179, 247);">
-        <h3 style="padding: 15px 0 0 20px;">Loc theo dien tich</h3>
+        <h3 style="padding: 15px 0 0 20px;">Xem theo diện tích</h3>
         <div style="display: flex" class="ds-locgia">
           <ul style="list-style-type: '> ';margin-left:20px;margin-right:10px">
-            <li><a href="#">duoi 20m2</a></li>
-            <li><a href="#">duoi 20m2</a></li>
-            <li><a href="#">duoi 20m2</a></li>
+            <li><a href="">Dưới 20m2</a></li>
+            <li><a href="">Từ 20 đến 30m2</a></li>
+            <li><a href="#">Từ 30 đến 50m2</a></li>
 
           </ul>
-          <ul style="list-style-type: '> ';margin-left:52px">
-            <li><a href="#">duoi 20m2</a></li>
-            <li><a href="#">duoi 20m2</a></li>
-            <li><a href="#">duoi 20m2</a></li>
+          <ul style="list-style-type: '> ';margin-left:32px">
+            <li><a href="#">Từ 50 đến 70m2</a></li>
+            <li><a href="#">Từ 70 đến 90m2</a></li>
+            <li><a href="#">Trên 90m2</a></li>
 
           </ul>
         </div>
