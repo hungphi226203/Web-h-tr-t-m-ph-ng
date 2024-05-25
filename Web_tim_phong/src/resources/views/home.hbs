@@ -1,0 +1,143 @@
+<div  class="searchbox-div" style="">
+  <div>
+      <div style="display: flex; gap: 10px; justify-content: center;padding:20px">
+      
+      <div class="custom-select" style="margin: auto;">
+        <select name="tinh" form="searchform" required>
+          <option value="">Chọn tỉnh/ thành phố</option>
+          <option value="">TP.Hồ Chí Minh</option>
+          <option value="">TP.Hà Nội</option>
+          <option value="">Tỉnh Bình Định</option>
+          
+        </select>
+      </div>
+
+      <div class="custom-select" style="margin: auto;">
+        <select name="quan" form="searchform" required>
+          <option value="">Chọn quận</option>
+          <option value="">Quận 1</option>
+          <option value="">Quận 3</option>
+          <option value="">Quận 4</option>
+          <option value="">Quận 5</option>
+          <option value="">Quận 6</option>
+          <option value="">Quận 7</option>
+          <option value="">Quận 8</option>
+          <option value="">Quận 10</option>
+          <option value="">Quận 11</option>
+          <option value="">Quận 12</option>
+          <option value="">Quận Tân Bình</option>
+          <option value="">Quận Bình Tân</option>
+          <option value="">Quận Bình Thạnh</option>
+          <option value="">Quận Thủ Đức</option>
+          <option value="">Quận Gò Vấp</option>
+          <option value="">Quận Phú Nhuận</option>
+        </select>
+      </div>
+
+      <div class="custom-select" style="margin: auto;">
+        <select name="gia" form="searchform" required>
+          <option value="">Chọn giá</option>
+          <option value="">Dưới 1,5 triệu</option>
+          <option value="">Từ 1,5 đến 2 triệu</option>
+          <option value="">Từ 2 đến 2,5 triệu</option>
+          <option value="">Từ 2,5 đến 3 triệu</option>
+          <option value="">Từ 3 đến 4 triệu</option>
+          <option value="">Từ 4 đến 5 triệu</option>
+          <option value="">Từ 5 triệu trở lên</option>
+        </select>
+      </div>
+
+      <div class="custom-select" style="margin: auto;">
+        <select name="dientich" form="searchform" required>
+          <option value="">Chọn diện tích</option>
+          <option value="">Dưới 20m2</option>
+          <option value="">Từ 20 đến 30m2</option>
+          <option value="">Từ 30 đến 50m2</option>
+          <option value="">Từ 50 đến 70m2</option>
+          <option value="">Từ 70 đến 90m2</option>
+          <option value="">Từ 90m2 trở lên</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;padding-bottom:20px">
+    <form action="/action_page.php" id="searchform">
+      <button type="submit" class="btn btn-primary btn-lg">Tìm phòng ngay</button>
+    </form>
+</div>
+</div>
+
+<div class="post-container" >
+  <div class="post-div">
+    {{#each data}}
+
+    <div class="" style="background-color: rgb(255, 255, 255);border-radius:15px;; border: 2px solid rgb(21, 179, 247);">
+      <div class="row g-0" style="position:relative">
+        <div class="col-md-4">
+          <img src="{{imagePath}}" class="img-fluid rounded-start" alt="{{title}}"
+            style="width: 100%;object-fit: cover; aspect-ratio: 1/1;;padding:10px">
+        </div>
+        <div class="col-md-8" style="padding: 20px;">
+          <div class="card-body">
+            <h4 class="card-title" style=""><a href="/post/{{title}}">{{title}}</a></h4>
+            <p class="card-text" style="color:rgb(224, 28, 2); margin-top:20px;font-weight:bold">Giá: {{price}}đ/tháng
+            </p>
+            <p class="card-text">Diện tích: {{area}}m2</p>
+            <p class="card-text">Địa chỉ: {{addres}}</p>
+            <div style="position:absolute;bottom:20px; display:flex">
+              <img src="https://i.pinimg.com/736x/21/91/6e/21916e491ef0d796398f5724c313bbe7.jpg"
+                style="width:40px;border-radius:25px">
+              <a class="card-text"
+                style="margin:auto;margin-left:10px;text-decoration:none;color:rgb(65, 65, 65)">{{username}}</a>
+            </div>
+            <div style="position:absolute;bottom:20px;right:50px">
+              <a href="/post/{{title}}"><button type="button" class="btn btn-primary" style="mari">Xem chi
+                  tiết</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{/each}}
+  </div>
+  <div class="loc-div">
+    <div style="position: sticky;top: 50px;">
+      <div class="loc-gia" style="background-color: rgb(255, 255, 255); border-radius:15px; ; border: 2px solid rgb(21, 179, 247); ">
+        <h3 style="padding: 15px 0 0 20px;">Loc theo gia</h3>
+        <div style="display: flex" class="ds-locgia">
+          <ul style="list-style-type: '> ';margin-left:20px;margin-right:10px">
+            <li><a href="#">duoi 1 trieu</a></li>
+            <li><a href="#">tu 1 den 2 trieu</a></li>
+            <li><a href="#">duoi 1 trieu</a></li>
+            <li><a href="#">duoi 1 trieu</a></li>
+          </ul>
+          <ul style="list-style-type: '> ';margin-left:20px;margin-right:20px">
+            <li><a href="#">duoi 1 trieu</a></li>
+            <li><a href="#">duoi 1 trieu</a></li>
+            <li><a href="#">duoi 1 trieuasd</a></li>
+            <li><a href="#">tren 15 trieu</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="loc-gia" style="background-color: rgb(255, 255, 255); border-radius:15px; margin-top:20px; border: 2px solid rgb(21, 179, 247);">
+        <h3 style="padding: 15px 0 0 20px;">Loc theo dien tich</h3>
+        <div style="display: flex" class="ds-locgia">
+          <ul style="list-style-type: '> ';margin-left:20px;margin-right:10px">
+            <li><a href="#">duoi 20m2</a></li>
+            <li><a href="#">duoi 20m2</a></li>
+            <li><a href="#">duoi 20m2</a></li>
+
+          </ul>
+          <ul style="list-style-type: '> ';margin-left:52px">
+            <li><a href="#">duoi 20m2</a></li>
+            <li><a href="#">duoi 20m2</a></li>
+            <li><a href="#">duoi 20m2</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

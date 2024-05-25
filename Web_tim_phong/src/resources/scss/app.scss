@@ -13,42 +13,6 @@
     color: white;
     bottom: 80px;
 }
-
-#helpBtn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 20px;
-    position: fixed;
-    right: 20px;
-    z-index: 100;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    background-color: green;
-    color: white;
-    bottom: 20px;
-}
-
-#helpBox {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 10%;
-    background-color: rgb(3, 168, 78);
-    border: 1px solid black;
-    padding: 10px;
-    font-size: 14px;
-    right: 20px;
-    bottom: 70px;
-    z-index: 100;
-    display: none;
-}
-
-ul li {
-    color: black;
-}
-
 //LOGIN FORM
 .login-form{
     border-radius: 10px;
@@ -57,29 +21,29 @@ ul li {
     background-color: #fff;
     padding: 30px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-  }
-  .login-form h1{
+}
+.login-form h1{
     text-align: center;
     font-size: 36px;
     margin-bottom: 30px;
-  }
-  .form-div{
+}
+.form-div{
     display:flex;
     flex-direction: column;
-  }
-  .form-div label{
+}
+.form-div label{
     font-size: 18px;
     margin-bottom:5px ;
-  }
-  .form-div input[type="text"], .form-div input[type="password"],.form-div input[type="email"]{
+}
+.form-div input[type="text"], .form-div input[type="password"],.form-div input[type="email"]{
     padding: 10px;
     margin-bottom: 0px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
-  }
-  .form-div input[type="submit"]{
+}
+.form-div input[type="submit"]{
     padding: 10px;
     border:none ;
     border-radius: 5px;
@@ -89,20 +53,20 @@ ul li {
     cursor: pointer;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
     margin:10px 0 10px;
-  }
-  .forget-signup{
+}
+.forget-signup{
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  .forget-signup .forget{
+}
+.forget-signup .forget{
     color:#0152ff;
     width: auto;
     margin:auto;
     padding:6px;
-  }
+}
   
-  .forget-signup .signup{
+.forget-signup .signup{
     text-align: center;
     margin: 10px auto;
     padding: 10px;
@@ -114,17 +78,17 @@ ul li {
     cursor: pointer;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
     margin:10px 0 10px;
-  }
+}
 
 
-  //SIGN UP
-  .signup-div{
+//SIGN UP
+.signup-div{
     display: flex;
     gap:20px;
     justify-content: center;
     
-  }
-  .signup-form1{
+}
+.signup-form1{
     border-radius: 10px;
     margin-top:50px ;
     width: 400px;
@@ -134,25 +98,25 @@ ul li {
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
     display:flex;
     flex-direction: column;
-  }
-  .signup-form1 h1{
+}
+.signup-form1 h1{
     text-align: center;
     font-size: 36px;
     margin-bottom: 30px;
-  } 
-  .signup-form1 .haveacc{
+} 
+.signup-form1 .haveacc{
     display: flex;
     justify-content: center;
     gap:5px;
-  }
-  .haveacc .login{
+}
+.haveacc .login{
     color:#0152ff;
-  }
-  .haveacc .login {
+}
+.haveacc .login {
     text-decoration: underline;
-  }
+}
   
-  .signup-form2{
+.signup-form2{
     border-radius: 10px;
     margin-top:50px ;
     width: 400px;
@@ -162,22 +126,22 @@ ul li {
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
     display:flex;
     flex-direction: column;
-  }
-  .signup-form2 h1{
+}
+.signup-form2 h1{
     text-align: center;
     font-size: 28px;
     margin-bottom: 38px;
-  }
-  .signup-form2 h2{
+}
+.signup-form2 h2{
     text-align: center;
     font-size: 24px;
-  }
-  .signup-form2 .gioitinh-div{
+}
+.signup-form2 .gioitinh-div{
     display: flex;
     justify-content: space-between;
     padding: 0 0 10px;
-  }
-  .form-div input[type="button"]{
+}
+.form-div input[type="button"]{
     padding: 10px;
     border:none ;
     border-radius: 5px;
@@ -187,52 +151,52 @@ ul li {
     cursor: pointer;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
     margin:10px 0 10px;
-  }
-  .signup-div p{
+}
+.signup-div p{
     margin-top: 10px;
-  }
+}
 
   ///xem
-  .xem-container{
+.xem-container{
     display: flex;
     width: 60%; /* Adjust as needed */
     margin: 0 auto; /* This centers the div horizontally */
     background-color: #f0f0f0;
     padding: 20px;
-  }
-  .phong-tro{
+}
+.phong-tro{
     width:70%;
     margin-right:20px;
-  }
-  .nguoi-dang{
+}
+.nguoi-dang{
     width:30%;
-  }
-  .hinh{
+}
+.hinh{
     margin-bottom: 0px;
-  }
-  .thong-tin{
+}
+.thong-tin{
     margin-top: 5px;
     background-color: rgb(255, 255, 255);
-  }
-  .dac-diem{
+}
+.dac-diem{
     margin-bottom: 10px;
     background-color: rgb(255, 255, 255);
-  }
-  .chi-tiet{
+}
+.chi-tiet{
     margin-top:17px;
     background-color: rgb(255, 255, 255);
-  }
-  .thong-tin .title{
+}
+.thong-tin .title{
     font-size: 26px;
-  }
-  .gia{
+}
+.gia{
     font-size:17px;
     color:red;
-  }
-  .dientich{
+}
+.dientich{
     font-size:17px;
     
-  }
+}
   .nguoi-dang .lien-he{
     margin-bottom: 20px;
    
@@ -321,16 +285,19 @@ ul li {
   .demo {
     opacity: 0.6;
   }
+  
   .active,
   .demo:hover {
     opacity: 1;
   }
-  //dang-tin
-  .dang-tin {
+
+//DANG TIN
+.dang-tin {
     width: 50%; /* Adjust as needed */
     margin: 0 auto; /* This centers the div horizontally */
-    background-color: #f3f3f3;
+    background-color: #ffffff;
     padding: 20px;
+    flex:7;
   }
   .dang-tin textarea{
     width:100%
@@ -346,21 +313,11 @@ ul li {
   .dia-chi .diachi-popup{
     text-align: center;
   }
-  .gia {
-  display: flex;
-  justify-content: space-between; /* Distribute items evenly along the main axis */
-  align-items: center; /* Center items vertically */
-}
-
-.gia input {
-  flex: 1; /* Take up remaining space */
-  margin-right: 10px; /* Add some spacing between inputs */
-}
   /* Style for the popup background */
 .popup {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 10; /* Sit on top */
+  z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%;
@@ -393,130 +350,84 @@ ul li {
   text-decoration: none;
   cursor: pointer;
 }
-//admin/tai-khoan
-.tai-khoan{
-  width: 60%; /* Adjust as needed */
+.nut-div{
+  flex:3;
+  border-radius: 15px;
+  background-color: #ffffff;
+}
+
+
+///post-container
+///home
+.custom-select {
+  width: 250px;
+  position: relative;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none; /* Safari */
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5em 2em 0.5em 1em;
+  background-color: #fff;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  color: #000;
+  cursor: pointer;
+}
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.3rem;
+  content: "";
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  top: 40%;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 55%;
+}
+.searchbox-div{
+  
+  justify-content: center; 
+  align-items: center;
+  background-color: rgb(255, 255, 255);  
+  margin:0 auto;
+  width: 87%;
+  border-radius: 5px;
+}
+.post-container {
+  display: flex;
+  width: 90%; /* Adjust as needed */
   margin: 0 auto; /* This centers the div horizontally */
-  background-color: #f3f3f3;
   padding: 20px;
+  gap:15px;
+  
 }
-.tai-khoan .timtk{
-  justify-content: center;
-  align-items: center;
-}
-.tai-khoan .timtk input[type="text"] {
-  flex: 1;
-  max-width: 170px; /* Adjust the maximum width as needed */
-  margin-right: 5px; /* Add some spacing between input and button */
-}
-.tai-khoan .ds-tk{
-  display:flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.tai-khoan .ds-tk .table input{
-  margin-bottom: 10px;
-  margin-top:6px;
-}
-/////
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-.modal {
-  text-align: center;
-  display: none;
-  position: fixed;
-  z-index: 9;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-.modalContent {
-  font-size: 20px;
-  font-weight: bold;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 60%;
-}
-.close {
-  color: rgb(255, 65, 65);
-  float: right;
-  font-size: 40px;
-  font-weight: bold;
-}
-.close:hover, .close:focus {
-  color: #ff1010;
-  cursor: pointer;
-}
-.modalContent button {
-  border: none;
-  border-radius: 4px;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px;
-}
-.btnchuyen {
-  background-color: rgb(255, 65, 65);
-  margin-right:20px;
-}
-.btnchuyen:hover {
-  background-color: rgb(255, 7, 7);
-}
-.btnhuy:hover {
-  background-color: rgb(167, 167, 167);
+.post-container .post-div{
+  flex:7;
+  
+  max-width: 778px;
+  border-radius: 3px;
+
 }
 
-.modal1 {
-  text-align: center;
-  display: none;
-  position: fixed;
-  z-index: 9;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+.ds-locgia a{
+  text-decoration:none;
+  color:rgb(65, 65, 65)
 }
-.modalContent1 {
-  font-size: 20px;
-  font-weight: bold;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 60%;
+.ds-locgia li{
+  margin-bottom: 7px;
 }
-.close1 {
-  color: rgb(255, 65, 65);
-  float: right;
-  font-size: 40px;
-  font-weight: bold;
-}
-.close1:hover, .close1:focus {
-  color: #ff1010;
-  cursor: pointer;
-}
-.modalContent1 button {
-  border: none;
-  border-radius: 4px;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px;
-}
-.btnchuyen1 {
-  background-color: rgb(255, 65, 65);
-  margin-right:20px;
-}
-.btnchuyen1:hover {
-  background-color: rgb(255, 7, 7);
-}
-.btnhuy1:hover {
-  background-color: rgb(167, 167, 167);
-}
-
