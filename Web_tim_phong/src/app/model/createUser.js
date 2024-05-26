@@ -1,28 +1,55 @@
 const query = require("../../utils/query");
 const createUserModel = {
 
-  signup: async ({ username, password }) => {
+  signup: async ({username, password, hovaten, cccd, sdt, email}) => {
     // return [result success,err]
     try {
-      if (username == "" || password == "")
-        return [null, "Không được bỏ trống"];
 
-      const [row] = await query(
-        "SELECT * FROM `taikhoan` WHERE username = ?",
-        [username]
+      const [usernameRow] = await query(
+          "SELECT * FROM `taikhoan` WHERE username = ?",
+          [username]
       );
 
-      if (row) {
-        // không khớp
-        return [null, "Tài khoản đã tồn tài"];
+      if (usernameRow) {
+          return [null, { mesage: "Tài khoản này đã tồn tại", type: 1 }];
+      }
+
+      // Kiểm tra id_card (cccd)
+      const [idCardRow] = await query(
+          "SELECT * FROM `taikhoan` WHERE id_card = ?",
+          [cccd]
+      );
+
+      if (idCardRow) {
+        return [null, { mesage: "Số căn cước này đã tồn tại", type: 6 }];
+      }
+
+      // Kiểm tra phone (sdt)
+      const [phoneRow] = await query(
+          "SELECT * FROM `taikhoan` WHERE phone = ?",
+          [sdt]
+      );
+
+      if (phoneRow) {
+        return [null, { mesage: "Số điện thoại này đã tồn tại", type: 5 }];
+      }
+
+      // Kiểm tra email
+      const [emailRow] = await query(
+          "SELECT * FROM `taikhoan` WHERE email = ?",
+          [email]
+      );
+
+      if (emailRow) {
+        return [null, { mesage: "Email này đã tồn tại", type: 7 }];
       }
 
       await query(
         "INSERT INTO `taikhoan` (username, pass, fullname, id_card, phone, email) VALUES (?, ?, ?, ?, ?, ?)",
-       [req.body.username, req.body.password, req.body.hovaten, req.body.cccd, req.body.sdt, req.body.email]
+       [username, password, hovaten, cccd, sdt, email]
       );
 
-      return [{ username: row.username }, null];
+      return [{ username: username }, null];
     } catch (e) {
       return [null, "Có lỗi khi đăng kí"];
     }

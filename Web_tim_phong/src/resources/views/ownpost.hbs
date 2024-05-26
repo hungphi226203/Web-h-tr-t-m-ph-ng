@@ -1,16 +1,116 @@
-<div>
-  {{#each data}}
-    {{#each imagePath}}
-      <img src="{{this}}" alt="{{../title}}">
-    {{/each}}
-    <h1><a href="/manage/{{title}}">{{title}}</a></h1>
-    <h3>{{address}}</h3>
-    <h3>{{area}}m2</h3>
-    <h3>{{price}}</h3>
-    <p>{{{des}}}</p>
-    <h3>{{status}}</h3>
-    <button class="btn btn-outline-danger" id="getButton" type="submit">Xem</button>
-    <button class="btn btn-outline-danger" id="getButton" type="submit">Xóa</button>
-    <button class="btn btn-outline-danger" id="getButton" type="submit">Sữa</button>
-  {{/each}}
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tiêu đề</th>
+        <th>Ảnh</th>
+        <th>Địa chỉ</th>
+        <th>Diện tích (m2)</th>
+        <th>Giá (VND)</th>
+        <th>Mô tả</th>
+        <th>Trạng thái</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each data}}
+        <tr>
+          <td>{{id}}</td>
+          <td>{{title}}</td>
+          <td>
+            {{#if imagePath.[0]}}
+              <img src="{{imagePath.[0]}}" alt="{{title}}" style="max-width: 100px;">
+            {{else}}
+              Không có ảnh
+            {{/if}}
+          </td>
+          <td>{{address}}</td>
+          <td>{{area}}</td>
+          <td>{{price}}</td>
+          <td>{{{des}}}</td>
+          <td>{{status}}</td>
+          <td>
+            <a href="/quan-ly-tin/manage/{{username}}/{{title}}" class="btn btn-outline-danger viewButton" data-username="{{username}}" data-title="{{title}}">Xem</a>
+            <a href="/quan-ly-tin/edit/{{id}}" class="btn btn-outline-danger editButton" data-id="{{id}}">Sửa</a>
+            <a href="javascript:void(0);" class="btn btn-outline-danger deleteButton" data-id="{{id}}">Xóa</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </div>
+
+<div id="notification" class="notification hidden"></div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const viewButtons = document.querySelectorAll(".viewButton");
+  const deleteButtons = document.querySelectorAll(".deleteButton");
+  const editButtons = document.querySelectorAll(".editButton");
+
+  // View button click event
+  viewButtons.forEach(function(button) {
+    button.addEventListener("click", function(event) {
+      event.preventDefault();
+      const username = button.getAttribute("data-username");
+      const title = button.getAttribute("data-title");
+      window.location.href = `/quan-ly-tin/manage/${username}/${title}`;
+    });
+  });
+
+  // Delete button click event
+  deleteButtons.forEach(function(button) {
+    button.addEventListener("click", function(event) {
+      event.preventDefault();
+      const propertyId = button.getAttribute("data-id");
+      if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("DELETE", `/quan-ly-tin/delete/${propertyId}`, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              showNotification("Xóa thành công", "success");
+              setTimeout(() => location.reload(), 2000);
+            } else {
+              showNotification("Xóa thất bại", "error");
+            }
+          }
+        };
+        xhr.send();
+      }
+    });
+  });
+
+  // Edit button click event
+  editButtons.forEach(function(button) {
+    button.addEventListener("click", function(event) {
+      event.preventDefault();
+      const propertyId = button.getAttribute("data-id");
+      window.location.href = `/quan-ly-tin/edit/${propertyId}`;
+    });
+  });
+
+  function populateForm(property) {
+    document.querySelector("input[name='title']").value = property.title;
+    document.querySelector("input[name='address']").value = property.address;
+    document.querySelector("input[name='area']").value = property.area;
+    document.querySelector("input[name='price']").value = property.price;
+    document.querySelector("textarea[name='description']").value = property.description;
+    document.getElementById("mainForm").action = `/quan-ly-tin/edit/${property.id}`;
+    document.getElementById("submitButton").textContent = "Cập nhật";
+  }
+
+  function showNotification(message, type) {
+    const notification = document.getElementById("notification");
+    notification.textContent = message;
+    notification.className = `notification ${type} show`;
+    setTimeout(() => {
+      notification.className = "notification hidden";
+    }, 3000);
+  }
+});
+
+</script>

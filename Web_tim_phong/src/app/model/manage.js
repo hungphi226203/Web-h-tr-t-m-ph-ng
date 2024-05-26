@@ -1,60 +1,40 @@
 const query = require("../../utils/query");
 
 const manageModel = {
-  xem: async ({ username }) => {
-    // return [result success,err]
+  xem: async (username) => {
     try {
-      const row = await query(
-        "SELECT * FROM `phong` WHERE username = ?",
-        [username]
-      );
-
-      if (row) {
-        return [row, null];
-      } else {
-        return [null, "Chưa có bài viết nào"];
-      }
-      
+      const row = await query("SELECT * FROM `phong` WHERE username = ?", [username]);
+      return row ? [row, null] : [null, "Chưa có bài viết nào"];
     } catch (e) {
       return [null, "Lỗi xảy ra"];
     }
   },
 
-  capnhat: async ({username,imagePath,title,address,description,area,price,id}) => {
-    // return [result success,err]
+  chitiet: async (id) => {
     try {
-
-      const [row] = await query(
-        "UPDATE phong SET username = ?, imagePath = ?, title = ?, address = ?, des = ?, area = ?, price = ? WHERE id = ?",
-        [username, imagePath, title, address, description, area, price, id]
-      );
-
-    if (row) {
-      return ["Gửi thành công chờ duyệt", null];
-    } else {
-      return [null, "Không hợp lệ"];
+      const row = await query("SELECT * FROM `phong` WHERE id = ?", [id]);
+      return row ? [row, null] : [null, "Lỗi"];
+    } catch (e) {
+      return [null, "Lỗi xảy ra"];
     }
-    
-  } catch (e) {
-    return [null, "Lỗi xảy ra"];
-  }
   },
 
-  xoa: async ({id}) => {
-    // return [result success,err]
+  capnhat: async ({ id, title, address, description, area, price }) => {
     try {
-
-      const [row] = await query(
-        "DELETE FROM phong WHERE id = ?",
-        [id]
+      const row = await query(
+        "UPDATE phong SET title = ?, address = ?, des = ?, area = ?, price = ? WHERE id = ?",
+        [title, address, description, area, price, id]
       );
+      return row ? ["Cập nhật thành công", null] : [null, "Cập nhật thất bại"];
+    } catch (e) {
+      return [null, "Lỗi xảy ra"];
+    }
+  },
 
-      if (row) {
-        return [null, "Xóa thất bại"];
-      } else {
-        return [null, "Xóa thành công"];
-      }
-      
+  xoa: async ({ id }) => {
+    try {
+      const row = await query("DELETE FROM phong WHERE id = ?", [id]);
+      return row ? ["Xóa thành công", null] : [null, "Xóa thất bại"];
     } catch (e) {
       return [null, "Lỗi xảy ra"];
     }

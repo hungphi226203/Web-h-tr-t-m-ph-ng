@@ -13,38 +13,6 @@
   color: white;
   bottom: 80px; }
 
-#helpBtn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 20px;
-  position: fixed;
-  right: 20px;
-  z-index: 100;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  background-color: green;
-  color: white;
-  bottom: 20px; }
-
-#helpBox {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 10%;
-  background-color: #03a84e;
-  border: 1px solid black;
-  padding: 10px;
-  font-size: 14px;
-  right: 20px;
-  bottom: 70px;
-  z-index: 100;
-  display: none; }
-
-ul li {
-  color: black; }
-
 .login-form {
   border-radius: 10px;
   margin: 50px auto;
@@ -66,7 +34,9 @@ ul li {
   font-size: 18px;
   margin-bottom: 5px; }
 
-.form-div input[type="text"], .form-div input[type="password"], .form-div input[type="email"] {
+.form-div input[type="text"],
+.form-div input[type="password"],
+.form-div input[type="email"] {
   padding: 10px;
   margin-bottom: 0px;
   border: none;
@@ -136,9 +106,7 @@ ul li {
   gap: 5px; }
 
 .haveacc .login {
-  color: #0152ff; }
-
-.haveacc .login {
+  color: #0152ff;
   text-decoration: underline; }
 
 .signup-form2 {
@@ -312,7 +280,12 @@ ul li {
 .dang-tin textarea {
   width: 100%; }
 
-.dang-tin .them-anh, .title, .dia-chi, .gia, .mo-ta, .lien-he {
+.dang-tin .them-anh,
+.title,
+.dia-chi,
+.gia,
+.mo-ta,
+.lien-he {
   margin-top: 15px; }
 
 .dang-tin input {
@@ -363,3 +336,64 @@ ul li {
   color: black;
   text-decoration: none;
   cursor: pointer; }
+
+.input-group {
+  width: 40%;
+  margin-bottom: 10px; }
+
+.form-control {
+  width: calc(100% - 90px); }
+
+.input-group-text {
+  width: 80px;
+  text-align: center; }
+
+.image-gallery .property img {
+  display: none; }
+
+.post-container {
+  display: flex;
+  width: 90%;
+  /* Adjust as needed */
+  margin: 0 auto;
+  /* This centers the div horizontally */
+  padding: 20px;
+  gap: 15px; }
+
+.post-container .post-div {
+  flex: 7;
+  background-color: #84affa;
+  max-width: 778px;
+  border-radius: 3px; }
+
+.ds-locgia a {
+  text-decoration: none;
+  color: #414141; }
+
+.ds-locgia li {
+  margin-bottom: 7px; }
+
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px 60px;
+  border-radius: 10px;
+  display: none;
+  font-size: 20px;
+  text-align: center;
+  z-index: 1000;
+  max-width: 80%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+
+.notification.success {
+  background-color: #4CAF50;
+  color: white; }
+
+.notification.error {
+  background-color: #f44336;
+  color: white; }
+
+.notification.show {
+  display: block; }

@@ -7,14 +7,13 @@ const postRoute = require("../routes/postRoutes");
 const manageRoute = require("../routes/manageRoutes");
 
 function route(app) {
+  
   app.use("/", siteRouter);
   app.use("/login", authRoute);
   app.use("/signup", createUserRoute);
   app.use("/dang-tin", verifyRoles.isUser, postRoute);
   app.use("/quan-ly-tin", verifyRoles.isUser, manageRoute);
-  app.get("/test/:id/:title", (req, res) => {
-    res.json(req.params);
-  });
+
 }
 
 module.exports = route;

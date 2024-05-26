@@ -9,7 +9,7 @@
       <input name="password" id='password' type="password" placeholder="Nhập mật khẩu">
       <p id="password-alert"></p>
       <label >Nhập lại mật khẩu</label>
-      <input type="password" id='repassword' placeholder="Nhập lại mật khẩu">
+      <input name="repassword" type="password" id='repassword' placeholder="Nhập lại mật khẩu">
       <p id="repassword-alert"></p>
       {{#if err}}
       <div style="padding-bottom:10px;">{{err}}</div>
@@ -51,202 +51,57 @@
   
   <script>
     document.addEventListener("DOMContentLoaded", (event) => {
-      
-      const form=document.querySelector('form');
-      const submit_btn=document.getElementById("submit-btn");
-      submit_btn.onclick=function submitForm(e) {
-        e.preventDefault()
-    var form = document.querySelector("form");
-    var formData = new FormData(form);
+      const form = document.querySelector('form');
+      const submit_btn = document.getElementById("submit-btn");
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/signup", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                console.log("Request successful!");
-                var response = JSON.parse(xhr.responseText);
-                console.log(response);
-                if(response.err){
-          
-          var dom_html
-        if(response.err.type == 1)
-          dom_html=document.getElementById("username-alert");
-        if(response.err.type == 2)
-          dom_html=document.getElementById("password-alert")
-
-          dom_html.innerHTML=response.err.mesage;
-          dom_html.style.color="red";
-
-      
-                }
-                // Xử lý dữ liệu trả về ở đây nếu cần
-            } else {
-              var response = JSON.parse(xhr.responseText);
-                console.log(response);
-                console.log("Request failed with status: " + xhr.status);
-            }
-        }
-    };
-    xhr.send(JSON.stringify(Object.fromEntries(formData)));
-}
-
-
-      {{!-- submit_btn.onclick=function(e) {
+      submit_btn.onclick = function (e) {
         e.preventDefault();
-        const elements = document.querySelectorAll('p');
-        elements.forEach(element => {
-          element.innerHTML = '';
-          });
-        if(check()){
-          form.submit();
-        }
-      } --}}
 
-      function check(){
-        var check=true;
-          
-        //Tai khoan
-        {{#if accounts}}
-          accounts = {{{json accounts}}}; // Use triple braces to output unescaped data
-        const username=document.getElementById("username");
-        var username_alert=document.getElementById("username-alert");
-        if(username.value==''){
-          username_alert.innerHTML="Tên tài khoản không được để trống";
-          username_alert.style.color="red";
-          check= false;
-        }
-        else if(accounts.some(obj => obj.username === username.value)==true){
-          username_alert.innerHTML="Tên tài khoản đã tồn tại";
-          username_alert.style.color="red";
-          check= false;
-        }
-        
-        //Mat khau
-        const password=document.getElementById("password");
-        const repassword=document.getElementById("repassword");
-        var ps_alert=document.getElementById("password-alert");
-        var reps_alert=document.getElementById("repassword-alert");
-        if(password.value.length<6){
-          ps_alert.innerHTML = "Mật khẩu phải có ít nhất 6 kí tự";
-          ps_alert.style.color="red";
-          check= false;
-        }
-        else if(password.value!=repassword.value){ 
-          reps_alert.innerHTML = "Mật khẩu không khớp";
-          reps_alert.style.color="red";
-          check= false;
-        }
+        const formData = new FormData(form);
+        const jsonData = JSON.stringify(Object.fromEntries(formData));
 
-        //Ho va ten
-        const hovaten=document.getElementById("hovaten");
-        var hovaten_alert = document.getElementById("hovaten-alert");
-        if(hovaten.value==''){
-          hovaten_alert.style.color="red";
-          hovaten_alert.innerHTML = "Họ và tên không được để trống";
-          check=false;
-        }else if(containsOnlyText(hovaten.value)==false){ 
-          hovaten_alert.style.color="red";
-          hovaten_alert.innerHTML = "Họ và tên chỉ được chứa chữ cái";
-          check=false;
-        }
-        
-        //So dien thoai
-        const sdt=document.getElementById("sdt");
-        var sdt_alert = document.getElementById("sdt-alert");
-        if(sdt.value==''){
-          sdt_alert.style.color="red";
-          sdt_alert.innerHTML = "Số điện thoại không được để trống";
-          check=false;
-        }
-        else if(sdt.value.length>11 || sdt.value.length<7){ 
-          sdt_alert.style.color="red";
-          sdt_alert.innerHTML = "Số điện thoại không hợp lệ";
-          check=false;
-        }else if(containsOnlyNumbers(sdt.value)==false){ 
-          sdt_alert.style.color="red";
-          sdt_alert.innerHTML = "Số điện thoại chỉ được chứa chữ số";
-          check=false;
-        }else if(accounts.some(obj => obj.sdt === sdt.value)==true){
-          sdt_alert.innerHTML="Số điện thoại đã được dùng để đăng kí";
-          sdt_alert.style.color="red";
-          check= false;
-        }
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/signup", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
 
-        //CCCD
-        const cccd=document.getElementById("cccd");
-        var cccd_alert = document.getElementById("cccd-alert");
-        if(cccd.value==''){
-          cccd_alert.style.color="red";
-          cccd_alert.innerHTML = "Căn cước công dân không được để trống";
-          check=false;
-        }
-        else if(cccd.value.length!=12){ 
-          cccd_alert.style.color="red";
-          cccd_alert.innerHTML = "Căn cước công dân không hợp lệ";
-          check=false;
-        }else if(containsOnlyNumbers(cccd.value)==false){ 
-          cccd_alert.style.color="red";
-          cccd_alert.innerHTML = "Căn cước công dân chỉ được chứa chữ số";
-          check=false;
-        }else if(accounts.some(obj => obj.cccd === cccd.value)==true){
-          cccd_alert.innerHTML="Căn cước công dân đã được dùng để đăng kí";
-          cccd_alert.style.color="red";
-          check= false;
-        }
-        
-        //Email
-        const email=document.getElementById("email");
-        var email_alert = document.getElementById("email-alert");
-        if(email.value==''){
-          email_alert.style.color="red";
-          email_alert.innerHTML = "Email không được để trống";
-          check=false;
-        }
-        else if(isValidEmail(email.value)==false) { 
-          email_alert.style.color="red";
-          email_alert.innerHTML = "Email không hợp lệ";
-          check=false;
-        }
-        else if(accounts.some(obj => obj.email === email.value)==true){
-          email_alert.innerHTML="Email đã được dùng để đăng kí";
-          email_alert.style.color="red";
-          check= false;
-        }
-        /*Gioi tinh
-        if(gioitinh()==false){
-          var gioitinh_alert=document.getElementById("gioitinh-alert");
-          gioitinh_alert.innerHTML="Vui long chon gioi tinh";
-          gioitinh_alert.style.color="red";
-          check= false;
-        }
-        function gioitinh() {
-          const radioButtons = document.getElementsByName("gioitinh");
-          for (const radioButton of radioButtons) {
-              if (radioButton.checked) {
-                  return true;
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              const response = JSON.parse(xhr.responseText);
+              if (response.err) {
+                displayError(response.err.type, response.err.mesage);
+              } else {
+                alert("Đăng ký thành công!");
+                window.location.href = "/login";
               }
+            } else {
+              console.error("Request failed with status:", xhr.status);
+            }
           }
-          return false;
+        };
+
+        xhr.send(jsonData);
+      };
+
+      function displayError(type, message) {
+        const errorElements = {
+          1: document.getElementById("username-alert"),
+          2: document.getElementById("password-alert"),
+          3: document.getElementById("repassword-alert"),
+          4: document.getElementById("hovaten-alert"),
+          5: document.getElementById("sdt-alert"),
+          6: document.getElementById("cccd-alert"),
+          7: document.getElementById("email-alert"),
+        };
+
+        const errorElement = errorElements[type];
+        if (errorElement) {
+          errorElement.innerHTML = message;
+          errorElement.style.color = "red";
         }
-        */
-        function containsOnlyText(str) {
-          return /^[a-zA-Z\s]+$/.test(str);
-        }
-        function containsOnlyNumbers(str) {
-        return /^\d+$/.test(str);
-        }
-        function isValidEmail(email) {
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          return emailRegex.test(email);
-        }
-        
-        return check;
-        {{/if}}
       }
-      
     });
+
   </script>
 
   

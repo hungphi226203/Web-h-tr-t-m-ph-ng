@@ -8,8 +8,11 @@
       name="fileupload"
       accept="image/*"
       multiple
+      onchange="previewImages()"
     />
   </div>
+
+  <div class="preview"></div>
 
   <div class="title">
     <h2>Tiêu đề</h2>
@@ -29,26 +32,31 @@
       <div class="popup-content form-control">
         <span class="closeBtn">×</span>
         <h2 class="diachi-popup">Địa chỉ</h2>
-        <input
-          class="form-control"
-          type="text"
-          id="sonha"
-          name="addres"
-          placeholder="Số nhà"
-          required
-        />        
-        <input class="form-control" type="text" id="tenduong" name="tenduong" required placeholder="Tên đường" />
-        <input class="form-control" type="text" id="quan" name="quan" required placeholder="Quận"/>
-        <input class="form-control" type="text" id="thanhpho" name="thanhpho" required placeholder="Thành phố"/>
-        <input class="form-control" type="text" id="tinh" name="tinh" required placeholder="Tỉnh"/>
+        <input class="form-control" type="text" id="sonha" name="sonha" placeholder="Số nhà" onchange="hienThiDiaChiXacNhan()" required />
+        <input class="form-control" type="text" id="tenduong" name="tenduong" onchange="hienThiDiaChiXacNhan()" required placeholder="Tên đường" />
+        <input class="form-control" type="text" id="quan" name="quan" onchange="hienThiDiaChiXacNhan()" required placeholder="Quận"/>
+        <input class="form-control" type="text" id="thanhpho" name="thanhpho" onchange="hienThiDiaChiXacNhan()" required placeholder="Thành phố"/>
+        <input class="form-control" type="text" id="tinh" name="tinh" onchange="hienThiDiaChiXacNhan()" required placeholder="Tỉnh"/>
       </div>
     </div>
   </div>
 
-  <div class="gia">
-    <input class="form-control" name="area" placeholder="Diện tích sử dụng (m2)" style="width:40%" required />
-    <input class="form-control" name="price" placeholder="Giá thuê (VND)" style="margin-bottom:10px;width:40%" required />
+  <div class="dia-chi-xac-nhan">
+    <h2>Địa chỉ chính xác:</h2>
+    <input class="form-control" name="address" id="diaChiXacNhan" readonly>
   </div>
+
+
+  <div class="input-group" style="margin-bottom: 10px;">
+    <input class="form-control" name="area" placeholder="Diện tích sử dụng (m²)" style="width:30%" required />
+    <span class="input-group-text">m²</span>
+  </div>
+
+  <div class="input-group">
+    <input class="form-control" name="price" placeholder="Giá thuê" style="width:30%" required />
+    <span class="input-group-text">VND/tháng</span>
+  </div>
+
 
   <div class="mo-ta">
     <h2>Mô tả</h2>
@@ -101,10 +109,7 @@
 
   // Handle form validation and custom validation messages
   submitButton.onclick = function(event) {
-    // Prevent default button behavior
     //event.preventDefault();
-
-    // Custom validation logic
     var valid = true;
     var elements = addressForm.elements;
 
@@ -128,6 +133,43 @@
       alert("Bạn chưa điền đầy đủ thông tin!");
     }
   };
+
+  function previewImages() {
+    var preview = document.querySelector('.preview');
+    var files = document.querySelector('input[type=file]').files;
+
+    preview.innerHTML = ''; // Xóa các ảnh đã hiển thị trước đó (nếu có)
+
+    // Duyệt qua danh sách các file ảnh và hiển thị chúng
+    for (var i = 0; i < files.length; i++) {
+      var file = files[i];
+      var reader = new FileReader(); // Đọc file
+
+      reader.onload = function(event) {
+        var image = new Image();
+        image.src = event.target.result; // Đặt nguồn ảnh là dữ liệu của file
+        image.style.width = '100px'; // Đặt kích thước ảnh
+        image.style.height = 'auto'; // Tự động tính toán chiều cao để giữ tỉ lệ
+
+        // Thêm ảnh vào preview
+        preview.appendChild(image);
+      }
+
+      reader.readAsDataURL(file); // Đọc file ảnh dưới dạng URL dữ liệu
+    }
+  }
+
+  function hienThiDiaChiXacNhan() {
+    var sonha = document.getElementById('sonha').value;
+    var tenduong = document.getElementById('tenduong').value;
+    var quan = document.getElementById('quan').value;
+    var thanhpho = document.getElementById('thanhpho').value;
+    var tinh = document.getElementById('tinh').value;
+
+    var diaChiXacNhan = sonha + ', ' + tenduong + ', ' + quan + ', ' + thanhpho + ', ' + tinh;
+    document.getElementById('diaChiXacNhan').value = diaChiXacNhan;
+  }
+
 
 
 </script>
