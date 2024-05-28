@@ -1,5 +1,7 @@
 <form action="/dang-tin" method="post" class="dang-tin" id="mainForm" enctype="multipart/form-data">
   <h1 style="text-align: center;">Biểu mẫu thông tin phòng</h1>
+  
+  <!-- Phần thêm ảnh -->
   <div class="them-anh">
     <h2>Thêm ảnh minh họa</h2>
     <input
@@ -14,6 +16,7 @@
 
   <div class="preview"></div>
 
+  <!-- Phần tiêu đề -->
   <div class="title">
     <h2>Tiêu đề</h2>
     <textarea
@@ -25,6 +28,7 @@
     ></textarea>
   </div>
 
+  <!-- Phần địa chỉ -->
   <div class="dia-chi">
     <h2>Thông tin</h2>
     <button id="btndiachi" type="button" class="btn btn-outline-dark" style="width:200px">Địa chỉ</button>
@@ -34,9 +38,37 @@
         <h2 class="diachi-popup">Địa chỉ</h2>
         <input class="form-control" type="text" id="sonha" name="sonha" placeholder="Số nhà" onchange="hienThiDiaChiXacNhan()" required />
         <input class="form-control" type="text" id="tenduong" name="tenduong" onchange="hienThiDiaChiXacNhan()" required placeholder="Tên đường" />
-        <input class="form-control" type="text" id="quan" name="quan" onchange="hienThiDiaChiXacNhan()" required placeholder="Quận"/>
-        <input class="form-control" type="text" id="thanhpho" name="thanhpho" onchange="hienThiDiaChiXacNhan()" required placeholder="Thành phố"/>
-        <input class="form-control" type="text" id="tinh" name="tinh" onchange="hienThiDiaChiXacNhan()" required placeholder="Tỉnh"/>
+        <input class="form-control" type="text" id="phuong" name="phuong" placeholder="Phường" onchange="hienThiDiaChiXacNhan()" required />
+
+        <!-- Dropdown chọn quận -->
+        <div class="custom-select">
+          <select class="form-control" id="quan" name="quan" onchange="hienThiDiaChiXacNhan()" required>
+            <option value="">Chọn quận</option>
+            <option value="Quận 1">Quận 1</option>
+            <option value="Quận 3">Quận 3</option>
+            <option value="Quận 4">Quận 4</option>
+            <option value="Quận 5">Quận 5</option>
+            <option value="Quận 6">Quận 6</option>
+            <option value="Quận 7">Quận 7</option>
+            <option value="Quận 8">Quận 8</option>
+            <option value="Quận 10">Quận 10</option>
+            <option value="Quận 11">Quận 11</option>
+            <option value="Quận 12">Quận 12</option>
+            <option value="Quận Tân Bình">Quận Tân Bình</option>
+            <option value="Quận Bình Tân">Quận Bình Tân</option>
+            <option value="Quận Bình Thạnh">Quận Bình Thạnh</option>
+            <option value="Quận Thủ Đức">Quận Thủ Đức</option>
+            <option value="Quận Gò Vấp">Quận Gò Vấp</option>
+            <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
+          </select>
+        </div>
+
+        <!-- Dropdown mặc định tỉnh -->
+        <div class="custom-select">
+          <select class="form-control" id="thanhpho" name="thanhpho" onchange="hienThiDiaChiXacNhan()" required>
+            <option value="TP.Hồ Chí Minh">TP.Hồ Chí Minh</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>
@@ -46,18 +78,19 @@
     <input class="form-control" name="address" id="diaChiXacNhan" readonly>
   </div>
 
-
+  <!-- Phần diện tích -->
   <div class="input-group" style="margin-bottom: 10px;">
     <input class="form-control" name="area" placeholder="Diện tích sử dụng (m²)" style="width:30%" required />
     <span class="input-group-text">m²</span>
   </div>
 
+  <!-- Phần giá thuê -->
   <div class="input-group">
     <input class="form-control" name="price" placeholder="Giá thuê" style="width:30%" required />
     <span class="input-group-text">VND/tháng</span>
   </div>
 
-
+  <!-- Phần mô tả -->
   <div class="mo-ta">
     <h2>Mô tả</h2>
     <textarea
@@ -69,107 +102,92 @@
     ></textarea>
   </div>
 
+  <!-- Nút submit -->
   <button class="btn btn-outline-danger" id="submitButton" type="submit">Đăng</button>
 </form>
 
-
 <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var popupForm = document.getElementById("popupForm");
+    var openFormBtn = document.getElementById("btndiachi");
+    var closeBtn = document.getElementsByClassName("closeBtn")[0];
+    var submitButton = document.getElementById("submitButton");
+    var addressForm = document.getElementById("mainForm");
 
-    // Get the modal
-  var popupForm = document.getElementById("popupForm");
+    openFormBtn.onclick = function() {
+      popupForm.style.display = "block";
+    }
 
-  // Get the button that opens the modal
-  var openFormBtn = document.getElementById("btndiachi");
-
-  // Get the <span> element that closes the modal
-  var closeBtn = document.getElementsByClassName("closeBtn")[0];
-
-  // Get the form element
-  var addressForm = document.getElementById("mainForm");
-
-  // Get the submit button
-  var submitButton = document.getElementById("submitButton");
-
-  // When the user clicks the button, open the modal 
-  openFormBtn.onclick = function() {
-    popupForm.style.display = "block";
-  }
-
-  // When the user clicks on <span> (x), close the modal
-  closeBtn.onclick = function() {
-    popupForm.style.display = "none";
-  }
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == popupForm) {
+    closeBtn.onclick = function() {
       popupForm.style.display = "none";
     }
-  }
 
-  // Handle form validation and custom validation messages
-  submitButton.onclick = function(event) {
-    //event.preventDefault();
-    var valid = true;
-    var elements = addressForm.elements;
+    window.onclick = function(event) {
+      if (event.target == popupForm) {
+        popupForm.style.display = "none";
+      }
+    }
 
-    for (var i = 0; i < elements.length; i++) {
-      if (elements[i].hasAttribute('required') && !elements[i].value) {
-        valid = false;
-        elements[i].classList.add('invalid');
-        elements[i].setCustomValidity("Vui lòng điền vào trường này");
-        elements[i].reportValidity();
+    submitButton.onclick = function(event) {
+      var valid = true;
+      var elements = addressForm.elements;
+
+      for (var i = 0; i < elements.length; i++) {
+        if (elements[i].hasAttribute('required') && !elements[i].value) {
+          valid = false;
+          elements[i].classList.add('invalid');
+          elements[i].setCustomValidity("Vui lòng điền vào trường này");
+          elements[i].reportValidity();
+        } else {
+          elements[i].classList.remove('invalid');
+          elements[i].setCustomValidity("");
+        }
+      }
+
+      if (valid) {
+        alert("Form submitted successfully!");
+        addressForm.submit();
       } else {
-        elements[i].classList.remove('invalid');
-        elements[i].setCustomValidity(""); // Clear the custom validation message
+        alert("Bạn chưa điền đầy đủ thông tin!");
+      }
+    };
+
+    function previewImages() {
+      var preview = document.querySelector('.preview');
+      var files = document.querySelector('input[type=file]').files;
+
+      preview.innerHTML = '';
+
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var reader = new FileReader();
+
+        reader.onload = function(event) {
+          var image = new Image();
+          image.src = event.target.result;
+          image.style.width = '100px';
+          image.style.height = 'auto';
+
+          preview.appendChild(image);
+        }
+
+        reader.readAsDataURL(file);
       }
     }
 
-    if (valid) {
-      // If the form is valid, you can process the data here
-      alert("Form submitted successfully!");
-      addressForm.submit(); // Susbmit the form manually
-    } else {
-      alert("Bạn chưa điền đầy đủ thông tin!");
+    function hienThiDiaChiXacNhan() {
+      var sonha = document.getElementById('sonha').value;
+      var tenduong = document.getElementById('tenduong').value;
+      var phuong = document.getElementById('phuong').value;
+      var quan = document.getElementById('quan').value;
+      var thanhpho = document.getElementById('thanhpho').value;
+
+      var diaChiXacNhan = sonha + ', ' + tenduong + ', ' + phuong + ', ' + quan + ', ' + thanhpho;
+      document.getElementById('diaChiXacNhan').value = diaChiXacNhan;
     }
-  };
 
-  function previewImages() {
-    var preview = document.querySelector('.preview');
-    var files = document.querySelector('input[type=file]').files;
-
-    preview.innerHTML = ''; // Xóa các ảnh đã hiển thị trước đó (nếu có)
-
-    // Duyệt qua danh sách các file ảnh và hiển thị chúng
-    for (var i = 0; i < files.length; i++) {
-      var file = files[i];
-      var reader = new FileReader(); // Đọc file
-
-      reader.onload = function(event) {
-        var image = new Image();
-        image.src = event.target.result; // Đặt nguồn ảnh là dữ liệu của file
-        image.style.width = '100px'; // Đặt kích thước ảnh
-        image.style.height = 'auto'; // Tự động tính toán chiều cao để giữ tỉ lệ
-
-        // Thêm ảnh vào preview
-        preview.appendChild(image);
-      }
-
-      reader.readAsDataURL(file); // Đọc file ảnh dưới dạng URL dữ liệu
-    }
-  }
-
-  function hienThiDiaChiXacNhan() {
-    var sonha = document.getElementById('sonha').value;
-    var tenduong = document.getElementById('tenduong').value;
-    var quan = document.getElementById('quan').value;
-    var thanhpho = document.getElementById('thanhpho').value;
-    var tinh = document.getElementById('tinh').value;
-
-    var diaChiXacNhan = sonha + ', ' + tenduong + ', ' + quan + ', ' + thanhpho + ', ' + tinh;
-    document.getElementById('diaChiXacNhan').value = diaChiXacNhan;
-  }
-
-
-
+    document.querySelectorAll('.form-control').forEach(function(input) {
+      input.addEventListener('change', hienThiDiaChiXacNhan);
+    });
+  });
 </script>

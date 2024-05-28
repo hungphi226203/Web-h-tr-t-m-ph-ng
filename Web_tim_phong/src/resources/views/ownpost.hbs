@@ -31,7 +31,7 @@
           <td>{{{des}}}</td>
           <td>{{status}}</td>
           <td>
-            <a href="/quan-ly-tin/manage/{{username}}/{{title}}" class="btn btn-outline-danger viewButton" data-username="{{username}}" data-title="{{title}}">Xem</a>
+            <a href="/quan-ly-tin/manage/{{username}}/{{id}}/{{title}}" class="btn btn-outline-danger viewButton" data-username="{{username}}" data-id="{{id}}" data-title="{{title}}">Xem</a>
             <a href="/quan-ly-tin/edit/{{id}}" class="btn btn-outline-danger editButton" data-id="{{id}}">Sửa</a>
             <a href="javascript:void(0);" class="btn btn-outline-danger deleteButton" data-id="{{id}}">Xóa</a>
           </td>
@@ -41,76 +41,130 @@
   </table>
 </div>
 
-<div id="notification" class="notification hidden"></div>
+<!-- Success Message -->
+<div id="msg-success" class="xd-message msg-success hidden">
+  <div class="xd-message-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
+      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M416 128L192 384l-96-96"/>
+    </svg>
+  </div>
+  <div class="xd-message-content">
+    <p>Xóa thành công</p>
+  </div>
+  <a href="#" class="xd-message-close">
+    <i class="close-icon ion-close-round"></i>
+  </a>
+</div>
+
+<!-- Danger Message -->
+<div id="msg-danger" class="xd-message msg-danger hidden">
+  <div class="xd-message-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
+      <path d="M437.5 386.6L306.9 256l130.6-130.6c14.1-14.1 14.1-36.8 0-50.9-14.1-14.1-36.8-14.1-50.9 0L256 205.1 125.4 74.5c-14.1-14.1-36.8-14.1-50.9 0-14.1 14.1-14.1 36.8 0 50.9L205.1 256 74.5 386.6c-14.1 14.1-14.1 36.8 0 50.9 14.1 14.1 36.8 14.1 50.9 0L256 306.9l130.6 130.6c14.1 14.1 36.8 14.1 50.9 0 14-14.1 14-36.9 0-50.9z" fill="currentColor"/>
+    </svg>
+  </div>
+  <div class="xd-message-content">
+    <p>Xóa thất bại</p>
+  </div>
+  <a href="#" class="xd-message-close">
+    <i class="close-icon ion-close-round"></i>
+  </a>
+</div>
+
 
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-  const viewButtons = document.querySelectorAll(".viewButton");
-  const deleteButtons = document.querySelectorAll(".deleteButton");
-  const editButtons = document.querySelectorAll(".editButton");
+    const viewButtons = document.querySelectorAll(".viewButton");
+    const deleteButtons = document.querySelectorAll(".deleteButton");
+    const editButtons = document.querySelectorAll(".editButton");
 
-  // View button click event
-  viewButtons.forEach(function(button) {
-    button.addEventListener("click", function(event) {
-      event.preventDefault();
-      const username = button.getAttribute("data-username");
-      const title = button.getAttribute("data-title");
-      window.location.href = `/quan-ly-tin/manage/${username}/${title}`;
+    // View button click event
+    viewButtons.forEach(function(button) {
+      button.addEventListener("click", function(event) {
+        event.preventDefault();
+        const username = button.getAttribute("data-username");
+        const title = button.getAttribute("data-title");
+        const id = button.getAttribute("data-id");
+        window.location.href = `/quan-ly-tin/manage/${username}/${id}/${title}`;
+      });
     });
-  });
 
-  // Delete button click event
-  deleteButtons.forEach(function(button) {
-    button.addEventListener("click", function(event) {
-      event.preventDefault();
-      const propertyId = button.getAttribute("data-id");
-      if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("DELETE", `/quan-ly-tin/delete/${propertyId}`, true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-              showNotification("Xóa thành công", "success");
-              setTimeout(() => location.reload(), 2000);
-            } else {
-              showNotification("Xóa thất bại", "error");
+    // Delete button click event
+    deleteButtons.forEach(function(button) {
+      button.addEventListener("click", function(event) {
+        event.preventDefault();
+        const propertyId = button.getAttribute("data-id");
+        if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
+          const xhr = new XMLHttpRequest();
+          xhr.open("DELETE", `/quan-ly-tin/delete/${propertyId}`, true);
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+              if (xhr.status === 200) {
+                showNotification("Xóa thành công", "success");
+                setTimeout(() => location.reload(), 2000);
+              } else {
+                showNotification("Xóa thất bại", "danger");
+              }
             }
-          }
-        };
-        xhr.send();
+          };
+          xhr.send();
+        }
+      });
+    });
+
+    // Edit button click event
+    editButtons.forEach(function(button) {
+      button.addEventListener("click", function(event) {
+        event.preventDefault();
+        const propertyId = button.getAttribute("data-id");
+        window.location.href = `/quan-ly-tin/edit/${propertyId}`;
+      });
+    });
+
+    function populateForm(property) {
+      document.querySelector("input[name='title']").value = property.title;
+      document.querySelector("input[name='address']").value = property.address;
+      document.querySelector("input[name='area']").value = property.area;
+      document.querySelector("input[name='price']").value = property.price;
+      document.querySelector("textarea[name='description']").value = property.description;
+      document.getElementById("mainForm").action = `/quan-ly-tin/edit/${property.id}`;
+      document.getElementById("submitButton").textContent = "Cập nhật";
+    }
+
+    function showNotification(message, type) {
+      const successMessage = document.getElementById("msg-success");
+      const dangerMessage = document.getElementById("msg-danger");
+
+      if (type === "success") {
+        successMessage.querySelector(".xd-message-content p").textContent = message;
+        successMessage.classList.remove("hidden");
+        successMessage.classList.add("show");
+      } else if (type === "danger") {
+        dangerMessage.querySelector(".xd-message-content p").textContent = message;
+        dangerMessage.classList.remove("hidden");
+        dangerMessage.classList.add("show");
       }
+
+      setTimeout(() => {
+        if (type === "success") {
+          successMessage.classList.remove("show");
+          successMessage.classList.add("hidden");
+        } else if (type === "danger") {
+          dangerMessage.classList.remove("show");
+          dangerMessage.classList.add("hidden");
+        }
+      }, 3000);
+    }
+
+    const closeIcons = document.querySelectorAll('.xd-message .close-icon');
+    closeIcons.forEach(function(closeIcon) {
+      closeIcon.addEventListener('click', function() {
+        this.parentNode.parentNode.classList.add('hide');
+      });
     });
   });
 
-  // Edit button click event
-  editButtons.forEach(function(button) {
-    button.addEventListener("click", function(event) {
-      event.preventDefault();
-      const propertyId = button.getAttribute("data-id");
-      window.location.href = `/quan-ly-tin/edit/${propertyId}`;
-    });
-  });
-
-  function populateForm(property) {
-    document.querySelector("input[name='title']").value = property.title;
-    document.querySelector("input[name='address']").value = property.address;
-    document.querySelector("input[name='area']").value = property.area;
-    document.querySelector("input[name='price']").value = property.price;
-    document.querySelector("textarea[name='description']").value = property.description;
-    document.getElementById("mainForm").action = `/quan-ly-tin/edit/${property.id}`;
-    document.getElementById("submitButton").textContent = "Cập nhật";
-  }
-
-  function showNotification(message, type) {
-    const notification = document.getElementById("notification");
-    notification.textContent = message;
-    notification.className = `notification ${type} show`;
-    setTimeout(() => {
-      notification.className = "notification hidden";
-    }, 3000);
-  }
-});
 
 </script>

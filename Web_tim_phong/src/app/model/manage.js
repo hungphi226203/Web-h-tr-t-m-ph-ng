@@ -19,11 +19,11 @@ const manageModel = {
     }
   },
 
-  capnhat: async ({ id, title, address, description, area, price }) => {
+  capnhat: async ({ id, title, imageUrl, address, description, area, price }) => {
     try {
       const row = await query(
-        "UPDATE phong SET title = ?, address = ?, des = ?, area = ?, price = ? WHERE id = ?",
-        [title, address, description, area, price, id]
+        "UPDATE phong SET title = ?, imagePath = ?, addres = ?, des = ?, area = ?, price = ? WHERE id = ?",
+        [title, imageUrl, address, description, area, price, id]
       );
       return row ? ["Cập nhật thành công", null] : [null, "Cập nhật thất bại"];
     } catch (e) {

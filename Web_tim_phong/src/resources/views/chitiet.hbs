@@ -1,30 +1,28 @@
-<form action="/quan-ly-tin/capnhat/{{id}}" method="post" class="dang-tin" id="mainForm" enctype="multipart/form-data">
-  <h1 style="text-align: center;">Biểu mẫu thông tin phòng</h1>
+<form action="/quan-ly-tin/edit/{{data.id}}" method="post" class="dang-tin" id="mainForm" enctype="multipart/form-data">
+  <input type="hidden" name="_method" value="PUT">
+  <h1 style="text-align: center;">Biểu mẫu chỉnh sửa thông tin phòng</h1>
+  
+  <!-- Phần thêm ảnh -->
   <div class="them-anh">
     <h2>Thêm ảnh minh họa</h2>
-    <input
-      type="file"
-      id="fileupload"
-      name="fileupload"
-      accept="image/*"
-      onchange="previewImages()"
-      multiple
-    />
+    <input type="file" id="fileupload" name="fileupload" accept="image/*" onchange="previewImages()" multiple />
   </div>
 
-  <div class="preview"></div>
+  <div class="preview-images">
+    {{#each (split data.imagePath ',')}}
+      <a>
+        <img src="{{this}}" class="img-fluid rounded-start" alt="{{title}}" style="width: 100%; height: 100%; object-fit: contain; aspect-ratio: 1/1; padding:10px">
+      </a>
+    {{/each}}
+  </div>
 
+  <!-- Phần tiêu đề -->
   <div class="title">
     <h2>Tiêu đề</h2>
-    <textarea
-      class="form-control"
-      name="title"
-      rows="3"
-      placeholder="Ví dụ: Cho thuê phòng trọ gần trường HVCNBCVT"
-      required
-    >{{title}}</textarea>
+    <textarea class="form-control" name="title" rows="3" placeholder="Ví dụ: Cho thuê phòng trọ gần trường HVCNBCVT" required>{{data.title}}</textarea>
   </div>
 
+  <!-- Phần địa chỉ -->
   <div class="dia-chi">
     <h2>Thông tin</h2>
     <button id="btndiachi" type="button" class="btn btn-outline-dark" style="width:200px">Địa chỉ</button>
@@ -33,77 +31,145 @@
         <span class="closeBtn">×</span>
         <h2 class="diachi-popup">Địa chỉ</h2>
         <input class="form-control" type="text" id="sonha" name="sonha" placeholder="Số nhà" onchange="hienThiDiaChiXacNhan()" required />
-        <input class="form-control" type="text" id="tenduong" name="tenduong" onchange="hienThiDiaChiXacNhan()" required placeholder="Tên đường" />
-        <input class="form-control" type="text" id="quan" name="quan" onchange="hienThiDiaChiXacNhan()" required placeholder="Quận"/>
-        <input class="form-control" type="text" id="thanhpho" name="thanhpho" onchange="hienThiDiaChiXacNhan()" required placeholder="Thành phố"/>
-        <input class="form-control" type="text" id="tinh" name="tinh" onchange="hienThiDiaChiXacNhan()" required placeholder="Tỉnh"/>
+        <input class="form-control" type="text" id="tenduong" name="tenduong" placeholder="Tên đường" onchange="hienThiDiaChiXacNhan()" required />
+        <input class="form-control" type="text" id="phuong" name="phuong" placeholder="Phường" onchange="hienThiDiaChiXacNhan()" required />
+        
+        <!-- Dropdown chọn quận -->
+        <div class="custom-select">
+          <select class="form-control" id="quan" name="quan" onchange="hienThiDiaChiXacNhan()" required>
+            <option value="">Chọn quận</option>
+            <option value="Quận 1">Quận 1</option>
+            <option value="Quận 3">Quận 3</option>
+            <option value="Quận 4">Quận 4</option>
+            <option value="Quận 5">Quận 5</option>
+            <option value="Quận 6">Quận 6</option>
+            <option value="Quận 7">Quận 7</option>
+            <option value="Quận 8">Quận 8</option>
+            <option value="Quận 10">Quận 10</option>
+            <option value="Quận 11">Quận 11</option>
+            <option value="Quận 12">Quận 12</option>
+            <option value="Quận Tân Bình">Quận Tân Bình</option>
+            <option value="Quận Bình Tân">Quận Bình Tân</option>
+            <option value="Quận Bình Thạnh">Quận Bình Thạnh</option>
+            <option value="Quận Thủ Đức">Quận Thủ Đức</option>
+            <option value="Quận Gò Vấp">Quận Gò Vấp</option>
+            <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
+          </select>
+        </div>
+
+        <!-- Dropdown mặc định tỉnh -->
+        <div class="custom-select">
+          <select class="form-control" id="thanhpho" name="thanhpho" onchange="hienThiDiaChiXacNhan()" required>
+            <option value="TP.Hồ Chí Minh">TP.Hồ Chí Minh</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="dia-chi-xac-nhan">
     <h2>Địa chỉ chính xác:</h2>
-    <input class="form-control" name="address" id="diaChiXacNhan" readonly>
+    <input class="form-control" name="address" id="diaChiXacNhan" readonly value="{{data.addres}}">
   </div>
 
+  <!-- Phần diện tích -->
   <div class="input-group" style="margin-bottom: 10px;">
-    <input class="form-control" name="area" value="{{area}}" placeholder="Diện tích sử dụng (m²)" style="width:30%" required />
+    <input class="form-control" name="area" value="{{data.area}}" placeholder="Diện tích sử dụng (m²)" style="width:30%" required />
     <span class="input-group-text">m²</span>
   </div>
 
+  <!-- Phần giá thuê -->
   <div class="input-group">
-    <input class="form-control" name="price" value="{{price}}" placeholder="Giá thuê" style="width:30%" required />
+    <input class="form-control" name="price" value="{{data.price}}" placeholder="Giá thuê" style="width:30%" required />
     <span class="input-group-text">VND/tháng</span>
   </div>
 
+  <!-- Phần mô tả -->
   <div class="mo-ta">
     <h2>Mô tả</h2>
-    <textarea
-      class="form-control"
-      name="description"
-      rows="5"
-      placeholder="Nội dung mô tả"
-      required
-    >{{des}}</textarea>
+    <textarea class="form-control" name="description" rows="5" placeholder="Nội dung mô tả" required>{{data.des}}</textarea>
   </div>
 
+  <!-- Nút submit -->
   <button class="btn btn-outline-danger" id="submitButton" type="submit">Cập nhật</button>
 </form>
 
+
 <script>
-    function previewImages() {
-      var preview = document.querySelector('.preview');
-      var files = document.querySelector('input[type=file]').files;
+  document.addEventListener("DOMContentLoaded", function() {
+    // Hiển thị địa chỉ khi trang tải lên
+    var diaChiXacNhan = "{{data.addres}}";
+    if (diaChiXacNhan) {
+      var diaChiArray = diaChiXacNhan.split(',').map(function(item) {
+        return item.trim();
+      });
 
-      preview.innerHTML = ''; // Xóa các ảnh đã hiển thị trước đó (nếu có)
-
-      // Duyệt qua danh sách các file ảnh và hiển thị chúng
-      for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        var reader = new FileReader(); // Đọc file
-
-        reader.onload = function(event) {
-          var image = new Image();
-          image.src = event.target.result; // Đặt nguồn ảnh là dữ liệu của file
-          image.style.width = '100px'; // Đặt kích thước ảnh
-          image.style.height = 'auto'; // Tự động tính toán chiều cao để giữ tỉ lệ
-
-          // Thêm ảnh vào preview
-          preview.appendChild(image);
-        }
-
-        reader.readAsDataURL(file); // Đọc file ảnh dưới dạng URL dữ liệu
+      if (diaChiArray.length === 6) {
+        document.getElementById('sonha').value = diaChiArray[0] || '';
+        document.getElementById('tenduong').value = diaChiArray[1] || '';
+        document.getElementById('phuong').value = diaChiArray[2] || '';
+        document.getElementById('quan').value = diaChiArray[3] || '';
+        document.getElementById('thanhpho').value = diaChiArray[4] || '';
       }
     }
 
-    function hienThiDiaChiXacNhan() {
-        var sonha = document.getElementById('sonha').value;
-        var tenduong = document.getElementById('tenduong').value;
-        var quan = document.getElementById('quan').value;
-        var thanhpho = document.getElementById('thanhpho').value;
-        var tinh = document.getElementById('tinh').value;
+    // Mở form nhập địa chỉ
+    document.getElementById("btndiachi").addEventListener("click", function() {
+      document.getElementById("popupForm").style.display = "block";
+    });
 
-        var diaChiXacNhan = sonha + ', ' + tenduong + ', ' + quan + ', ' + thanhpho + ', ' + tinh;
-        document.getElementById('diaChiXacNhan').value = diaChiXacNhan;
+    // Đóng form nhập địa chỉ
+    document.querySelector(".closeBtn").addEventListener("click", function() {
+      document.getElementById("popupForm").style.display = "none";
+    });
+
+    window.addEventListener("click", function(event) {
+      var popup = document.getElementById("popupForm");
+      if (event.target == popup) {
+        popup.style.display = "none";
+      }
+    });
+
+    // Xem trước hình ảnh
+    function previewImages() {
+      var preview = document.querySelector('.preview-images');
+      var files = document.querySelector('input[type=file]').files;
+
+      preview.innerHTML = '';
+
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var reader = new FileReader();
+
+        reader.onload = function(event) {
+          var image = new Image();
+          image.src = event.target.result;
+          image.style.width = '100px';
+          image.style.height = 'auto';
+          image.style.margin = '10px';
+
+          preview.appendChild(image);
+        }
+
+        reader.readAsDataURL(file);
+      }
     }
+
+    // Hiển thị địa chỉ chính xác
+    function hienThiDiaChiXacNhan() {
+      var sonha = document.getElementById('sonha').value;
+      var tenduong = document.getElementById('tenduong').value;
+      var phuong = document.getElementById('phuong').value;
+      var quan = document.getElementById('quan').value;
+      var thanhpho = document.getElementById('thanhpho').value;
+
+      var diaChiXacNhan = `${sonha}, ${tenduong}, ${phuong}, ${quan}, ${thanhpho}`;
+      document.getElementById('diaChiXacNhan').value = diaChiXacNhan;
+    }
+
+    // Thêm sự kiện onchange cho các trường địa chỉ
+    document.querySelectorAll('.form-control').forEach(function(input) {
+      input.addEventListener('change', hienThiDiaChiXacNhan);
+    });
+  });
 </script>

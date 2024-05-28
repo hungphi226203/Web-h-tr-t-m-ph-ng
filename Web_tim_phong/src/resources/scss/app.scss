@@ -345,6 +345,19 @@
   cursor: pointer;
 }
 
+.preview-images {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.preview-images img {
+  max-width: 100px;
+  max-height: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+
 //ownpost
 .image-gallery .property img {
   display: none;
@@ -374,31 +387,95 @@
 }
 
 //nofi
-.notification {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 30px 60px;
-  border-radius: 10px;
+.xd-message {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 300px; /* Đặt chiều rộng cụ thể */
+  min-height: 60px;
+  background: #FFF;
+  border: 1px solid #455870;
+  margin-bottom: 1rem;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+  position: fixed; /* Thêm position fixed để định vị */
+  top: 20px; /* Khoảng cách từ trên cùng */
+  right: 20px; /* Khoảng cách từ bên phải */
+  z-index: 1000; /* Đảm bảo thông báo hiển thị phía trên các thành phần khác */
+}
+
+.xd-message-icon {
+  background: #455870;
+  display: flex;
+  flex: 0 0 50px; /* Đặt kích thước cụ thể cho biểu tượng */
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.xd-message-content {
+  flex: 1;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.xd-message-content p {
+  margin: 0;
+}
+
+.xd-message-close {
+  color: #455870;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+
+.xd-message-close .close-icon:hover {
+  color: #2e3e50; /* Màu đậm hơn của #455870 */
+}
+
+.msg-danger {
+  border: 1px solid #b05150;
+}
+
+.msg-danger .xd-message-icon {
+  background: #b05150;
+}
+
+.msg-danger .xd-message-content,
+.msg-danger .xd-message-close {
+  color: #b05150;
+}
+
+.msg-danger .xd-message-close .close-icon:hover {
+  color: #923b3a; /* Màu đậm hơn của #b05150 */
+}
+
+.msg-success {
+  border: 1px solid #47ae74;
+}
+
+.msg-success .xd-message-icon {
+  background: #47ae74;
+}
+
+.msg-success .xd-message-content,
+.msg-success .xd-message-close {
+  color: #47ae74;
+}
+
+.msg-success .xd-message-close .close-icon:hover {
+  color: #36895b; /* Màu đậm hơn của #47ae74 */
+}
+
+.hidden {
   display: none;
-  font-size: 20px;
-  text-align: center;
-  z-index: 1000;
-  max-width: 80%;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.notification.success {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.notification.error {
-  background-color: #f44336;
-  color: white;
-}
-
-.notification.show {
-  display: block;
+.show {
+  display: flex;
 }
