@@ -19,8 +19,6 @@ const getPostModel = {
         `;
         const params = [];
 
-        console.log(quan)
-
         if (quan !== '') {
             sql += ` AND addres LIKE ?`;
             params.push(`%${quan}%`);
