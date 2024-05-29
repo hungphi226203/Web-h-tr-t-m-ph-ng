@@ -33,7 +33,7 @@ const authController = {
         req.session.save(async function (err) {
           if (err) return next(err);
           
-          if (user.role == 'admin') {
+          if (user.role == 'admin' || user.role == 'mode') {
             return res.redirect("/admin");
           } else {
             res.redirect("/");

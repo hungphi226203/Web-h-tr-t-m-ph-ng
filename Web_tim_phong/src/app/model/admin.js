@@ -12,38 +12,14 @@ const adminModel = {
 
   formbaidang: async (id) => {
     try {
-      const row = await query("SELECT * FROM `phong`");
+      const row = await query("SELECT * FROM `phong` where status = 'đang xử lý'");
       return row ? [row, null] : [null, "Lỗi"];
     } catch (e) {
       return [null, "Lỗi xảy ra"];
     }
   },
 
-  capnhattaikhoan: async ({ id, title, imageUrl, address, description, area, price }) => {
-    try {
-      const row = await query(
-        "UPDATE phong SET title = ?, imagePath = ?, addres = ?, des = ?, area = ?, price = ? WHERE id = ?",
-        [title, imageUrl, address, description, area, price, id]
-      );
-      return row ? ["Cập nhật thành công", null] : [null, "Cập nhật thất bại"];
-    } catch (e) {
-      return [null, "Lỗi xảy ra"];
-    }
-  },
-
-  capnhatbaidang: async ({ id }) => {
-    try {
-        const row = await query(
-          "UPDATE phong SET status = 'đã duyệt' WHERE id = ?",
-          [id]
-        );
-        return row ? ["Cập nhật thành công", null] : [null, "Cập nhật thất bại"];
-      } catch (e) {
-        return [null, "Lỗi xảy ra"];
-      }
-  },
-
-  deleteuser: async ({ username }) => {
+  deleteuser: async (username ) => {
     try {
         let row = await query("DELETE FROM phong WHERE username = ?", [username]);
         row = await query("DELETE FROM taikhoan WHERE username = ?", [username]);
@@ -53,7 +29,7 @@ const adminModel = {
     }
   },
 
-  deletepost: async ({ id }) => {
+  deletepost: async (id) => {
     try {
         let row = await query("DELETE FROM phong WHERE id = ?", [id]);
         return row ? ["Xóa thành công", null] : [null, "Xóa thất bại"];
@@ -62,10 +38,10 @@ const adminModel = {
     }
   },
 
-  changeuser: async ({ username }) => {
+  changeuser: async (username) => {
     try {
-        let currentRole = await query("SELECT role FROM taikhoan WHERE username = ?", [username]);
-        let newRole = currentRole === 'user' ? 'mode' : 'user';
+        let [currentRole] = await query("SELECT role FROM taikhoan WHERE username = ?", [username]);       
+        let newRole = currentRole.role === 'user' ? 'mode' : 'user';
         let row = await query("UPDATE taikhoan SET role = ? WHERE username = ?", [newRole, username]);
         return row ? ["Thay đổi quyền thành công", null] : [null, "Thay đổi quyền thất bại"];
     } catch (e) {
@@ -73,10 +49,10 @@ const adminModel = {
     }
   },
 
-  changepost: async ({ id }) => {
+  changepost: async (id ) => {
     try {
-        let row = await query("UPDATE phong SET status = 'đã duyệt' WHERE id = ?", [id]);
-        return row ? ["Thay đổi quyền thành công", null] : [null, "Thay đổi quyền thất bại"];
+        await query("UPDATE phong SET status = 'đã duyệt' WHERE id = ?", [id]);
+        return ["Thay đổi quyền thành công", null]
     } catch (e) {
         return [null, "Lỗi xảy ra"];
     }

@@ -13,6 +13,20 @@ class SiteController {
     }
   }
 
+  async homeafter(req, res) {
+    try {
+      const { quan, minPrice, maxPrice, minArea, maxArea } = req.query;
+
+      const data = await postModel.getPostByDK(minPrice, maxPrice, minArea, maxArea, quan);
+      res.render("home", {
+        data,
+        user: req.session.user
+      });
+    } catch (error) {
+      res.status(500).send("Lỗi server");
+    }
+  }
+
   async logout(req, res) {
     req.session.user = null;
     req.session.save(function (err) {

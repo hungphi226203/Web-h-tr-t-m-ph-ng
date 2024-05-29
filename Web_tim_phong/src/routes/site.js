@@ -4,6 +4,7 @@ const siteController = require('../app/controllers/SiteController');
 
 router.use('/logout', siteController.logout);
 router.get('/post/:username/:id/:title', siteController.xem);
+router.get('/tim-phong', siteController.homeafter);
 router.get('/', siteController.home);
 
 module.exports = router;

@@ -3,55 +3,55 @@
       <div style="display: flex; gap: 10px; justify-content: center;padding:20px">
       
       <div class="custom-select" style="margin: auto;">
-        <select name="tinh" form="searchform" required>
-          <option value="hochiminh">TP.Hồ Chí Minh</option>         
+        <select name="tinh" form="searchform">
+          <option value="TP.Hồ Chí Minh">TP.Hồ Chí Minh</option>         
         </select>
       </div>
 
       <div class="custom-select" style="margin: auto;">
-        <select name="quan" form="searchform" required>
-          <option value="">Chọn quận</option>
-          <option value="quan1">Quận 1</option>
-          <option value="quan3">Quận 3</option>
-          <option value="quan4">Quận 4</option>
-          <option value="quan5">Quận 5</option>
-          <option value="quan6">Quận 6</option>
-          <option value="quan7">Quận 7</option>
-          <option value="quan8">Quận 8</option>
-          <option value="quan10">Quận 10</option>
-          <option value="quan11">Quận 11</option>
-          <option value="quan12">Quận 12</option>
-          <option value="quantanbinh">Quận Tân Bình</option>
-          <option value="quanbinhtan">Quận Bình Tân</option>
-          <option value="quanbinhthanh">Quận Bình Thạnh</option>
-          <option value="quanthuduc">Quận Thủ Đức</option>
-          <option value="quangovap">Quận Gò Vấp</option>
-          <option value="quanphunhuan">Quận Phú Nhuận</option>
+        <select name="quan" form="searchform">
+            <option value="">Chọn quận</option>
+            <option value="Quận 1">Quận 1</option>
+            <option value="Quận 3">Quận 3</option>
+            <option value="Quận 4">Quận 4</option>
+            <option value="Quận 5">Quận 5</option>
+            <option value="Quận 6">Quận 6</option>
+            <option value="Quận 7">Quận 7</option>
+            <option value="Quận 8">Quận 8</option>
+            <option value="Quận 10">Quận 10</option>
+            <option value="Quận 11">Quận 11</option>
+            <option value="Quận 12">Quận 12</option>
+            <option value="Quận Tân Bình">Quận Tân Bình</option>
+            <option value="Quận Bình Tân">Quận Bình Tân</option>
+            <option value="Quận Bình Thạnh">Quận Bình Thạnh</option>
+            <option value="Quận Thủ Đức">Quận Thủ Đức</option>
+            <option value="Quận Gò Vấp">Quận Gò Vấp</option>
+            <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
         </select>
       </div>
 
       <div class="custom-select" style="margin: auto;">
-        <select name="gia" form="searchform" required>
+        <select name="gia" form="searchform">
           <option value="">Chọn giá</option>
-          <option value="1,5">Dưới 1,5 triệu</option>
-          <option value="1,5den2">Từ 1,5 đến 2 triệu</option>
-          <option value="2den2,5">Từ 2 đến 2,5 triệu</option>
-          <option value="2,5den3">Từ 2,5 đến 3 triệu</option>
-          <option value="3den4">Từ 3 đến 4 triệu</option>
-          <option value="4den5">Từ 4 đến 5 triệu</option>
-          <option value="5">Từ 5 triệu trở lên</option>
+          <option value="0-1500000">Dưới 1,5 triệu</option>
+          <option value="1500000-2000000">Từ 1,5 đến 2 triệu</option>
+          <option value="2000000-2500000">Từ 2 đến 2,5 triệu</option>
+          <option value="2500000-3000000">Từ 2,5 đến 3 triệu</option>
+          <option value="3000000-4000000">Từ 3 đến 4 triệu</option>
+          <option value="4000000-5000000">Từ 4 đến 5 triệu</option>
+          <option value="5000000-100000000000">Từ 5 triệu trở lên</option>
         </select>
       </div>
 
       <div class="custom-select" style="margin: auto;">
-        <select name="dientich" form="searchform" required>
+        <select name="dientich" form="searchform">
           <option value="">Chọn diện tích</option>
-          <option value="20">Dưới 20m2</option>
-          <option value="20den30">Từ 20 đến 30m2</option>
-          <option value="30den50">Từ 30 đến 50m2</option>
-          <option value="50den70">Từ 50 đến 70m2</option>
-          <option value="70den90">Từ 70 đến 90m2</option>
-          <option value="90">Từ 90m2 trở lên</option>
+          <option value="0-20">Dưới 20m2</option>
+          <option value="20-30">Từ 20 đến 30m2</option>
+          <option value="30-50">Từ 30 đến 50m2</option>
+          <option value="50-70">Từ 50 đến 70m2</option>
+          <option value="70-90">Từ 70 đến 90m2</option>
+          <option value="90-1000000">Từ 90m2 trở lên</option>
         </select>
       </div>
     </div>
@@ -111,15 +111,15 @@
         <h3 style="padding: 15px 0 0 20px;">Xem theo giá</h3>
         <div style="display: flex" class="ds-locgia">
           <ul style="list-style-type: '> ';margin-left:20px;margin-right:10px">
-            <li><a href="">Dưới 1,5 triệu</a></li>
-            <li><a href="">Từ 1,5 đến 2 triệu</a></li>
-            <li><a href="">Từ 2 đến 2,5 triệu</a></li>
-            <li><a href="">Từ 2,5 đến 3 triệu</a></li>
+            <li><a href="/tim-phong?tinh=TP.Hồ%20Chí%20Minh&quan=&minPrice=0&maxPrice=1500000&minArea=undefined&maxArea=undefined">Dưới 1,5 triệu</a></li>
+            <li><a href="/tim-phong?quan=&minPrice=1500000&maxPrice=2000000&minArea=undefined&maxArea=undefined">Từ 1,5 đến 2 triệu</a></li>
+            <li><a href="/tim-phong?tinh=TP.Hồ%20Chí%20Minh&quan=&minPrice=2000000&maxPrice=2500000&minArea=undefined&maxArea=undefined">Từ 2 đến 2,5 triệu</a></li>
+            <li><a href="/tim-phong?quan=&minPrice=2500000&maxPrice=3000000&minArea=undefined&maxArea=undefined">Từ 2,5 đến 3 triệu</a></li>
           </ul>
           <ul style="list-style-type: '> ';margin-left:20px;margin-right:20px">
-            <li><a href="">Từ 3 đến 4 triệu</a></li>
-            <li><a href="">Từ 4 đến 5 triệu</a></li>
-            <li><a href="">Trên 5 triệu</a></li>
+            <li><a href="/tim-phong?quan=&minPrice=3000000&maxPrice=4000000&minArea=undefined&maxArea=undefined">Từ 3 đến 4 triệu</a></li>
+            <li><a href="/tim-phong?quan=&minPrice=4000000&maxPrice=5000000&minArea=undefined&maxArea=undefined">Từ 4 đến 5 triệu</a></li>
+            <li><a href="/tim-phong?quan=&minPrice=4000000&maxPrice=5000000&minArea=undefined&maxArea=undefined">Trên 5 triệu</a></li>
           </ul>
         </div>
       </div>
@@ -128,17 +128,65 @@
         <h3 style="padding: 15px 0 0 20px;">Xem theo diện tích</h3>
         <div style="display: flex" class="ds-locgia">
           <ul style="list-style-type: '> ';margin-left:20px;margin-right:10px">
-            <li><a href="">Dưới 20m2</a></li>
-            <li><a href="">Từ 20 đến 30m2</a></li>
-            <li><a href="#">Từ 30 đến 50m2</a></li>
+            <li><a href="/tim-phong?quan=&minPrice=undefined&maxPrice=undefined&minArea=0&maxArea=20">Dưới 20m2</a></li>
+            <li><a href="/tim-phong?quan=&minPrice=undefined&maxPrice=undefined&minArea=20&maxArea=30">Từ 20 đến 30m2</a></li>
+            <li><a href="/tim-phong?quan=&minPrice=undefined&maxPrice=undefined&minArea=30&maxArea=50">Từ 30 đến 50m2</a></li>
           </ul>
           <ul style="list-style-type: '> ';margin-left:32px">
-            <li><a href="#">Từ 50 đến 70m2</a></li>
-            <li><a href="#">Từ 70 đến 90m2</a></li>
-            <li><a href="#">Trên 90m2</a></li>
+            <li><a href="/tim-phong?quan=&minPrice=undefined&maxPrice=undefined&minArea=50&maxArea=70">Từ 50 đến 70m2</a></li>
+            <li><a href="/tim-phong?quan=&minPrice=undefined&maxPrice=undefined&minArea=70&maxArea=90">Từ 70 đến 90m2</a></li>
+            <li><a href="/tim-phong?quan=&minPrice=undefined&maxPrice=undefined&minArea=90&maxArea=1000000">Trên 90m2</a></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchform = document.getElementById('searchform');
+    const searchButton = document.querySelector('button[type="submit"]');
+
+    searchButton.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const tinh = document.querySelector('select[name="tinh"]').value;
+        const quan = document.querySelector('select[name="quan"]').value;
+        const gia = document.querySelector('select[name="gia"]').value;
+        const dientich = document.querySelector('select[name="dientich"]').value;
+
+        const giaDropdown = document.querySelector('select[name="gia"]');
+        let minPrice, maxPrice;
+
+        if (gia) {
+            const parts = gia.split('-');
+            if (parts.length === 1) {
+                minPrice = parseFloat(parts[0].replace(',', '.'));
+                maxPrice = null;
+            } else if (parts.length === 2) {
+                minPrice = parseFloat(parts[0].replace(',', '.'));
+                maxPrice = parseFloat(parts[1].replace(',', '.'));
+            }
+        }
+
+        const dientichDropdown = document.querySelector('select[name="dientich"]');
+        let minArea, maxArea;
+
+        if (dientich) {
+            const parts = dientich.split('-');
+            if (parts.length === 1) {
+                minArea = parseFloat(parts[0]);
+                maxArea = null;
+            } else if (parts.length === 2) {
+                minArea = parseFloat(parts[0]);
+                maxArea = parseFloat(parts[1]);
+            }
+        }
+
+        window.location.href = `/tim-phong?quan=${quan}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`;
+    });
+});
+
+</script>

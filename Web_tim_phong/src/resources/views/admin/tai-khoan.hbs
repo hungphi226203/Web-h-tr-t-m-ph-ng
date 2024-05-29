@@ -115,7 +115,7 @@
                 const propertyId = button.getAttribute("data-id");
                 if (confirm("Bạn có chắc chắn muốn đổi quyền user?")) {
                     const xhr = new XMLHttpRequest();
-                    xhr.open("POST", `/quan-ly-tai-khoan/change/${propertyId}`, true);
+                    xhr.open("POST", `/admin/quan-ly-tai-khoan/change/${propertyId}`, true);
                     xhr.setRequestHeader("Content-Type", "application/json");
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState === XMLHttpRequest.DONE) {

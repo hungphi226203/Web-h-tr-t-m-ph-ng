@@ -12,7 +12,7 @@ function route(app) {
   
   app.use("/", siteRouter);
   app.use("/login", authRoute);
-  app.use("/admin", verifyRoles.isAdmin, adminRoute);
+  app.use("/admin", verifyRoles.isAdminOrMode, adminRoute);
   app.use("/signup", createUserRoute);
   app.use("/thong-tin", i4Route);
   app.use("/dang-tin", verifyRoles.isUser, postRoute);

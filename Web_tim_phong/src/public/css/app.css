@@ -1020,3 +1020,12 @@ body {
 .table-wrapper .btn {
   margin-bottom: 5px;
   /* Add spacing between buttons */ }
+
+.xoa-anh {
+  display: block;
+  margin-top: 5px;
+  background-color: #de3a3a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; }

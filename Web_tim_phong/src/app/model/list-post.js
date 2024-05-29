@@ -11,6 +11,41 @@ const getPostModel = {
     }
   },
 
+  async getPostByDK(minPrice, maxPrice, minArea, maxArea, quan) {
+    try {
+        let sql = `
+            SELECT * FROM phong
+            WHERE status='đã duyệt'
+        `;
+        const params = [];
+
+        console.log(quan)
+
+        if (quan !== '') {
+            sql += ` AND addres LIKE ?`;
+            params.push(`%${quan}%`);
+        }
+
+        if (minPrice !== 'undefined' && maxPrice !== 'undefined') {
+            sql += ` AND price BETWEEN ? AND ?`;
+            params.push(minPrice, maxPrice);
+        }
+
+        if (minArea !== 'undefined' && maxArea !== 'undefined') {
+            sql += ` AND area BETWEEN ? AND ?`;
+            params.push(minArea, maxArea);
+        }
+
+        const row = await query(sql, params);
+        return row;
+    } catch (error) {
+        console.error("Error in getPostByDK:", error);
+        return [];
+    }
+  },
+
+
+
   async getPostById(id) {
     try {
       const row = await query(

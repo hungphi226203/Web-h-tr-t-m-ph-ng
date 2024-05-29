@@ -40,7 +40,7 @@ const adminController = {
 
   changeuser: async (req, res) => {
     const username = req.params.username;
-    const [result, error] = await adminModel.changeuser({ username });
+    const [result, error] = await adminModel.changeuser( username );
     if (error) {
       res.status(500).json({ message: "Xóa thất bại", error });
     } else {
@@ -50,7 +50,7 @@ const adminController = {
 
   changepost: async (req, res) => {
     const id = req.params.id;
-    const [result, error] = await adminModel.changepost({ id });
+    const [result, error] = await adminModel.changepost( id );
     if (error) {
       res.status(500).json({ message: "Xóa thất bại", error });
     } else {
