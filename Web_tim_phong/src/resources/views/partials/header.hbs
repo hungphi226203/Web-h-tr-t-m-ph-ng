@@ -47,8 +47,9 @@
   
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     {{#if user.username}}
-      <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
-      <li><a class="dropdown-item" href="">Số dư: {{{user.sodu}}} VNĐ</a></li>
+      <li><a class="dropdown-item" href="/thong-tin">Thông tin tài khoản</a></li>
+      <li><a class="dropdown-item" href="/dang-tin">Đăng tin</a></li>
+      <li><a class="dropdown-item" href="/quan-ly-tin">Quản lý tin</a></li>
       <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="/logout" style="color:red">
       Đăng xuất</a></li>
@@ -77,4 +78,34 @@
 </ul>
 <div >
   <marquee width="100%" bgcolor="yellow">Nhóm 27 - Môn thực tập cơ sở - Web hỗ trợ tìm phòng</marquee>
+</div>
+
+<!-- Success Message -->
+<div id="msg-success" class="xd-message msg-success hidden">
+  <div class="xd-message-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
+      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M416 128L192 384l-96-96"/>
+    </svg>
+  </div>
+  <div class="xd-message-content">
+    <p>Thành công</p>
+  </div>
+  <a href="#" class="xd-message-close">
+    <i class="close-icon ion-close-round"></i>
+  </a>
+</div>
+
+<!-- Danger Message -->
+<div id="msg-danger" class="xd-message msg-danger hidden">
+  <div class="xd-message-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
+      <path d="M437.5 386.6L306.9 256l130.6-130.6c14.1-14.1 14.1-36.8 0-50.9-14.1-14.1-36.8-14.1-50.9 0L256 205.1 125.4 74.5c-14.1-14.1-36.8-14.1-50.9 0-14.1 14.1-14.1 36.8 0 50.9L205.1 256 74.5 386.6c-14.1 14.1-14.1 36.8 0 50.9 14.1 14.1 36.8 14.1 50.9 0L256 306.9l130.6 130.6c14.1 14.1 36.8 14.1 50.9 0 14-14.1 14-36.9 0-50.9z" fill="currentColor"/>
+    </svg>
+  </div>
+  <div class="xd-message-content">
+    <p>Thất bại</p>
+  </div>
+  <a href="#" class="xd-message-close">
+    <i class="close-icon ion-close-round"></i>
+  </a>
 </div>

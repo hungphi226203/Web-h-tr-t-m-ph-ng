@@ -1,5 +1,6 @@
 <button id="scrollToTopBtn">&#8593;</button>
 
+
 <script>
   const btnScrollToTop = document.getElementById('scrollToTopBtn');
   const docEl = document.documentElement;
@@ -22,4 +23,29 @@
       behavior: 'smooth'
     });
   });
+
+  function showNotification(message, type) {
+      const successMessage = document.getElementById("msg-success");
+      const dangerMessage = document.getElementById("msg-danger");
+
+      if (type === "success") {
+        successMessage.querySelector(".xd-message-content p").textContent = message;
+        successMessage.classList.remove("hidden");
+        successMessage.classList.add("show");
+      } else if (type === "danger") {
+        dangerMessage.querySelector(".xd-message-content p").textContent = message;
+        dangerMessage.classList.remove("hidden");
+        dangerMessage.classList.add("show");
+      }
+
+      setTimeout(() => {
+        if (type === "success") {
+          successMessage.classList.remove("show");
+          successMessage.classList.add("hidden");
+        } else if (type === "danger") {
+          dangerMessage.classList.remove("show");
+          dangerMessage.classList.add("hidden");
+        }
+      }, 3000);
+    }
 </script>

@@ -11,7 +11,7 @@ const manageController = {
     const id = req.params.id;
     try {
       const [data] = await postModel.getPostById(id);
-      res.render("xem", { data: data[0] });
+      res.render("xem", { data: data[0], user: req.session.user });
     } catch (error) {
       res.status(500).send("Lỗi server");
     }
@@ -21,7 +21,7 @@ const manageController = {
     const id = req.params.id;
     try {
       const [data] = await manageModel.chitiet(id);
-      res.render("chitiet", { data: data[0] });
+      res.render("chitiet", { data: data[0], user: req.session.user });
     } catch (error) {
       res.status(500).send("Lỗi server");
     }

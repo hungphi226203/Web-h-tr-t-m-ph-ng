@@ -19,8 +19,8 @@
                 </tr>
             </thead>
             <tbody>
-                {{#if accounts}}
-                    {{#each accounts}}
+                {{#if data}}
+                    {{#each data}}
                         <tr>
                             <td><div style="margin-left: 20px;margin-top:5px">{{this.username}}</div></td>
                             <td>
@@ -34,11 +34,10 @@
                                         <label for="id_card">CCCD</label>
                                         <input class="form-control" id="id_card" value="{{this.id_card}}" readonly/>
                                         <label for="phone">Số điện thoại</label>
-                                        <input class="form-control" id="phone" value="{{this.phone}}" readonly/>
+                                        <input class="form-control" id="phone" value="0{{this.phone}}" readonly/>
                                         <label for="email">Email</label>
                                         <input class="form-control" id="email" value="{{this.email}}" readonly/>
-                                        <label for="sodu">Số dư</label>
-                                        <input class="form-control" id="sodu" value="{{this.acc_bala}} Đồng" readonly/>
+                                        
                                     </div>
                                 </div>
                             </td>
@@ -145,7 +144,7 @@
          hideModal();
       }
    };
-   var modal1 = document.querySelector(".modal1");
+    var modal1 = document.querySelector(".modal1");
     var btns1 = document.querySelectorAll(".openModal1");
     var spans1 = document.querySelectorAll(".close1");
     //var form_quyen=document.querySelector(".form-quyen");

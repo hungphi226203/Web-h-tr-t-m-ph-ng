@@ -11,7 +11,7 @@ const authModel = {
       );
 
       if (row) {
-        return [{ username: row.username, role: row.role, sodu : row.acc_balance }, null];
+        return [{ username: row.username, role: row.role}, null];
       } else {
         return [null, "Không đúng tài khoản, mật khẩu"];
       }

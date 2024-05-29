@@ -36,6 +36,12 @@ const hbs = exphbs.create({
     },
     isFirst: function(index) {
       return index === 0;
+    },
+    arrayLength: function(array) {
+      return array.length;
+    },
+    addOne: function(index) {
+      return index + 1;
     }
   }
 });

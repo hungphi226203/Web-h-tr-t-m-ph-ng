@@ -1,21 +1,21 @@
 <div class="post-container">
     <div class="dang-tin" style=" border: 2px solid rgb(21, 179, 247);border-radius:15px"
     style="background-color:rgb(255, 255, 255) ;border-radius: 15px;">
-        <form action="/luuthongtin" method="get" id="mainForm" enctype="multipart/form-data">
+        <form action="/thong-tin" method="post" id="mainForm" enctype="multipart/form-data">
             <h1 style="text-align: center;">Thông tin cá nhân</h1>
             <div class="">
                 <div style="display:flex;gap:20px">
-                    <input class="form-control" name="hovaten" placeholder="Họ và tên" style="width:50%" value="{{{user.fullname}}}"/>
-                    <input class="form-control" name="cccd" placeholder="CCCD/CMND" style="margin-bottom:10px;width:50%" value="{{{user.id_card}}}"/>
+                    <input class="form-control" name="fullname" placeholder="Họ và tên" style="width:50%" value="{{{data.fullname}}}"/>
+                    <input class="form-control" name="id_card" placeholder="CCCD/CMND" style="margin-bottom:10px;width:50%" value="{{{data.id_card}}}"/>
                 </div>
                 <div style="display:flex;gap:20px">
-                    <input class="form-control" name="sdt" placeholder="Số điện thoại" style="width:50%" value="{{{user.phone}}}"/>
-                    <input class="form-control" name="email" placeholder="Email" style="margin-bottom:10px;width:50%"value="{{{user.email}}}"/>
+                    <input class="form-control" name="phone" placeholder="Số điện thoại" style="width:50%" value="0{{{data.phone}}}"/>
+                    <input class="form-control" name="email" placeholder="Email" style="margin-bottom:10px;width:50%"value="{{{data.email}}}"/>
                 </div>
             </div>
 
             <div style="text-align:center; margin-top:20px">
-                <button type="submit" form="mainForm" class="btn btn-danger" style="margin-top:10px">Lưu</button>
+                <button type="submit" form="mainForm" class="btn btn-danger submitButton" id="submitButton" style="margin-top:10px">Lưu</button>
             </div>
         </form>
         <div style="text-align:center; margin-top:20px">
@@ -24,7 +24,7 @@
     <div id="popupOverlay" class="overlay-container"> 
         <div class="popup-box"> 
             <h2 style="color: green;">Đổi mật khẩu</h2> 
-            <form class="form-container" id="form-popup" action="/doimatkhau"> 
+            <form class="form-container" id="form-popup" action="/thong-tin" method="post"> 
                 <label class="form-label" for="oldpass" style="margin-bottom:-10px "> Mật khẩu cũ: </label> 
                 <input class="form-input" type="password" 
                 placeholder="Nhập mật khẩu cũ"  name="oldpass" required> 
@@ -56,7 +56,7 @@
           <img src="https://i.pinimg.com/736x/21/91/6e/21916e491ef0d796398f5724c313bbe7.jpg"
             style="width:40px;border-radius:25px">
           <a class="card-text"
-            style="margin:auto;margin-left:10px;text-decoration:none;color:rgb(65, 65, 65)">{{{user.username}}}</a>
+            style="margin:auto;margin-left:10px;text-decoration:none;color:rgb(65, 65, 65)">{{{data.dataname}}}</a>
         </div>
       </div>
 
@@ -119,9 +119,37 @@
 </div>
 </div>
 
-<script> 
-    function togglePopup() { 
-        const overlay = document.getElementById('popupOverlay'); 
-        overlay.classList.toggle('show'); 
-    } 
+<script>
+  function togglePopup() { 
+      const overlay = document.getElementById('popupOverlay'); 
+      overlay.classList.toggle('show'); 
+    }
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+
+    const editButtons = document.querySelectorAll(".submitButton");
+
+    submitButton.addEventListener("click", async function(event) {
+      event.preventDefault();
+      const formData = new FormData(document.getElementById("mainForm"));
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", `/thong-tin`, true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            showNotification("Cập nhật thành công", "success");
+            setTimeout(() => {
+              window.location.href = "/thong-tin";
+            }, 2000);
+          } else {
+            showNotification("Cập nhật thất bại", "danger");
+          }
+        }
+      };
+      xhr.send(formData);
+    });
+
+  })
 </script>

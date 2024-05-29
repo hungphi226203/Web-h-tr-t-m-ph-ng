@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="post-container">
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -19,13 +19,21 @@
           <td>{{id}}</td>
           <td>{{title}}</td>
           <td>
-            {{#if imagePath.[0]}}
-              <img src="{{imagePath.[0]}}" alt="{{title}}" style="max-width: 100px;">
-            {{else}}
-              Không có ảnh
-            {{/if}}
+            <div class="col-md-4">
+              {{#each (split imagePath ',')}}
+                {{#if (isFirst @index)}}
+                  <a>
+                    <img src="{{this}}" class="img-fluid rounded-start" alt="{{title}}"
+                        style="width: 100%; height: 100%; object-fit: contain; aspect-ratio: 1/1; padding:10px">
+                  </a>
+                {{else}}
+                  <img src="{{this}}" class="img-fluid rounded-start" alt="{{title}}"
+                      style="display: none; width: 100%;height: 100%; object-fit: contain; aspect-ratio: 1/1; padding:10px">
+                {{/if}}
+              {{/each}}
+            </div>
           </td>
-          <td>{{address}}</td>
+          <td>{{addres}}</td>
           <td>{{area}}</td>
           <td>{{price}}</td>
           <td>{{{des}}}</td>
@@ -39,36 +47,75 @@
       {{/each}}
     </tbody>
   </table>
-</div>
 
-<!-- Success Message -->
-<div id="msg-success" class="xd-message msg-success hidden">
-  <div class="xd-message-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
-      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M416 128L192 384l-96-96"/>
-    </svg>
-  </div>
-  <div class="xd-message-content">
-    <p>Xóa thành công</p>
-  </div>
-  <a href="#" class="xd-message-close">
-    <i class="close-icon ion-close-round"></i>
-  </a>
-</div>
+  <div class="nut-div" style="height: 400px; position: sticky; top: 20px; border: 2px solid rgb(21, 179, 247);">
+<div style="position: sticky; top: 50px;">
+    <div style="padding-left:50px;padding-top:30px">
+      <div style="display: flex; justify-content: center;margin-left:-50px;">
+        <div style="display:flex">
+          <img src="https://i.pinimg.com/736x/21/91/6e/21916e491ef0d796398f5724c313bbe7.jpg"
+            style="width:40px;border-radius:25px">
+          <a class="card-text"
+            style="margin:auto;margin-left:10px;text-decoration:none;color:rgb(65, 65, 65)">{{{user.username}}}</a>
+        </div>
+      </div>
 
-<!-- Danger Message -->
-<div id="msg-danger" class="xd-message msg-danger hidden">
-  <div class="xd-message-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
-      <path d="M437.5 386.6L306.9 256l130.6-130.6c14.1-14.1 14.1-36.8 0-50.9-14.1-14.1-36.8-14.1-50.9 0L256 205.1 125.4 74.5c-14.1-14.1-36.8-14.1-50.9 0-14.1 14.1-14.1 36.8 0 50.9L205.1 256 74.5 386.6c-14.1 14.1-14.1 36.8 0 50.9 14.1 14.1 36.8 14.1 50.9 0L256 306.9l130.6 130.6c14.1 14.1 36.8 14.1 50.9 0 14-14.1 14-36.9 0-50.9z" fill="currentColor"/>
-    </svg>
+      <ul style="padding-top: 20px; list-style-type: none;">
+        <li style="margin-left: -10px;  position: relative;">
+          <a href="/thong-tin">
+            <button type="button" class="btn btn-outline-primary" style="margin: 0;">
+              <svg style="margin-bottom: 3px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <path
+                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+              </svg>
+              Thông tin cá nhân
+            </button>
+            <hr style="border: none; border-top: 2px dotted black;width:250px;margin-left:-40px" />
+          </a>
+          <hr style="border-top: 1px dotted #ccc; margin: 0; position: absolute; left: 0; right: 0;">
+        </li>
+        <li style="margin-left: 20px; padding-bottom: 10px; position: relative;">
+          <a href="/dang-tin">
+            <button type="button" class="btn btn-outline-primary" style="margin: 0;">
+              <svg style="margin-bottom: 4px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                fill="currentColor" class="ionicon" viewBox="0 0 512 512">
+                <path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48" fill="none"
+                  stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                <path
+                  d="M459.94 53.25a16.06 16.06 0 00-23.22-.56L424.35 65a8 8 0 000 11.31l11.34 11.32a8 8 0 0011.34 0l12.06-12c6.1-6.09 6.67-16.01.85-22.38zM399.34 90L218.82 270.2a9 9 0 00-2.31 3.93L208.16 299a3.91 3.91 0 004.86 4.86l24.85-8.35a9 9 0 003.93-2.31L422 112.66a9 9 0 000-12.66l-9.95-10a9 9 0 00-12.71 0z" />
+              </svg>
+              Đăng tin
+            </button>
+          </a>
+          <hr style="border-top: 1px dotted #ccc; margin: 0; position: absolute; left: 0; right: 0;">
+        </li>
+        <li style="margin-left: 13px;  position: relative;">
+          <a href="/quan-ly-tin">
+            <button type="button" class="btn btn-outline-primary" style="margin: 0;">
+              <svg style="margin-bottom: 3px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                fill="currentColor" class="ionicon" viewBox="0 0 512 512">
+                <rect x="96" y="48" width="320" height="416" rx="48" ry="48" fill="none" stroke="currentColor"
+                  stroke-linejoin="round" stroke-width="32" />
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"
+                  d="M176 128h160M176 208h160M176 288h80" />
+              </svg>
+              Quản lý tin
+            </button>
+            <hr style="border: none; border-top: 2px dotted black;width:250px;margin-left:-63px" />
+          </a>
+          <hr style="border-top: 1px dotted #ccc; margin: 0; position: absolute; left: 0; right: 0;">
+        </li>
+        <li style="margin-left: 25px; padding-bottom: 10px; position: relative;">
+          <a href="/logout">
+            <button type="button" class="btn btn-outline-danger" style="margin: 0;">Đăng xuất</button>
+            <hr style="border: none; border-top: 2px dotted black;width:250px;margin-left:-75px" />
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="xd-message-content">
-    <p>Xóa thất bại</p>
-  </div>
-  <a href="#" class="xd-message-close">
-    <i class="close-icon ion-close-round"></i>
-  </a>
+</div>
 </div>
 
 
@@ -131,31 +178,6 @@
       document.querySelector("textarea[name='description']").value = property.description;
       document.getElementById("mainForm").action = `/quan-ly-tin/edit/${property.id}`;
       document.getElementById("submitButton").textContent = "Cập nhật";
-    }
-
-    function showNotification(message, type) {
-      const successMessage = document.getElementById("msg-success");
-      const dangerMessage = document.getElementById("msg-danger");
-
-      if (type === "success") {
-        successMessage.querySelector(".xd-message-content p").textContent = message;
-        successMessage.classList.remove("hidden");
-        successMessage.classList.add("show");
-      } else if (type === "danger") {
-        dangerMessage.querySelector(".xd-message-content p").textContent = message;
-        dangerMessage.classList.remove("hidden");
-        dangerMessage.classList.add("show");
-      }
-
-      setTimeout(() => {
-        if (type === "success") {
-          successMessage.classList.remove("show");
-          successMessage.classList.add("hidden");
-        } else if (type === "danger") {
-          dangerMessage.classList.remove("show");
-          dangerMessage.classList.add("hidden");
-        }
-      }, 3000);
     }
 
     const closeIcons = document.querySelectorAll('.xd-message .close-icon');

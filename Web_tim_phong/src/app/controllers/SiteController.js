@@ -6,8 +6,7 @@ class SiteController {
       const data = await postModel.getPost();
       res.render("home", {
         data,
-        user: req.session.user,
-        sodu: req.session.sodu,
+        user: req.session.user
       });
     } catch (error) {
       res.status(500).send("Lỗi server");

@@ -1,317 +1,322 @@
+body{
+  font-family: Arial, sans-serif;
+}
 #scrollToTopBtn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 20px;
-  position: fixed;
-  right: 20px;
-  z-index: 100;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  background-color: red;
-  color: white;
-  bottom: 80px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    position: fixed;
+    right: 20px;
+    z-index: 100;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: red;
+    color: white;
+    bottom: 80px;
+}
+//LOGIN FORM
+.login-form{
+    border-radius: 10px;
+    margin:50px auto;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+.login-form h1{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+.form-div{
+    display:flex;
+    flex-direction: column;
+}
+.form-div label{
+    font-size: 18px;
+    margin-bottom:5px ;
+}
+.form-div input[type="text"], .form-div input[type="password"],.form-div input[type="email"]{
+    padding: 10px;
+    margin-bottom: 0px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+}
+.form-div input[type="submit"]{
+    padding: 10px;
+    border:none ;
+    border-radius: 5px;
+    color:#fff;
+    font-size: 18px;
+    background-color: #533bf3;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+    margin:10px 0 10px;
+}
+.forget-signup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.forget-signup .forget{
+    color:#0152ff;
+    width: auto;
+    margin:auto;
+    padding:6px;
+}
+  
+.forget-signup .signup{
+    text-align: center;
+    margin: 10px auto;
+    padding: 10px;
+    border:none ;
+    border-radius: 5px;
+    color:#fff;
+    font-size: 18px;
+    background-color: #00c013;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+    margin:10px 0 10px;
 }
 
-//LOGIN FORM
-.login-form {
-  border-radius: 10px;
-  margin: 50px auto;
-  max-width: 500px;
-  background-color: #fff;
-  padding: 30px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-}
-.login-form h1 {
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 30px;
-}
-.form-div {
-  display: flex;
-  flex-direction: column;
-}
-.form-div label {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-.form-div input[type="text"], 
-.form-div input[type="password"], 
-.form-div input[type="email"] {
-  padding: 10px;
-  margin-bottom: 0px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
-}
-.form-div input[type="submit"] {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 18px;
-  background-color: #533bf3;
-  cursor: pointer;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
-  margin: 10px 0 10px;
-}
-.forget-signup {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.forget-signup .forget {
-  color: #0152ff;
-  width: auto;
-  margin: auto;
-  padding: 6px;
-}
-.forget-signup .signup {
-  text-align: center;
-  margin: 10px auto;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 18px;
-  background-color: #00c013;
-  cursor: pointer;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
-  margin: 10px 0 10px;
-}
 
 //SIGN UP
-.signup-div {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
+.signup-div{
+    display: flex;
+    gap:20px;
+    justify-content: center;
+    
 }
-.signup-form1 {
-  border-radius: 10px;
-  margin-top: 50px;
-  width: 400px;
-  max-width: 500px;
-  background-color: #fff;
-  padding: 30px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
+.signup-form1{
+    border-radius: 10px;
+    margin-top:50px ;
+    width: 400px;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    display:flex;
+    flex-direction: column;
 }
-.signup-form1 h1 {
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 30px;
+.signup-form1 h1{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+} 
+.signup-form1 .haveacc{
+    display: flex;
+    justify-content: center;
+    gap:5px;
 }
-.signup-form1 .haveacc {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
+.haveacc .login{
+    color:#0152ff;
 }
 .haveacc .login {
-  color: #0152ff;
-  text-decoration: underline;
+    text-decoration: underline;
 }
-.signup-form2 {
-  border-radius: 10px;
-  margin-top: 50px;
-  width: 400px;
-  max-width: 500px;
-  background-color: #fff;
-  padding: 30px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
+  
+.signup-form2{
+    border-radius: 10px;
+    margin-top:50px ;
+    width: 400px;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    display:flex;
+    flex-direction: column;
 }
-.signup-form2 h1 {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 38px;
+.signup-form2 h1{
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 38px;
 }
-.signup-form2 h2 {
-  text-align: center;
-  font-size: 24px;
+.signup-form2 h2{
+    text-align: center;
+    font-size: 24px;
 }
-.signup-form2 .gioitinh-div {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 0 10px;
+.signup-form2 .gioitinh-div{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 10px;
 }
-.form-div input[type="button"] {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 18px;
-  background-color: #533bf3;
-  cursor: pointer;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
-  margin: 10px 0 10px;
+.form-div input[type="button"]{
+    padding: 10px;
+    border:none ;
+    border-radius: 5px;
+    color:#fff;
+    font-size: 18px;
+    background-color: #533bf3;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+    margin:10px 0 10px;
 }
-.signup-div p {
-  margin-top: 10px;
-}
-
-///xem
-.xem-container {
-  display: flex;
-  width: 60%; /* Adjust as needed */
-  margin: 0 auto; /* This centers the div horizontally */
-  background-color: #f0f0f0;
-  padding: 20px;
-}
-.phong-tro {
-  width: 70%;
-  margin-right: 20px;
-}
-.nguoi-dang {
-  width: 30%;
-}
-.hinh {
-  margin-bottom: 0px;
-}
-.thong-tin {
-  margin-top: 5px;
-  background-color: rgb(255, 255, 255);
-}
-.dac-diem {
-  margin-bottom: 10px;
-  background-color: rgb(255, 255, 255);
-}
-.chi-tiet {
-  margin-top: 17px;
-  background-color: rgb(255, 255, 255);
-}
-.thong-tin .title {
-  font-size: 26px;
-}
-.gia {
-  font-size: 17px;
-  color: red;
-}
-.dientich {
-  font-size: 17px;
-}
-.nguoi-dang .lien-he {
-  margin-bottom: 20px;
-}
-.nguoi-dang .thong-tin {
-  margin-bottom: 20px;
-}
-* {
-  box-sizing: border-box;
+.signup-div p{
+    margin-top: 10px;
 }
 
-/* Position the image container (needed to position the left and right arrows) */
-.container {
-  position: relative;
+  ///xem
+.xem-container{
+    display: flex;
+    width: 60%; /* Adjust as needed */
+    margin: 0 auto; /* This centers the div horizontally */
+    background-color: #f0f0f0;
+    padding: 20px;
 }
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
+.phong-tro{
+    width:70%;
+    margin-right:20px;
 }
-
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
+.nguoi-dang{
+    width:30%;
 }
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
+.hinh{
+    margin-bottom: 0px;
 }
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+.thong-tin{
+    margin-top: 5px;
+    background-color: rgb(255, 255, 255);
 }
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+.dac-diem{
+    margin-bottom: 10px;
+    background-color: rgb(255, 255, 255);
 }
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
+.chi-tiet{
+    margin-top:17px;
+    background-color: rgb(255, 255, 255);
 }
-
-/* Container for image text */
-.caption-container {
-  text-align: center;
-  background-color: #222;
-  padding: 2px 16px;
-  color: white;
+.thong-tin .title{
+    font-size: 26px;
 }
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.gia{
+    font-size:17px;
+    color:red;
 }
-
-/* Six columns side by side */
-.column {
-  float: left;
-  width: 16.66%;
+.dientich{
+    font-size:17px;
+    
 }
-
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
-}
-
-.active,
-.demo:hover {
-  opacity: 1;
-}
+  .nguoi-dang .lien-he{
+    margin-bottom: 20px;
+   
+  }
+  .nguoi-dang .thong-tin{
+    margin-bottom: 20px;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Position the image container (needed to position the left and right arrows) */
+  .container {
+    position: relative;
+  }
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+  
+  /* Add a pointer when hovering over the thumbnail images */
+  .cursor {
+    cursor: pointer;
+  }
+  
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* Container for image text */
+  .caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Six columns side by side */
+  .column {
+    float: left;
+    width: 16.66%;
+  }
+  
+  /* Add a transparency effect for thumnbail images */
+  .demo {
+    opacity: 0.6;
+  }
+  
+  .active,
+  .demo:hover {
+    opacity: 1;
+  }
 
 //DANG TIN
 .dang-tin {
-  width: 50%; /* Adjust as needed */
-  margin: 0 auto; /* This centers the div horizontally */
-  background-color: #ffffff;
-  padding: 20px;
-}
-.dang-tin textarea {
-  width: 100%;
-}
-.dang-tin .them-anh, 
-.title, 
-.dia-chi, 
-.gia, 
-.mo-ta, 
-.lien-he {
-  margin-top: 15px;
-}
-.dang-tin input {
-  margin-top: 15px;
-  height: 50px;
-}
-.dia-chi .diachi-popup {
-  text-align: center;
-}
-/* Style for the popup background */
+    width: 50%; /* Adjust as needed */
+    margin: 0 auto; /* This centers the div horizontally */
+    background-color: #fff;
+    padding: 20px;
+    flex:7;
+  }
+  .dang-tin textarea{
+    width:100%
+  }
+  .dang-tin .them-anh,.title,.dia-chi,.gia,.mo-ta,.lien-he{
+    margin-top: 15px;
+    
+  }
+  .dang-tin input{
+    margin-top: 15px;
+    height: 50px;
+  }
+  .dia-chi .diachi-popup{
+    text-align: center;
+  }
+  /* Style for the popup background */
 .popup {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -321,9 +326,11 @@
   width: 100%;
   height: 100%;
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
+/* Style for the popup content */
 .popup-content {
   background-color: #fefefe;
   margin: 10% auto; /* 15% from the top and centered */
@@ -331,6 +338,8 @@
   border: 1px solid #888;
   width: 40%; /* Could be more or less, depending on screen size */
 }
+
+/* Style for the close button */
 .closeBtn {
   color: #aaa;
   float: right;
@@ -344,46 +353,188 @@
   text-decoration: none;
   cursor: pointer;
 }
-
-.preview-images {
-  display: flex;
-  flex-wrap: wrap;
+.nut-div{
+  flex:3;
+  border-radius: 15px;
+  background-color: #fff;
+}
+.custom-select1 {
+  position: relative;
+}
+.custom-select1 select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 30px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 15px 15px;
 }
 
-.preview-images img {
-  max-width: 100px;
-  max-height: 100px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+
+///post-container
+///home
+.custom-select {
+  width: 250px;
+  position: relative;
 }
 
-
-//ownpost
-.image-gallery .property img {
-  display: none;
+select {
+  appearance: none;
+  -webkit-appearance: none; /* Safari */
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5em 2em 0.5em 1em;
+  background-color: #fff;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  color: #000;
+  cursor: pointer;
 }
 
-//home
+.custom-select::before,
+.custom-select::after {
+  --size: 0.3rem;
+  content: "";
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  top: 40%;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 55%;
+}
+.searchbox-div{
+  
+  justify-content: center; 
+  align-items: center;
+  background-color: rgb(255, 255, 255);  
+  margin:0 auto;
+  width: 87%;
+  border-radius: 5px;
+}
 .post-container {
   display: flex;
   width: 90%; /* Adjust as needed */
   margin: 0 auto; /* This centers the div horizontally */
   padding: 20px;
-  gap: 15px;
+  gap:15px;
+  
 }
-.post-container .post-div {
-  flex: 7;
-  background-color: #84affa;
+.post-container .post-div{
+  flex:7;
+  
   max-width: 778px;
   border-radius: 3px;
+
 }
 
-.ds-locgia a {
-  text-decoration: none;
-  color: rgb(65, 65, 65);
+.ds-locgia a{
+  text-decoration:none;
+  color:rgb(65, 65, 65)
 }
-.ds-locgia li {
+.ds-locgia li{
   margin-bottom: 7px;
+}
+//thongtin
+
+
+.overlay-container { 
+  display: none; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;  
+  justify-content: center; 
+  align-items: center; 
+
+} 
+
+.popup-box { 
+  background: #fff; 
+  padding: 24px; 
+  border-radius: 12px; 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
+  width: 320px; 
+  text-align: center; 
+  opacity: 0; 
+  transform: scale(0.8); 
+  animation: fadeInUp 0.5s ease-out forwards; 
+} 
+
+
+
+.form-label { 
+  margin-bottom: 10px; 
+  font-size: 16px; 
+  color: #444; 
+  text-align: left; 
+} 
+
+.form-input { 
+  padding: 10px; 
+  margin-bottom: 20px; 
+  border: 1px solid #ccc; 
+  border-radius: 8px; 
+  font-size: 16px; 
+  width: 100%; 
+  box-sizing: border-box; 
+} 
+
+.btn-submit, 
+.btn-close-popup { 
+  padding: 12px 24px; 
+  border: none; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
+} 
+
+.btn-submit { 
+  background-color: green; 
+  color: #fff; 
+} 
+
+.btn-close-popup { 
+  margin-top: 12px; 
+  background-color: #e74c3c; 
+  color: #fff; 
+} 
+
+.btn-submit:hover, 
+.btn-close-popup:hover { 
+  background-color: #4caf50; 
+} 
+
+/* Keyframes for fadeInUp animation */ 
+@keyframes fadeInUp { 
+  from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+  } 
+
+  to { 
+      opacity: 1; 
+      transform: translateY(0); 
+  } 
+} 
+
+/* Animation for popup */ 
+.overlay-container.show { 
+  display: flex; 
+  opacity: 1; 
 }
 
 //nofi
@@ -479,3 +630,402 @@
 .show {
   display: flex;
 }
+
+///xem
+.xem-container {
+  display: flex;
+  width: 90%; /* Adjust as needed */
+  margin: 0 auto; /* This centers the div horizontally */
+  padding: 20px;
+  gap: 15px;
+}
+
+.phong-tro {
+  width: 50%; /* Adjust as needed */
+  margin: 0 auto; /* This centers the div horizontally */
+  background-color: #fff;
+  padding: 20px;
+  flex: 7;
+  border-radius: 15px;
+}
+
+.nguoi-dang {
+  flex: 3;
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+.dac-diem {
+  background-color: white;
+}
+
+.chi-tiet {
+  background-color: white;
+}
+
+.gia {
+  font-size: 17px;
+  color: red;
+}
+
+.dientich {
+  font-size: 17px;
+}
+
+.nguoi-dang .lien-he {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  justify-content: center;
+}
+
+.nguoi-dang .thong-tin {
+  margin-bottom: 20px;
+}
+.wide-button {
+  width: 100%;
+  max-width: 100%;
+  height: 45px; /* Adjust the height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom:10px
+}
+
+.wide-button:hover {
+  background-color: #0056b3;
+}
+.wide-button1 {
+  width: 100%;
+  max-width: 100%;
+  height: 45px; /* Adjust the height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  background-color: #00b144;
+  border:none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom:10px
+}
+.phong-tro svg{
+  margin-top:-4px;
+  margin-right:5px;
+}
+.nguoi-dang svg{
+  margin-top:0px;
+  margin-right:5px;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  background-color: #00000081;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  width: fit-content;
+  border-radius: 15px;
+  text-align: center;
+  background-color: #22222236;
+  padding: 2px 16px;
+  color: white;
+  margin: auto;
+  
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+///admin
+.active,
+.demo:hover {
+  opacity: 1; }
+
+.dang-tin {
+  width: 50%;
+  /* Adjust as needed */
+  margin: 0 auto;
+  /* This centers the div horizontally */
+  background-color: #f3f3f3;
+  padding: 20px; }
+
+.dang-tin textarea {
+  width: 100%; }
+
+.dang-tin .them-anh, .title, .dia-chi, .gia, .mo-ta, .lien-he {
+  margin-top: 15px; }
+
+.dang-tin input {
+  margin-top: 15px;
+  height: 50px; }
+
+.dia-chi .diachi-popup {
+  text-align: center; }
+
+.gia {
+  display: flex;
+  justify-content: space-between;
+  /* Distribute items evenly along the main axis */
+  align-items: center;
+  /* Center items vertically */ }
+
+.gia input {
+  flex: 1;
+  /* Take up remaining space */
+  margin-right: 10px;
+  /* Add some spacing between inputs */ }
+
+/* Style for the popup background */
+.popup {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 10;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */ }
+
+/* Style for the popup content */
+.popup-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  /* Could be more or less, depending on screen size */ }
+
+/* Style for the close button */
+.closeBtn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold; }
+
+.closeBtn:hover,
+.closeBtn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer; }
+
+.tai-khoan {
+  width: 60%;
+  /* Adjust as needed */
+  margin: 0 auto;
+  /* This centers the div horizontally */
+  background-color: #f3f3f3;
+  padding: 20px; }
+
+.tai-khoan .timtk {
+  justify-content: center;
+  align-items: center; }
+
+.tai-khoan .timtk input[type="text"] {
+  flex: 1;
+  max-width: 170px;
+  /* Adjust the maximum width as needed */
+  margin-right: 5px;
+  /* Add some spacing between input and button */ }
+
+.tai-khoan .ds-tk {
+  display: flex;
+  align-items: center;
+  justify-content: space-around; }
+
+.tai-khoan .ds-tk .table input {
+  margin-bottom: 10px;
+  margin-top: 6px; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif; }
+
+.modal {
+  text-align: center;
+  display: none;
+  position: fixed;
+  z-index: 9;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.modalContent {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%; }
+
+.close {
+  color: #ff4141;
+  float: right;
+  font-size: 40px;
+  font-weight: bold; }
+
+.close:hover, .close:focus {
+  color: #ff1010;
+  cursor: pointer; }
+
+.modalContent button {
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px; }
+
+.btnchuyen {
+  background-color: #ff4141;
+  margin-right: 20px; }
+
+.btnchuyen:hover {
+  background-color: #ff0707; }
+.btnhuy:hover {
+  background-color: #a7a7a7; }
+
+.modal1 {
+  text-align: center;
+  display: none;
+  position: fixed;
+  z-index: 9;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.modalContent1 {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%; }
+
+.close1 {
+  color: #ff4141;
+  float: right;
+  font-size: 40px;
+  font-weight: bold; }
+
+.close1:hover, .close1:focus {
+  color: #ff1010;
+  cursor: pointer; }
+
+.modalContent1 button {
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px; }
+
+.btnchuyen1 {
+  background-color: #ff4141;
+  margin-right: 20px; }
+
+.btnchuyen1:hover {
+  background-color: #ff0707; }
+
+.btnhuy1:hover {
+  background-color: #a7a7a7; }
