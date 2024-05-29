@@ -69,10 +69,12 @@
             if (xhr.status === 200) {
               const response = JSON.parse(xhr.responseText);
               if (response.err) {
-                displayError(response.err.type, response.err.mesage);
+                showNotification("Thất bại", "danger");
               } else {
-                alert("Đăng ký thành công!");
-                window.location.href = "/login";
+                showNotification("Thành công", "success");
+                setTimeout(() => {
+                  window.location.href = "/login";
+                }, 2000);
               }
             } else {
               console.error("Request failed with status:", xhr.status);

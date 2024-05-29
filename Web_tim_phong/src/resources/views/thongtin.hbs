@@ -1,6 +1,5 @@
 <div class="post-container">
-    <div class="dang-tin" style=" border: 2px solid rgb(21, 179, 247);border-radius:15px"
-    style="background-color:rgb(255, 255, 255) ;border-radius: 15px;">
+    <div class="dang-tin" style=" border: 2px solid rgb(21, 179, 247);border-radius:15px" style="background-color:rgb(255, 255, 255) ;border-radius: 15px;">
         <form action="/thong-tin" method="post" id="mainForm" enctype="multipart/form-data">
             <h1 style="text-align: center;">Thông tin cá nhân</h1>
             <div class="">
@@ -19,29 +18,23 @@
             </div>
         </form>
         <div style="text-align:center; margin-top:20px">
-                <button class="btn btn-primary" onclick="togglePopup()"> Đổi mật khẩu </button> 
-            </div>
+            <button class="btn btn-primary" onclick="togglePopup()"> Đổi mật khẩu </button> 
+        </div>
     <div id="popupOverlay" class="overlay-container"> 
         <div class="popup-box"> 
             <h2 style="color: green;">Đổi mật khẩu</h2> 
-            <form class="form-container" id="form-popup" action="/thong-tin" method="post"> 
+            <form class="form-container" id="form-popup" action="/thong-tin/doipass"  id="mainForm2" method="post"> 
                 <label class="form-label" for="oldpass" style="margin-bottom:-10px "> Mật khẩu cũ: </label> 
-                <input class="form-input" type="password" 
-                placeholder="Nhập mật khẩu cũ"  name="oldpass" required> 
+                <input class="form-input" type="password" placeholder="Nhập mật khẩu cũ"  name="oldpass" required> 
   
                 <label class="form-label" for="newpass"style="margin-bottom:-10px ">Mật khẩu mới:</label> 
-                <input class="form-input"
-                       type="password" 
-                       placeholder="Nhập mật khẩu mới"
-                        
-                       name="newpass" required> 
-                <button class="btn-submit" form="form-popup" type="submit"> Lưu </button> 
+                <input class="form-input" type="password" placeholder="Nhập mật khẩu mới" name="newpass" required> 
+                <button class="btn-submit" form="form-popup" id="submitButton2" type="submit"> Lưu </button> 
             
-            <button type="button" class="btn-close-popup" 
-                    onclick="togglePopup()"> 
-              Đóng 
-              </button> 
-             </form>  
+                <button type="button" class="btn-close-popup" onclick="togglePopup()"> 
+                  Đóng 
+                </button> 
+            </form>  
         </div> 
     </div> 
         
@@ -55,8 +48,7 @@
         <div style="display:flex">
           <img src="https://i.pinimg.com/736x/21/91/6e/21916e491ef0d796398f5724c313bbe7.jpg"
             style="width:40px;border-radius:25px">
-          <a class="card-text"
-            style="margin:auto;margin-left:10px;text-decoration:none;color:rgb(65, 65, 65)">{{{data.dataname}}}</a>
+          <a class="card-text" name="username" style="margin:auto;margin-left:10px;text-decoration:none;color:rgb(65, 65, 65)">{{{data.username}}}</a>
         </div>
       </div>
 
@@ -128,14 +120,37 @@
 
   document.addEventListener("DOMContentLoaded", function() {
 
-    const editButtons = document.querySelectorAll(".submitButton");
+    const submitButton = document.querySelector(".submitButton");
+    const submitButton2 = document.querySelector(".submitButton2");
+
 
     submitButton.addEventListener("click", async function(event) {
-      event.preventDefault();
+      {{!-- event.preventDefault(); --}}
       const formData = new FormData(document.getElementById("mainForm"));
 
       const xhr = new XMLHttpRequest();
       xhr.open("POST", `/thong-tin`, true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            showNotification("Cập nhật thành công", "success");
+            setTimeout(() => {
+              window.location.href = "/thong-tin";
+            }, 2000);
+          } else {
+            showNotification("Cập nhật thất bại", "danger");
+          }
+        }
+      };
+      xhr.send(formData);
+    });
+
+    submitButton2.addEventListener("click", async function(event) {
+      {{!-- event.preventDefault(); --}}
+      const formData = new FormData(document.getElementById("mainForm2"));
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", `/thong-tin/doipass`, true);
       xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200) {

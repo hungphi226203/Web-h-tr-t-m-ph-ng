@@ -1,7 +1,7 @@
 const query = require("../../utils/query");
 const createUserModel = {
 
-  signup: async ({username, password, hovaten, cccd, sdt, email}) => {
+  signup: async ({username, password, fullname, id_card, phone, email}) => {
     // return [result success,err]
     try {
 
@@ -14,20 +14,20 @@ const createUserModel = {
           return [null, { mesage: "Tài khoản này đã tồn tại", type: 1 }];
       }
 
-      // Kiểm tra id_card (cccd)
+      // Kiểm tra id_card (id_card)
       const [idCardRow] = await query(
           "SELECT * FROM `taikhoan` WHERE id_card = ?",
-          [cccd]
+          [id_card]
       );
 
       if (idCardRow) {
         return [null, { mesage: "Số căn cước này đã tồn tại", type: 6 }];
       }
 
-      // Kiểm tra phone (sdt)
+      // Kiểm tra phone (phone)
       const [phoneRow] = await query(
           "SELECT * FROM `taikhoan` WHERE phone = ?",
-          [sdt]
+          [phone]
       );
 
       if (phoneRow) {
@@ -46,7 +46,7 @@ const createUserModel = {
 
       await query(
         "INSERT INTO `taikhoan` (username, pass, fullname, id_card, phone, email) VALUES (?, ?, ?, ?, ?, ?)",
-       [username, password, hovaten, cccd, sdt, email]
+       [username, password, fullname, id_card, phone, email]
       );
 
       return [{ username: username }, null];

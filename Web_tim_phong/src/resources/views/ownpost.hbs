@@ -1,55 +1,61 @@
-<div class="post-container">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Tiêu đề</th>
-        <th>Ảnh</th>
-        <th>Địa chỉ</th>
-        <th>Diện tích (m2)</th>
-        <th>Giá (VND)</th>
-        <th>Mô tả</th>
-        <th>Trạng thái</th>
-        <th>Hành động</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each data}}
-        <tr>
-          <td>{{id}}</td>
-          <td>{{title}}</td>
-          <td>
-            <div class="col-md-4">
-              {{#each (split imagePath ',')}}
-                {{#if (isFirst @index)}}
-                  <a>
-                    <img src="{{this}}" class="img-fluid rounded-start" alt="{{title}}"
-                        style="width: 100%; height: 100%; object-fit: contain; aspect-ratio: 1/1; padding:10px">
-                  </a>
-                {{else}}
-                  <img src="{{this}}" class="img-fluid rounded-start" alt="{{title}}"
-                      style="display: none; width: 100%;height: 100%; object-fit: contain; aspect-ratio: 1/1; padding:10px">
-                {{/if}}
-              {{/each}}
-            </div>
-          </td>
-          <td>{{addres}}</td>
-          <td>{{area}}</td>
-          <td>{{price}}</td>
-          <td>{{{des}}}</td>
-          <td>{{status}}</td>
-          <td>
-            <a href="/quan-ly-tin/manage/{{username}}/{{id}}/{{title}}" class="btn btn-outline-danger viewButton" data-username="{{username}}" data-id="{{id}}" data-title="{{title}}">Xem</a>
-            <a href="/quan-ly-tin/edit/{{id}}" class="btn btn-outline-danger editButton" data-id="{{id}}">Sửa</a>
-            <a href="javascript:void(0);" class="btn btn-outline-danger deleteButton" data-id="{{id}}">Xóa</a>
-          </td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
 
-  <div class="nut-div" style="height: 400px; position: sticky; top: 20px; border: 2px solid rgb(21, 179, 247);">
-<div style="position: sticky; top: 50px;">
+<div class="post-container" >
+  <div class="table-wrapper" style="border: 2px solid rgb(21, 179, 247);margin-bottom:50px">
+    <div class="table-container" >
+        <table class="table table-bordered" >
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tiêu đề</th>
+                    <th>Ảnh</th>
+                    <th>Địa chỉ</th>
+                    <th>Diện tích (m2)</th>
+                    <th>Giá (VND)</th>
+                    <th>Mô tả</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+    {{#each data}}
+    <tr>
+        <td>{{id}}</td>
+        <td>{{title}}</td>
+        <td class="text-center">
+            <div class="d-inline-block">
+                {{#each (split imagePath ',')}}
+                {{#if (isFirst @index)}}
+                <a>
+                    <img src="{{this}}" class="img-fluid rounded-start" alt="{{title}}" style="max-height: 200px;max-width:300px">
+                </a>
+                {{else}}
+                <img src="{{this}}" class="img-fluid rounded-start" alt="{{title}}" style="display: none;">
+                {{/if}}
+                {{/each}}
+            </div>
+        </td>
+        <td>{{addres}}</td>
+        <td>{{area}}</td>
+        <td>{{price}}</td>
+        <td>{{{des}}}</td>
+        <td>{{status}}</td>
+        <td>
+            <a href="/quan-ly-tin/manage/{{username}}/{{id}}/{{title}}" class="btn btn-outline-danger viewButton" data-username="{{username}}" data-id="{{id}}" data-title="{{title}}">Xem</a><br/>
+            <a href="/quan-ly-tin/edit/{{id}}" class="btn btn-outline-danger editButton" data-id="{{id}}">Sửa</a><br/>
+            <a href="javascript:void(0);" class="btn btn-outline-danger deleteButton" data-id="{{id}}">Xóa</a><br/>
+        </td>
+    </tr>
+    {{/each}}
+</tbody>
+
+        </table>
+    </div>
+
+
+</div>
+
+  <div class="nut-div1" style="height: 400px; position: sticky; top: 20px; border: 2px solid rgb(21, 179, 247);">
+  <div>
     <div style="padding-left:50px;padding-top:30px">
       <div style="display: flex; justify-content: center;margin-left:-50px;">
         <div style="display:flex">
@@ -60,10 +66,10 @@
         </div>
       </div>
 
-      <ul style="padding-top: 20px; list-style-type: none;">
-        <li style="margin-left: -10px;  position: relative;">
+      <ul style="padding-top: 20px; list-style-type: none; margin-left:-30px">
+        <li style="margin-left: -10px;  position: relative;min-width:100%">
           <a href="/thong-tin">
-            <button type="button" class="btn btn-outline-primary" style="margin: 0;">
+            <button type="button" class="btn btn-outline-primary" style="margin-left:-10px;">
               <svg style="margin-bottom: 3px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                 fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                 <path
@@ -71,13 +77,12 @@
               </svg>
               Thông tin cá nhân
             </button>
-            <hr style="border: none; border-top: 2px dotted black;width:250px;margin-left:-40px" />
+            <hr style="border: none; border-top: 2px dotted black;width:230px;margin-left:-35px" />
           </a>
-          <hr style="border-top: 1px dotted #ccc; margin: 0; position: absolute; left: 0; right: 0;">
         </li>
         <li style="margin-left: 20px; padding-bottom: 10px; position: relative;">
           <a href="/dang-tin">
-            <button type="button" class="btn btn-outline-primary" style="margin: 0;">
+            <button type="button" class="btn btn-outline-primary" style="margin-left:-10px;">
               <svg style="margin-bottom: 4px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                 fill="currentColor" class="ionicon" viewBox="0 0 512 512">
                 <path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48" fill="none"
@@ -88,11 +93,10 @@
               Đăng tin
             </button>
           </a>
-          <hr style="border-top: 1px dotted #ccc; margin: 0; position: absolute; left: 0; right: 0;">
         </li>
         <li style="margin-left: 13px;  position: relative;">
           <a href="/quan-ly-tin">
-            <button type="button" class="btn btn-outline-primary" style="margin: 0;">
+            <button type="button" class="btn btn-outline-primary" style="margin-left:-10px;">
               <svg style="margin-bottom: 3px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                 fill="currentColor" class="ionicon" viewBox="0 0 512 512">
                 <rect x="96" y="48" width="320" height="416" rx="48" ry="48" fill="none" stroke="currentColor"
@@ -102,14 +106,14 @@
               </svg>
               Quản lý tin
             </button>
-            <hr style="border: none; border-top: 2px dotted black;width:250px;margin-left:-63px" />
+            <hr style="border: none; border-top: 2px dotted black;width:230px;margin-left:-58px" />
+
           </a>
-          <hr style="border-top: 1px dotted #ccc; margin: 0; position: absolute; left: 0; right: 0;">
         </li>
         <li style="margin-left: 25px; padding-bottom: 10px; position: relative;">
           <a href="/logout">
-            <button type="button" class="btn btn-outline-danger" style="margin: 0;">Đăng xuất</button>
-            <hr style="border: none; border-top: 2px dotted black;width:250px;margin-left:-75px" />
+            <button type="button" class="btn btn-outline-danger" style="margin-left:-10px;">Đăng xuất</button>
+            <hr style="border: none; border-top: 2px dotted black;width:230px;margin-left:-70px" />
           </a>
         </li>
       </ul>

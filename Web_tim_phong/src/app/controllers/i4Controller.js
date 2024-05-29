@@ -23,10 +23,31 @@ const i4Controller = {
   capnhat: async (req, res) => {
     try {
       
-      console.log(req.body)
+      console.log(req.body.fullname)
 
-      const {username, pass, role, fullname, id_card, phone, email } = req.body;
-      const [result, error] = await i4Model.capnhat(username, pass, role, fullname, id_card, phone, email);
+      const username = req.session.user.username;
+      const {fullname, id_card, phone, email } = req.body;
+      const [result, error] = await i4Model.capnhat(username, fullname, id_card, phone, email);
+
+      if (error) {
+        return res.status(500).json({ message: "Cập nhật thất bại", error });
+      } else {
+        return res.status(200).json({ message: "Cập nhật thành công" });
+      }
+    } catch (error) {
+      console.error("Error updating user data:", error);
+      res.status(500).json({ message: "Lỗi xảy ra" });
+    }
+  },
+
+  doipass: async (req, res) => {
+    try {
+      
+      const username = req.session.user.username;
+      const oldpass = req.body.oldpass;
+      const newpass = req.body.newpass;
+
+      const [result, error] = await i4Model.doipass(username,oldpass,newpass);
 
       if (error) {
         return res.status(500).json({ message: "Cập nhật thất bại", error });

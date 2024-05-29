@@ -42,28 +42,10 @@
                                 </div>
                             </td>
                             <td>
-                                <button  type="button" class="btn btn-outline-dark btn-quyen openModal">{{this.role}}</button>
-                                <button style="display: none;" type="button" class="btnquyen-user ">{{this.username}}</button>
-                                    <div class="modal">
-                                    <div class="modalContent">
-                                    <span class="close">×</span>
-                                    <p class="p">Bạn có chắc là muốn thay đổi quyền của tài khoản này?</p>
-                                    <button class="btnchuyen" >Xác nhận</button>
-                                    <button class="btnhuy" >Hủy</button>
-                                    </div>
-                                    </div>
+                                <a href="javascript:void(0);" class="btn btn-outline-danger changeButton" data-id="{{this.username}}">{{this.role}}</a>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-danger btn-xoa openModal1">Xóa</button>
-                                <button style="display: none;" type="button" class="btnquyen-user1 ">{{this.username}}</button>
-                                <div class="modal1">
-                                    <div class="modalContent1">
-                                    <span class="close1">×</span>
-                                    <p class="p">Bạn có chắc là muốn xóa tài khoản này?</p>
-                                    <button class="btnchuyen1" >Xác nhận</button>
-                                    <button class="btnhuy1" >Hủy</button>
-                                    </div>
-                                    </div>
+                                <a href="javascript:void(0);" class="btn btn-outline-danger deleteButton" data-id="{{this.username}}">Xóa</a>
                             </td>
                         </tr>
                     {{/each}}
@@ -75,10 +57,12 @@
     </div>
 </div>
 <form class="form-quyen"></form>
+
+
+
 <script>
 
     var btnThongTins = document.querySelectorAll(".btn-thongtin");
-    var btnQuyens = document.querySelectorAll(".btn-quyen");
     var closeBtns = document.querySelectorAll(".closeBtn");
     
 
@@ -97,80 +81,59 @@
         };
     });
 
-    btnQuyens.forEach(function(btnQuyen) {
-        btnQuyen.style.marginLeft = "-10px";
-        btnQuyen.style.width = "90%";
+    document.addEventListener("DOMContentLoaded", function() {
+        const deleteButtons = document.querySelectorAll(".deleteButton");
+
+        deleteButtons.forEach(function(button) {
+            button.addEventListener("click", function(event) {
+                event.preventDefault();
+                const propertyId = button.getAttribute("data-id");
+                if (confirm("Bạn có chắc chắn muốn xóa?")) {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open("DELETE", `/admin/quan-ly-tai-khoan/delete/${propertyId}`, true);
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === XMLHttpRequest.DONE) {
+                            if (xhr.status === 200) {
+                                showNotification("Xóa thành công", "success");
+                                setTimeout(() => location.reload(), 2000);
+                            } else {
+                                showNotification("Xóa thất bại", "danger");
+                            }
+                        }
+                    };
+                    xhr.send();
+                }
+            });
+        });
+
+        const changeButton = document.querySelectorAll(".changeButton");
+
+        changeButton.forEach(function(button) {
+            button.addEventListener("click", function(event) {
+                event.preventDefault();
+                const propertyId = button.getAttribute("data-id");
+                if (confirm("Bạn có chắc chắn muốn đổi quyền user?")) {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open("POST", `/quan-ly-tai-khoan/change/${propertyId}`, true);
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === XMLHttpRequest.DONE) {
+                            if (xhr.status === 200) {
+                                showNotification("Thay đổi quyền thành công", "success");
+                                setTimeout(() => location.reload(), 2000);
+                            } else {
+                                showNotification("Thay đổi quyền thất bại", "danger");
+                            }
+                        }
+                    };
+                    xhr.send();
+                }
+            });
+        });
+
+
     });
 
-   
 
-    //quyen
-    var modal = document.querySelector(".modal");
-    var btns = document.querySelectorAll(".openModal");
-    var spans = document.querySelectorAll(".close");
-    var form_quyen=document.querySelector(".form-quyen");
-    var btnquyen_users=document.querySelectorAll(".btnquyen-user");
-    var btnchuyens=document.querySelectorAll(".btnchuyen");
-    var btnhuys=document.querySelectorAll(".btnhuy");
-    btns.forEach(function(btn, index) {
-        btn.onclick = function() {
-            var btnquyen_user = document.querySelectorAll(".btnquyen-user")[index];
-            if(btn.innerHTML=="admin"){
-                form_quyen.action="/admin/tai-khoan/quyen/"+btnquyen_user.innerHTML+"ad";
-            }else{
-                form_quyen.action="/admin/tai-khoan/quyen/"+btnquyen_user.innerHTML+"us";
-            }
-            modal.style.display = "block";
-        };
-    });
-    spans.forEach(function(span) {
-        span.onclick = function() {
-            modal.style.display = "none";
-        };
-    });
-    btnchuyens.forEach(function(btnchuyen) {
-        btnchuyen.onclick = function() {
-            
-            form_quyen.submit();
-        };
-    });
-    btnhuys.forEach(function(btnhuy) {
-        btnhuy.onclick = function() {
-            modal.style.display = "none";
-        };
-    });
-   window.onclick = function(event) {
-      if (event.target == modal) {
-         hideModal();
-      }
-   };
-    var modal1 = document.querySelector(".modal1");
-    var btns1 = document.querySelectorAll(".openModal1");
-    var spans1 = document.querySelectorAll(".close1");
-    //var form_quyen=document.querySelector(".form-quyen");
-    var btnchuyens1=document.querySelectorAll(".btnchuyen1");
-    var btnhuys1=document.querySelectorAll(".btnhuy1");
-
-    btns1.forEach(function(btn, index) {
-        btn.onclick = function() {
-            var btnquyen_user = document.querySelectorAll(".btnquyen-user1")[index];
-            form_quyen.action="/admin/tai-khoan/xoa/"+btnquyen_user.innerHTML;
-            modal1.style.display = "block";
-        };
-    });
-    spans1.forEach(function(span) {
-        span.onclick = function() {
-            modal1.style.display = "none";
-        };
-    });
-    btnchuyens1.forEach(function(btnchuyen) {
-        btnchuyen.onclick = function() {
-            form_quyen.submit();
-        };
-    });
-    btnhuys1.forEach(function(btnhuy) {
-        btnhuy.onclick = function() {
-            modal1.style.display = "none";
-        };
-    });
 </script>

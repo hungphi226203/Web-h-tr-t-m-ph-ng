@@ -34,8 +34,8 @@ const adminModel = {
   capnhatbaidang: async ({ id }) => {
     try {
         const row = await query(
-          "UPDATE phong SET title = ?, imagePath = ?, addres = ?, des = ?, area = ?, price = ? WHERE id = ?",
-          [title, imageUrl, address, description, area, price, id]
+          "UPDATE phong SET status = 'đã duyệt' WHERE id = ?",
+          [id]
         );
         return row ? ["Cập nhật thành công", null] : [null, "Cập nhật thất bại"];
       } catch (e) {
@@ -45,13 +45,44 @@ const adminModel = {
 
   deleteuser: async ({ username }) => {
     try {
-        const row = await query("DELETE FROM taikhoan WHERE username = ?", [username]);
-        row = await query("DELETE FROM phong WHERE username = ?", [username]);
-      return row ? ["Xóa thành công", null] : [null, "Xóa thất bại"];
+        let row = await query("DELETE FROM phong WHERE username = ?", [username]);
+        row = await query("DELETE FROM taikhoan WHERE username = ?", [username]);
+        return row ? ["Xóa thành công", null] : [null, "Xóa thất bại"];
     } catch (e) {
-      return [null, "Lỗi xảy ra"];
+        return [null, "Lỗi xảy ra"];
     }
   },
+
+  deletepost: async ({ id }) => {
+    try {
+        let row = await query("DELETE FROM phong WHERE id = ?", [id]);
+        return row ? ["Xóa thành công", null] : [null, "Xóa thất bại"];
+    } catch (e) {
+        return [null, "Lỗi xảy ra"];
+    }
+  },
+
+  changeuser: async ({ username }) => {
+    try {
+        let currentRole = await query("SELECT role FROM taikhoan WHERE username = ?", [username]);
+        let newRole = currentRole === 'user' ? 'mode' : 'user';
+        let row = await query("UPDATE taikhoan SET role = ? WHERE username = ?", [newRole, username]);
+        return row ? ["Thay đổi quyền thành công", null] : [null, "Thay đổi quyền thất bại"];
+    } catch (e) {
+        return [null, "Lỗi xảy ra"];
+    }
+  },
+
+  changepost: async ({ id }) => {
+    try {
+        let row = await query("UPDATE phong SET status = 'đã duyệt' WHERE id = ?", [id]);
+        return row ? ["Thay đổi quyền thành công", null] : [null, "Thay đổi quyền thất bại"];
+    } catch (e) {
+        return [null, "Lỗi xảy ra"];
+    }
+  },
+
+
 };
 
 module.exports = adminModel;
