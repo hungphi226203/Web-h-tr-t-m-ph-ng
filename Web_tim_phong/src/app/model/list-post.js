@@ -4,7 +4,7 @@ const getPostModel = {
   async getPost() {
     try {
       const res = await query("SELECT * FROM phong WHERE status='đã duyệt'");
-      return res;
+      return shuffleArray(res);;
     } catch (e) {
       console.error(e);
       return [];
@@ -35,7 +35,7 @@ const getPostModel = {
         }
 
         const row = await query(sql, params);
-        return row;
+        return shuffleArray(row);
     } catch (error) {
         console.error("Error in getPostByDK:", error);
         return [];
@@ -60,5 +60,13 @@ const getPostModel = {
     }
   }
 };
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
 module.exports = getPostModel;

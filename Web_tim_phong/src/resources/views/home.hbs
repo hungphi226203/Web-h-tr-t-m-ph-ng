@@ -67,7 +67,7 @@
   <div class="post-div">
     {{#each data}}
 
-    <div class="" style="background-color: rgb(255, 255, 255);border-radius:15px;; border: 2px solid rgb(21, 179, 247);">
+    <div class="" style="background-color: rgb(255, 255, 255);border-radius:15px;; border: 2px solid rgb(21, 179, 247);height: 300px">
       <div class="row g-0" style="position:relative">
       <div class="col-md-4">
         {{#each (split imagePath ',')}}
@@ -89,14 +89,15 @@
             </p>
             <p class="card-text">Diện tích: {{area}}m2</p>
             <p class="card-text">Địa chỉ: {{addres}}</p>
-            <div style="position:absolute;bottom:20px; display:flex">
+            <div style=" display:flex">
               <img src="https://i.pinimg.com/736x/21/91/6e/21916e491ef0d796398f5724c313bbe7.jpg"
                 style="width:40px;border-radius:25px">
               <a class="card-text"
                 style="margin:auto;margin-left:10px;text-decoration:none;color:rgb(65, 65, 65)">{{username}}</a>
+               <a href="/post/{{username}}/{{id}}/{{title}}"><button type="button" class="btn btn-primary" style="mari">Xem chi tiết</button></a>
+
             </div>
-            <div style="position:absolute;bottom:20px;right:50px">
-              <a href="/post/{{username}}/{{id}}/{{title}}"><button type="button" class="btn btn-primary" style="mari">Xem chi tiết</button></a>
+            <div style="">
             </div>
           </div>
         </div>
